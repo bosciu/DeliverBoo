@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container" id="dish-index">
 
   @if (session('created'))
     <div class="alert alert-success">{{ session('created') }}</div>
@@ -16,27 +16,62 @@
   @endif
 
   <h1>Index Menù</h1>
-  <a href="{{route('owner.dish.create', $id)}}" class="btn btn-primary">Aggiungi un piatto</a>
+  <a href="{{route('owner.dish.create', $id)}}" class="btn btn-primary first-link">Aggiungi un piatto</a>
 
   @foreach ($categoriesAndDish as $category=>$dishes)
-  <h3 class="mb-2">{{$category}}</h3>
-    <table class="table">
+  <h3 class="mb-3 mt-5 text-center">{{$category}}</h3>
+    <table class="table table-striped">
       <thead>
         <tr>
           <th scope="col">Nome</th>
+          <th scope="col">Desc</th>
           <th scope="col">Prezzo</th>
-          <th scope="col" colspan="3">Azione</th>
+          <th scope="col">Vegetariano</th>
+          <th scope="col">Vegano</th>
+          <th scope="col">Solo a pranzo</th>
+          <th scope="col">Solo a cena</th>
+          <th scope="col" colspan="2">Azione</th>
         </tr>
       </thead>
       <tbody>
         @foreach ($dishes as $dish)
           <tr>
             <th scope="row">{{$dish->name}}</th>
+            <td>
+              @if (strlen($dish->desc)>15)
+                {{substr($dish->desc, 0, 15)}} ...
+              @else
+                {{$dish->desc}}
+              @endif
+            </td>
             <td>{{number_format((float)$dish->price,2,',','')}} &euro;</td>
-            <td> 
-              <a href="{{ route('owner.dish.show', $dish) }}">
-                <i class="fas fa-search"></i>
-              </a> 
+            <td>
+              @if ($dish->vegetarian)
+                <i class="fas fa-check"></i>
+              @else
+                <i class="fas fa-times"></i>
+              @endif
+            </td>
+            <td>
+              @if ($dish->vegan)
+                <i class="fas fa-check"></i>
+              @else
+                <i class="fas fa-times"></i>
+              @endif
+            </td>
+            <td>
+              @if ($dish->lunch_available)
+                <i class="fas fa-check"></i>
+              @else
+                <i class="fas fa-times"></i>
+              @endif
+            </td>
+            <td>
+              @if ($dish->dinner_available)
+                <i class="fas fa-check"></i>
+              @else
+                <i class="fas fa-times"></i>
+              @endif
             </td>
             <td> 
               <a href="{{ route('owner.dish.edit', $dish) }}">
@@ -48,7 +83,7 @@
                 @csrf
                 @method('DELETE')
                 <button type="submit">
-                  <i class="fas fa-trash-alt"></i>
+                  <a class="fas fa-trash-alt"></a>
                 </button>
               </form>
             </td>

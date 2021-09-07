@@ -2,7 +2,8 @@
 
 @section('content')
 <div class="container" id="restaurant_create">
-    <h2 class="mb-4">Modifica il ristorante: {{ $restaurant->name }}</h2>
+    <h2 class="mb-3">Modifica il ristorante: {{ $restaurant->name }}</h2>
+    <a href="{{route("owner.restaurants.index")}}" class="btn btn-secondary mb-4">Torna all'elenco</a>
     <form enctype="multipart/form-data" method="POST" action="{{ route('owner.restaurants.update', $restaurant) }}">
         @csrf
         @method('PUT')
@@ -104,7 +105,7 @@
                     </div>
             
                     <div class="form-check mb-3">
-                        <input class="form-check-input @error('free_delivery') is-invalid @enderror" type="checkbox" id="free_delivery" {{ old('free_delivery') ? 'checked' : '' }} name="free_delivery">
+                        <input class="form-check-input @error('free_delivery') is-invalid @enderror" type="checkbox" id="free_delivery" {{ old('free_delivery', $restaurant->free_delivery) ? 'checked' : '' }} name="free_delivery">
                         <label class="form-check-label" for="free_delivery">
                             Consegna gratuita
                         </label>

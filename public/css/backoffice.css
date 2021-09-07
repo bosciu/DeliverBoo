@@ -10983,8 +10983,146 @@ a.text-dark:focus {
   height: 20px;
 }
 
+#dish-index a.first-link {
+  margin: 10px 0 20px;
+}
+
+#dish-index table {
+  background-color: #d9fbe1;
+  text-align: center;
+}
+
+#dish-index table button,
+#dish-index table input[type=submit],
+#dish-index table input[type=reset] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+#restaurant-index {
+  text-align: center;
+}
+
+#restaurant-index .cards-container {
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+#restaurant-index .cards-container .card {
+  margin: auto;
+}
+
+#restaurant-index .cards-container .card .img-container {
+  height: 240px;
+}
+
+#restaurant-index .cards-container .card .img-container img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+#restaurant-index .cards-container ul {
+  padding: unset;
+  list-style: none;
+}
+
+#restaurant-index .cards-container ul li {
+  padding: 10px 0;
+}
+
+#restaurant-index {
+  text-align: center;
+}
+
+#restaurant-index .cards-container {
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+#restaurant-index .cards-container .card {
+  margin: auto;
+}
+
+#restaurant-index .cards-container .card .img-container {
+  height: 240px;
+}
+
+#restaurant-index .cards-container .card .img-container img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+#restaurant-index .cards-container ul {
+  padding: unset;
+  list-style: none;
+}
+
+#restaurant-index .cards-container ul li {
+  padding: 10px 0;
+}
+
+#restaurant-show .details ul {
+  list-style: none;
+  -webkit-padding-start: 0;
+          padding-inline-start: 0;
+}
+
+#restaurant-show .details ul li {
+  margin: 10px 0;
+}
+
+#restaurant-show .details .fas {
+  color: #17a2b8;
+}
+
+#restaurant-show .details .restaurant-image {
+  width: 50%;
+  box-shadow: 0 0 10px black;
+}
+
 body #app {
   font-size: 17px;
   letter-spacing: 1px;
+  background-color: beige;
+}
+
+body #app nav {
+  background: linear-gradient(320deg, #fdd0af 0%, #fdd0af 40%, #7cc0ad 43%, #7cc0ad 100%);
+}
+
+body #app nav .navbar-brand img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  transform: scale(1.3);
+  box-shadow: inset 0px 0px 30px 30px #7cc0ad;
+}
+
+body #app nav .logo-container {
+  height: 80px;
+  width: 10%;
+}
+
+body #app nav .logo-container a {
+  width: 100%;
+  height: 100%;
+}
+
+.vh-80 {
+  height: 80vh;
 }
 

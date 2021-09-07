@@ -1,54 +1,70 @@
-@extends('layouts.app')
+@extends('layouts.app') @section('content')
+<div class="container" id="restaurant-index">
+    @if (session('deleted'))
+    <div class="alert alert-success">{{ session("deleted") }}</div>
+    @endif @if (session('unauthorized'))
+    <div class="alert alert-danger">{{ session("unauthorized") }}</div>
+    @endif
 
-@section('content')
-<div class="container">
-
-  @if (session('deleted'))
-    <div class="alert alert-success">{{ session('deleted') }}</div>
-  @endif
-
-  @if (session('unauthorized'))
-    <div class="alert alert-danger">{{ session('unauthorized') }}</div>
-  @endif
-
-  <a href="{{ route('owner.restaurants.create') }}" class="btn btn-primary mb-4">Aggiungi un ristorante</a>
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Nome del ristorante</th>
-        <th scope="col">Apri</th>
-        <th scope="col">Modifica</th>
-        <th scope="col">Elimina</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      @foreach ($restaurants as $restaurant)
-        <tr>
-          <td>{{ $restaurant->name }}</td>
-          <td> 
-            <a href="{{ route('owner.restaurants.show', $restaurant) }}">
-              <i class="fas fa-search"></i>
-            </a> 
-          </td>
-          <td> 
-            <a href="{{ route('owner.restaurants.edit', $restaurant) }}">
-              <i class="fas fa-edit"></i>
-            </a> 
-          </td>
-          <td> 
-            <form action="{{ route('owner.restaurants.destroy', $restaurant) }}" method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare {{ $restaurant->name }}?')">
-              @csrf
-              @method('DELETE')
-              <button type="submit">
-                <i class="fas fa-trash-alt"></i>
-              </button>
-            </form>
-          </td>
-        </tr>
-      @endforeach
-    </tbody>
-  </table>
+    <a href="{{ route('owner.restaurants.create') }}" class="btn btn-primary my-4">Aggiungi un ristorante</a
+    >
+    <div class="row cards-container py-4">
+        @foreach ($restaurants as $restaurant)
+        <div class="col-md-4 my-3">
+            <div class="card" style="width: 18rem;">
+                <div class="img-container">
+                    <img
+                        src="{{asset('storage/' . $restaurant->img_path)}}"
+                        class="card-img-top"
+                        alt="{{$restaurant->name}}"
+                    />
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{$restaurant->name}}</h5>
+                    <ul class="card-text">
+                        <li>Email: {{$restaurant->email}}</li>
+                        <li>Telefono: {{$restaurant->phone}}</li>
+                        <li>
+                            <a
+                                href="{{
+                                    route('owner.restaurants.show', $restaurant)
+                                }}"
+                                class="btn btn-primary"
+                                >Visualizza il ristorante</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="{{
+                                    route('owner.restaurants.edit', $restaurant)
+                                }}"
+                                class="btn btn-warning"
+                                >Modifica il ristorante</a
+                            >
+                        </li>
+                        <li>
+                            <form
+                                action="{{
+                                    route(
+                                        'owner.restaurants.destroy',
+                                        $restaurant
+                                    )
+                                }}"
+                                method="POST"
+                                onsubmit="return confirm('Sicuro di voler eliminare {{$restaurant->name}}?')"
+                            >
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">
+                                    Elimina
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
 </div>
 @endsection

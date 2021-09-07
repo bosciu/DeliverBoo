@@ -11021,5 +11021,33 @@ a.text-dark:focus {
 body #app {
   font-size: 17px;
   letter-spacing: 1px;
+  background-color: beige;
+}
+
+body #app nav {
+  background: linear-gradient(320deg, #fdd0af 0%, #fdd0af 40%, #7CC0AD 43%, #7CC0AD 100%);
+}
+
+body #app nav .navbar-brand img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  transform: scale(1.3);
+  box-shadow: inset 0px 0px 30px 30px #7CC0AD;
+}
+
+body #app nav .logo-container {
+  height: 80px;
+  width: 10%;
+}
+
+body #app nav .logo-container a {
+  width: 100%;
+  height: 100%;
+}
+
+.vh-80 {
+  height: 80vh;
 }
 

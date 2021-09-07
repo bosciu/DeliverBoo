@@ -1,29 +1,108 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    @if (session('created'))
-        <div class="alert alert-success">{{ session('created') }}</div>
-    @endif
-
-    @if (session('deleted'))
-        <div class="alert alert-success">{{ session('deleted') }}</div>
-    @endif
-
-    @if (session('updated'))
-        <div class="alert alert-success">{{ session('updated') }}</div>
-    @endif
-
-    <h1>Pagina show</h1>
-    <div class="button-container d-flex flex-column align-items-start">
-        @if ($restaurant->calendar_id)
-            <a href="{{ route('owner.calendar.edit', $restaurant->calendar_id) }}" class="btn btn-info mb-3">Modifica gli orari del ristorante</a>
-        @else
-            <a href="{{ route('owner.calendar.create', $restaurant->id) }}" class="btn btn-info mb-3">Aggiungi gli orari del ristorante</a>
+    <div id="restaurant-show" class="container py-3">
+        @if (session('created'))
+            <div class="alert alert-success">{{ session('created') }}</div>
         @endif
-        <a href="{{ route('owner.restaurants.edit', $restaurant->id) }}" class="btn btn-warning mb-3">Modifica il ristorante</a>
-        <a href="{{ route('owner.dish.index', $restaurant->id) }}" class="btn btn-primary mb-3">Menù</a>
-        <a href="{{ route('owner.restaurants.index') }}" class="btn btn-secondary mb-3">Torna all'elenco dei ristoranti</a>
+
+        @if (session('deleted'))
+            <div class="alert alert-success">{{ session('deleted') }}</div>
+        @endif
+
+        @if (session('updated'))
+            <div class="alert alert-success">{{ session('updated') }}</div>
+        @endif
+
+        <h1>{{ $restaurant->name }}</h1>
+
+        {{-- button container top --}}
+        <div class="button-container my-4">
+
+            <a href="{{ route('owner.restaurants.edit', $restaurant->id) }}" class="btn btn-warning mb-3 mr-3">Modifica il ristorante</a>
+
+            @if ($restaurant->calendar_id)
+                <a href="{{ route('owner.calendar.edit', $restaurant->calendar_id) }}" class="btn btn-info mb-3">Visualizza e modifica gli orari del ristorante</a>
+            @else
+                <a href="{{ route('owner.calendar.create', $restaurant->id) }}" class="btn btn-info mb-3">Aggiungi gli orari del ristorante</a>
+            @endif
+        </div>
+        {{-- /button container top --}}
+
+        <section class="details d-flex justify-content-between align-items-center mb-2">
+
+            {{-- restaurant details --}}
+            <ul class="mb-4">
+                <li>
+                    <h4>
+                        <i class="fas fa-envelope"></i>
+                        Mail: {{ $restaurant->email }}
+                    </h4>
+                </li>
+
+                <li>
+                    <h4>
+                        <i class="fas fa-phone"></i>
+                        Telefono: {{ $restaurant->phone }}
+                    </h4>
+                </li>
+
+                <li>
+                    <h4>
+                        <i class="fas fa-utensils"></i>
+                        Ritiro presso il ristorante: 
+                        @if ($restaurant->take_away == 0)
+                            <span>
+                                No
+                            </span>
+                        @else
+                            <span>
+                                S&igrave;
+                            </span>
+                        @endif
+                    </h4>
+                </li>
+
+                <li>
+                    <h4>
+                        <i class="fas fa-truck"></i>
+                        Spedizione gratuita: 
+                        @if ($restaurant->free_delivery == 0)
+                            <span>
+                                No
+                            </span>
+                        @else
+                            <span>
+                                S&igrave;
+                            </span>
+                        @endif
+                    </h4>
+                </li>
+
+                <li >
+                    <h4>
+                        <i class="fas fa-dollar-sign"></i>
+                         Spese di spedizione: {{ $restaurant->delivery_price }} &euro;
+                    </h4>
+                </li>
+            </ul>
+            {{-- /restaurant details --}}
+
+            {{-- restaurant image --}}
+            <div class="restaurant-image">
+                <img class="img-fluid" src="{{ asset('storage/' . $restaurant->img_path) }}" alt="{{ $restaurant->name }} immagine">
+            </div>
+            {{-- /restaurant image --}}
+
+        </section>
+
+        {{-- button container bottom --}}
+        <div class="button-container my-4">
+            <a href="{{ route('owner.dish.index', $restaurant->id) }}" class="btn btn-primary mb-3 mr-3">Menù</a>
+
+            <a href="{{ route('owner.restaurants.index') }}" class="btn btn-secondary mb-3">Torna all'elenco dei ristoranti</a>
+        </div>
+        {{-- /button container bottom --}}
+
     </div>
-</div>
 @endsection

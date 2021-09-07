@@ -11074,6 +11074,25 @@ a.text-dark:focus {
   padding: 10px 0;
 }
 
+#restaurant-show .details ul {
+  list-style: none;
+  -webkit-padding-start: 0;
+          padding-inline-start: 0;
+}
+
+#restaurant-show .details ul li {
+  margin: 10px 0;
+}
+
+#restaurant-show .details .fas {
+  color: #17a2b8;
+}
+
+#restaurant-show .details .restaurant-image {
+  width: 50%;
+  box-shadow: 0 0 10px black;
+}
+
 body #app {
   font-size: 17px;
   letter-spacing: 1px;

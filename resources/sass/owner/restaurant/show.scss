@@ -1,0 +1,22 @@
+#restaurant-show {
+
+    .details {
+        
+        ul {
+            list-style: none;
+            padding-inline-start: 0;
+            li {
+                margin: 10px 0;
+            }
+        }
+        
+        .fas {
+            color: #17a2b8;
+        }
+
+        .restaurant-image {
+            width: 50%;
+            box-shadow: 0 0 10px black;
+        }
+    }
+}

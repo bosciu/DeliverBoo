@@ -50330,30 +50330,38 @@ var app = new Vue({
 
 /***/ }),
 
-/***/ "./resources/sass/app.scss":
-/*!*********************************!*\
-  !*** ./resources/sass/app.scss ***!
-  \*********************************/
+/***/ "./resources/sass/frontoffice.scss":
+/*!*****************************************!*\
+  !*** ./resources/sass/frontoffice.scss ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD
-throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nError: ENOENT: no such file or directory, open 'C:\\Users\\Utente\\Desktop\\ESAME FINALE\\DeliverBoo\\resources\\sass\\app.scss'\n    at C:\\Users\\Utente\\Desktop\\ESAME FINALE\\DeliverBoo\\node_modules\\webpack\\lib\\NormalModule.js:316:20\n    at C:\\Users\\Utente\\Desktop\\ESAME FINALE\\DeliverBoo\\node_modules\\loader-runner\\lib\\LoaderRunner.js:367:11\n    at C:\\Users\\Utente\\Desktop\\ESAME FINALE\\DeliverBoo\\node_modules\\loader-runner\\lib\\LoaderRunner.js:203:19\n    at C:\\Users\\Utente\\Desktop\\ESAME FINALE\\DeliverBoo\\node_modules\\enhanced-resolve\\lib\\CachedInputFileSystem.js:85:15\n    at processTicksAndRejections (node:internal/process/task_queues:78:11)");
-=======
-throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nError: ENOENT: no such file or directory, open '/Users/federicogiordano/Desktop/Final Project/DeliverBoo/resources/sass/app.scss'\n    at /Users/federicogiordano/Desktop/Final Project/DeliverBoo/node_modules/webpack/lib/NormalModule.js:316:20\n    at /Users/federicogiordano/Desktop/Final Project/DeliverBoo/node_modules/loader-runner/lib/LoaderRunner.js:367:11\n    at /Users/federicogiordano/Desktop/Final Project/DeliverBoo/node_modules/loader-runner/lib/LoaderRunner.js:203:19\n    at /Users/federicogiordano/Desktop/Final Project/DeliverBoo/node_modules/enhanced-resolve/lib/CachedInputFileSystem.js:85:15\n    at processTicksAndRejections (internal/process/task_queues.js:77:11)");
->>>>>>> 7eba6e519be9e7339b828430921499c961294761
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/owner/backoffice.scss":
+/*!**********************************************!*\
+  !*** ./resources/sass/owner/backoffice.scss ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 
 /***/ 0:
-/*!***************************************************************!*\
-  !*** multi ./resources/js/front.js ./resources/sass/app.scss ***!
-  \***************************************************************/
+/*!**************************************************************************************************************!*\
+  !*** multi ./resources/js/front.js ./resources/sass/owner/backoffice.scss ./resources/sass/frontoffice.scss ***!
+  \**************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! C:\Users\Utente\Desktop\ESAME FINALE\DeliverBoo\resources\js\front.js */"./resources/js/front.js");
-module.exports = __webpack_require__(/*! C:\Users\Utente\Desktop\ESAME FINALE\DeliverBoo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Utente\Desktop\ESAME FINALE\DeliverBoo\resources\sass\owner\backoffice.scss */"./resources/sass/owner/backoffice.scss");
+module.exports = __webpack_require__(/*! C:\Users\Utente\Desktop\ESAME FINALE\DeliverBoo\resources\sass\frontoffice.scss */"./resources/sass/frontoffice.scss");
 
 
 /***/ })

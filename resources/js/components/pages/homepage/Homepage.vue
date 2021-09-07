@@ -1,5 +1,5 @@
 <template>
-    <div id="homepage" class="container">
+    <div id="homepage" >
         <Header />
         <main>
             <h1>Main</h1>
@@ -20,4 +20,5 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+</style>

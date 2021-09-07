@@ -1,12 +1,12 @@
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Nunito");
 // Variables
-@import "variables";
+@import "../variables";
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
 //Componenti
-@import "./owner/restaurant/create.scss";
-@import "./owner/dish/create.scss";
+@import "./restaurant/create.scss";
+@import "./dish/create.scss";
 //COMMON
 body {
     #app {

@@ -50330,10 +50330,21 @@ var app = new Vue({
 
 /***/ }),
 
-/***/ "./resources/sass/app.scss":
-/*!*********************************!*\
-  !*** ./resources/sass/app.scss ***!
-  \*********************************/
+/***/ "./resources/sass/frontoffice.scss":
+/*!*****************************************!*\
+  !*** ./resources/sass/frontoffice.scss ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/owner/backoffice.scss":
+/*!**********************************************!*\
+  !*** ./resources/sass/owner/backoffice.scss ***!
+  \**********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -50342,14 +50353,15 @@ var app = new Vue({
 /***/ }),
 
 /***/ 0:
-/*!***************************************************************!*\
-  !*** multi ./resources/js/front.js ./resources/sass/app.scss ***!
-  \***************************************************************/
+/*!**************************************************************************************************************!*\
+  !*** multi ./resources/js/front.js ./resources/sass/owner/backoffice.scss ./resources/sass/frontoffice.scss ***!
+  \**************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Utente\Desktop\ESAME FINALE\DeliverBoo\resources\js\front.js */"./resources/js/front.js");
-module.exports = __webpack_require__(/*! C:\Users\Utente\Desktop\ESAME FINALE\DeliverBoo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Corso boolean\FinalProject\DeliverBoo\resources\js\front.js */"./resources/js/front.js");
+__webpack_require__(/*! D:\Corso boolean\FinalProject\DeliverBoo\resources\sass\owner\backoffice.scss */"./resources/sass/owner/backoffice.scss");
+module.exports = __webpack_require__(/*! D:\Corso boolean\FinalProject\DeliverBoo\resources\sass\frontoffice.scss */"./resources/sass/frontoffice.scss");
 
 
 /***/ })

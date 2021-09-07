@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import MainCategories from "../homepage/main_components/MainCategories"
-import MainCards from "../homepage/main_components/MainCards"
-import MainSearch from "../homepage/main_components/MainSearch"
+import MainCategories from "../homepage/main_components/MainCategories";
+import MainCards from "../homepage/main_components/MainCards";
+import MainSearch from "../homepage/main_components/MainSearch";
 export default {
     name: "main",
     components: {
@@ -17,15 +17,12 @@ export default {
         MainCards,
         MainSearch
     }
-}
+};
 </script>
 
 <style lang="scss" scoped>
-    main {
-        background-color: lightgreen;
-        text-align: center;
-        padding: 20px;
-
-    }
-    
+main {
+    /* background-color: lightgreen; */
+    /* padding: 20px; */
+}
 </style>

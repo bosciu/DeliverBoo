@@ -1,105 +1,59 @@
 <template>
-    <section class="mainSearch">
-        <div>
-            <!-- <h1>Questa è la sezione della search del main</h1> -->
-            <input type="text">
+    <section>
+        <div class="container">
+            <h4>Cerchi qualcos'altro?</h4>
+            <div class="restaurant-types-container">
+                <span
+                    v-for="(category, index) in restaurantTypes"
+                    :key="index"
+                    class="badge badge-pill badge-light"
+                    >{{ category.name }}</span
+                >
+            </div>
         </div>
-        
-        <section class="container">
-            <div>
-                <h3 class="content">Element</h3>
-            </div>
-        </section>
-        <section class="container">
-            <div>
-                <h3 class="content">Element</h3>
-            </div>
-        </section>
-        <section class="container">
-            <div>
-                <h3 class="content">Element</h3>
-            </div>
-        </section>
-        <section class="container">
-            <div>
-                <h3 class="content">Element</h3>
-            </div>
-        </section>
-        <section class="container">
-            <div>
-                <h3 class="content">Element</h3>
-            </div>
-        </section>
-        <section class="container">
-            <div>
-                <h3 class="content">Element</h3>
-            </div>
-        </section>
-        <section class="container">
-            <div>
-                <h3 class="content">Element</h3>
-            </div>
-        </section>
-        <section class="container">
-            <div>
-                <h3 class="content">Element</h3>
-            </div>
-        </section>
-        <section class="container">
-            <div>
-                <h3 class="content">Element</h3>
-            </div>
-        </section>
     </section>
-
 </template>
 
 <script>
 export default {
-    name: "MainSearch"
-}
+    name: "MainSearch",
+    data() {
+        return {
+            restaurantTypes: []
+        };
+    },
+    created() {
+        axios
+            .get("http://127.0.0.1:8000/api/restaurant-types")
+            .then(res => {
+                const shuffledArray = res.data.sort(() => 0.5 - Math.random());
+                const half = Math.ceil(shuffledArray.length / 2);
+                const firstHalf = shuffledArray.slice(0, half);
+
+                this.restaurantTypes = firstHalf;
+            })
+            .catch(err => (this.data = []));
+    }
+};
 </script>
 
 <style lang="scss" scoped>
-    .mainSearch {
-        display: flex;
-        flex-wrap: wrap;
-        background-color: lightgoldenrodyellow;
-        padding: 15px;
-        div {
-            width: 100%;
-            h1 {
-            width: 100%;
-            }
-            input {
-                margin-bottom: 10px;
-            }
-        }
-        
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            width: calc(100%/6);
-            min-height: 30px;
-            margin: 5px 0;
-            
-            background-image: url(https://www.ecosia.org/images?q=background%20post%20it&imageType=transparent#f=true&id=3700C82B7A673D5D69AE2D06F28786001FAFAD4D);
-
-            div {
-                display: flex;
-                flex-wrap: wrap;
-                position: relative;
-                width: 100%;
-                border: 2px solid grey;
-                border-radius: 10px;
-            }
-
-            .content {
-                margin: auto;
-                font-size: 12px;
-            }
+section {
+    padding: 20px 0 35px;
+    background-color: lightseagreen;
+    h4 {
+        padding: 15px 0;
+        font-size: 40px;
+        font-weight: 800;
+    }
+    .restaurant-types-container {
+        span {
+            margin: 7px 10px;
+            padding: 8px 19px;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px black;
         }
     }
-    
-
+}
 </style>

@@ -20,4 +20,5 @@ Route::namespace('Api')
         Route::get('{slug}/get-restaurant', 'RestaurantController@getRestaurant');
         Route::get('dish-categories', 'RestaurantController@getDishCategories');
         Route::get('restaurants', 'RestaurantController@getRestaurants');
+        Route::get('restaurant-types', 'RestaurantController@getRestaurantTypes');
     });

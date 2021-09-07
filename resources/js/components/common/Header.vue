@@ -1,28 +1,7 @@
 <template>
     <header class="w-100">
         <div class="container">
-            <section id="navbar" class="w-100">
-            <div id="logo" class="w-50 h-100">
-                <img src="/images/logos/logo-dark.png" alt="">
-            </div>
-            <div id="list" class="w-50 h-100">
-                <ul>
-                    <li class="dropdown">
-                        
-                        <a class=" dropdown-toggle btn" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-home"></i>
-                        REGISTRATI O ACCEDI
-                        </a>
-                        <div class="dropdown-menu p-0 mt-2" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/login">ACCEDI</a>
-                            <a class="dropdown-item" href="/register">REGISTRATI</a>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#" class="btn"> <i class="fas fa-bars"></i> MENU'</a>
-                    </li>
-                </ul>
-            </div>
-            </section>
+            <Navbar />
             <section id="jumbotron" class="d-flex align-items-center">
                 <div id="carouselExampleControls" class="carousel slide w-50 mb-5" data-ride="carousel">
                     <div class="carousel-inner rounded">
@@ -60,60 +39,19 @@
 </template>
 
 <script>
-export default {
-    name: "Header"
-};
+    import Navbar from "./Navbar";
+    export default {
+        name: "Header",
+        components: {
+            Navbar
+        }
+    };
 </script>
 
 <style lang="scss" scoped>
 @import "./resources/sass/_variables";
     header {
         background: linear-gradient(103deg, $bgPrimary 33%, $bgSecondary 55%, $buttonSecondary);
-
-        #navbar {
-            height: 80px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            #logo {
-                display: flex;
-                align-items: center;
-
-                img {
-                    width: 15%;
-                }
-            }
-
-            #list {
-                display: flex;
-                align-items: center;
-                justify-content: flex-end;
-
-                ul {
-                    display: flex;
-                    list-style: none;
-
-                    li {
-                        padding: 0 10px;
-
-                        a {
-                            text-decoration: none;
-                            font-size: 10px;
-                            font-weight: bolder;
-                            border: 1px solid $darkGreenFont;
-                            color: #41b3a3;
-                            background-color: $bgSecondary;
-
-                            i {
-                                padding-right: 3px;
-                                color: #41b3a3;
-                            }
-                        }
-                    }
-                }
-            }
-        }
 
         #jumbotron {
             margin-top: 100px;

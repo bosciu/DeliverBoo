@@ -22,7 +22,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{$restaurant->name}}</h5>
                     <ul class="card-text">
-                        <li>Email: {{$restaurant->email}}</li>
+                        <li>Email: <br> {{$restaurant->email}}</li>
                         <li>Telefono: {{$restaurant->phone}}</li>
                         <li>
                             <a

@@ -105,7 +105,7 @@
                     </div>
             
                     <div class="form-check mb-3">
-                        <input class="form-check-input @error('free_delivery') is-invalid @enderror" type="checkbox" id="free_delivery" {{ old('free_delivery') ? 'checked' : '' }} name="free_delivery">
+                        <input class="form-check-input @error('free_delivery') is-invalid @enderror" type="checkbox" id="free_delivery" {{ old('free_delivery', $restaurant->free_delivery) ? 'checked' : '' }} name="free_delivery">
                         <label class="form-check-label" for="free_delivery">
                             Consegna gratuita
                         </label>

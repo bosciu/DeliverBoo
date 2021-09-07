@@ -10,6 +10,10 @@ class DishCategory extends Model
         'name'
     ];
 
+    protected $hidden = [
+        'created_at', 'updated_at'
+    ];
+
     public function dishes(){
         return $this->hasMany('App\Dish');
     }

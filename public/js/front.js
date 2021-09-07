@@ -50348,8 +50348,13 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 __webpack_require__(/*! E:\boolean\DeliverBoo\resources\js\front.js */"./resources/js/front.js");
 module.exports = __webpack_require__(/*! E:\boolean\DeliverBoo\resources\sass\app.scss */"./resources/sass/app.scss");
+=======
+__webpack_require__(/*! C:\Users\bea52\Desktop\BOOLEAN\Boolean34\DeliverBoo\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\bea52\Desktop\BOOLEAN\Boolean34\DeliverBoo\resources\sass\app.scss */"./resources/sass/app.scss");
+>>>>>>> 52a38c7f898226f7c9dfbe7fa7ff694fd46405cc
 
 
 /***/ })

@@ -29,7 +29,7 @@ class CreateDishesTable extends Migration
             $table->timestamps();
 
             $table->foreign('dish_category_id')->references('id')->on('dish_categories');
-            $table->foreign('restaurant_id')->references('id')->on('restaurants');
+            $table->foreign('restaurant_id')->references('id')->on('restaurants')->onDelete('CASCADE');
         });
     }
 

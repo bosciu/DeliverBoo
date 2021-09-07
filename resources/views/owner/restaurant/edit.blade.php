@@ -2,7 +2,8 @@
 
 @section('content')
 <div class="container" id="restaurant_create">
-    <h2 class="mb-4">Modifica il ristorante: {{ $restaurant->name }}</h2>
+    <h2 class="mb-3">Modifica il ristorante: {{ $restaurant->name }}</h2>
+    <a href="{{route("owner.restaurants.index")}}" class="btn btn-secondary mb-4">Torna all'elenco</a>
     <form enctype="multipart/form-data" method="POST" action="{{ route('owner.restaurants.update', $restaurant) }}">
         @csrf
         @method('PUT')

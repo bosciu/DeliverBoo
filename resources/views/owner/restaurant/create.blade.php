@@ -128,7 +128,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-success text-uppercase mt-3">Salva e aggiungi il calendario</button>
+                    <button type="submit" class="btn btn-success text-uppercase mt-3">Salva</button>
                 </section>
             </div>
         </div>

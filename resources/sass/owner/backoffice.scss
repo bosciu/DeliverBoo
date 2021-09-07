@@ -12,5 +12,34 @@ body {
     #app {
         font-size: 17px;
         letter-spacing: 1px;
+        background-color: beige;
+
+        nav {
+            background: linear-gradient(320deg, #fdd0af 0%, #fdd0af 40%, #7CC0AD 43%, #7CC0AD 100%);
+
+            .navbar-brand {
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                    transform: scale(1.3);
+                    box-shadow: inset 0px 0px 30px 30px #7CC0AD;
+                }
+            }
+
+            .logo-container {
+                height: 80px;
+                width: 10%;
+
+                a {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
     }
+}
+
+.vh-80 {
+    height: 80vh;
 }

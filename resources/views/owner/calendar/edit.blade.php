@@ -39,12 +39,12 @@
                     @endforeach
                 </tbody>
             </table>
-            <button type="submit" class="btn btn-success mt-2">SALVA</button>
+            <button type="submit" class="btn btn-success text-uppercase mt-2">salva e torna al ristorante</button>
         </form>
         <form action="{{route('owner.calendar.destroy', $calendar)}}" method="POST" onsubmit="return confirm('Sicuro di voler cancellare il calendario?')">
             @csrf
             @method('DELETE')
-            <button type="submit" class="btn btn-danger mt-3">Elimina tutto il calendario</button>
+            <button type="submit" class="btn btn-danger mt-3">Elimina il calendario</button>
         </form>
     </div>
 </div>

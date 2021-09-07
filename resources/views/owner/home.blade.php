@@ -1,14 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <ul>
-        <li>
-            <a href="{{ route('owner.restaurants.index') }}">Mostra tutti i ristoranti</a>
-        </li>
-        <li>
+    <div class="container text-center py-4 vh-80">
 
-        </li>
-    </ul>
-</div>
+        <h2 class="mb-4">Benvenuto, {{ Auth::user()->name }}</h2>
+
+        <a class="btn btn-primary " href="{{ route('owner.restaurants.index') }}">Visualizza i miei ristoranti</a>
+
+    </div>
 @endsection

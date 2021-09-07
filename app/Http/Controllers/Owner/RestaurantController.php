@@ -163,12 +163,16 @@ class RestaurantController extends Controller
             if($request->take_away === "on"){
                 $request->merge(['take_away' => true]);
             }
+        }else{
+            $request->merge(['take_away' => false]);
         }
         
         if(array_key_exists('free_delivery',$request->all())){
             if($request->free_delivery === "on"){
                 $request->merge(['free_delivery' => true]);
             }
+        }else{
+            $request->merge(['free_delivery' => false]);
         }
 
         $data = $request->all();

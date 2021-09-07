@@ -14,6 +14,9 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    {{-- Script --}}
+    <script src="{{ asset('js/back.js') }}"></script>
+
     <!-- Styles -->
     <link href="{{ asset('css/backoffice.css') }}" rel="stylesheet">
 </head>
@@ -21,18 +24,16 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
+                <div class="logo-container">
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        <img src="{{ asset('/images/logos/logo-dark.png') }}" alt="deliverboo-logo">
+                    </a>
+                </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -47,8 +48,8 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item align-self-center">
-                                <a href="{{route('owner.home')}}">Pannello ristoratore</a>
+                            <li class="nav-item align-self-center mr-3">
+                                <a href="{{route('owner.home')}}">Portale ristoratore</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

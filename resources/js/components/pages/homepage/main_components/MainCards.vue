@@ -1,82 +1,100 @@
 <template>
-    <section class="mainCards">
-        <!-- <h1>Questa è la sezione delle cards del main</h1> -->
-        <section class="container">
-            <div>
-                <h3 class="content">Card ristorante</h3>
-            </div>
-        </section>
-        
-        <section class="container">
-            <div>
-                <h3 class="content">Card ristorante</h3>
-            </div>
-        </section>
-        <section class="container">
-            <div>
-                <h3 class="content">Card ristorante</h3>
-            </div>
-        </section>
-        <section class="container">
-            <div>
-                <h3 class="content">Card ristorante</h3>
-            </div>
-        </section>
-        <section class="container">
-            <div>
-                <h3 class="content">Card ristorante</h3>
-            </div>
-        </section>
-        <section class="container">
-            <div>
-                <h3 class="content">Card ristorante</h3>
-            </div>
-        </section>
-    </section>
+    <div class="cork">
+        <div v-for="restaurant in restaurants" :key="restaurant.id" class="post-it">
+            <div class="content">
+                <div class="img-container">
+                    <img :src="'/storage/'+ restaurant.img_path" alt="">
+                </div>
+                <div class="text">
+                    <p class="mt-3">{{restaurant.name}}</p>
+                </div>
+            </div> 
+        </div>
+    </div>  
 </template>
 
 <script>
 export default {
-    name: "MainCards"
+    name: "MainCards",
+    data:function(){
+        return {
+            restaurants:[]
+        }
+    },
+    created:function(){
+        this.getRestaurants(); 
+    },
+    methods: {
+        getRestaurants: function() {
+            axios
+                .get('http://127.0.0.1:8000/api/restaurants')
+                .then(
+                    res=> {
+                        this.restaurants = res.data
+                    }  
+                )
+                .catch(
+                    err=>{
+                        console.log(err);
+                    }
+                );
+        }
+    }
 }
+
 </script>
 
 <style lang="scss" scoped>
-    .mainCards {
+@import "./resources/sass/_variables";
+
+    .cork {
         display: flex;
         flex-wrap: wrap;
-        background-color: lightsteelblue;
-        padding: 10px;
-        border-top: 2px solid black;
-        border-bottom: 2px solid black;
-        h1 {
-            width: 100%;
-        }
-        .container {
+        align-items: center;
+        justify-content: center;
+        padding: 30px;
+        background-image: url('/images/cork-bg.jpg');
+        
+        .post-it {
+            position: relative;
             display: flex;
-            flex-wrap: wrap;
-            width: calc(100%/6);
-            min-height: 200px;
-            margin: 5px 0;
-            
-            background-image: url(https://www.ecosia.org/images?q=background%20post%20it&imageType=transparent#f=true&id=3700C82B7A673D5D69AE2D06F28786001FAFAD4D);
-
-            div {
-                display: flex;
-                flex-wrap: wrap;
-                position: relative;
-                width: 100%;
-                background-color: #F8F587;
-                border: 2px solid black;
-                border-radius: 10px;
-            }
+            width: calc(100% / 4);
+            height: 300px;
+            background-image: url('/images/post-it.png');
+            background-size: contain;
+            background-repeat: no-repeat;
 
             .content {
-                margin: auto;
+                position: absolute;
+                top: 15%;
+                left: 15%;
+                transform: rotate(-11deg);
+
+                .img-container {
+                width: 50%;
+                height: 50%;
+
+                    img {
+                        width: 100%;
+                        object-fit: cover;
+                        border-radius: 10px;
+                        box-shadow: 2px 2px rgba(0, 0, 0, 0.3);
+                    }
+                }
+        
+                .text {
+                    p {
+                        font-size: 20px;
+                        font-weight: bolder;
+                        text-transform: uppercase;
+                        color: #2D3232;
+                    }
+                }
             }
+
+                
+            
         }
+        
     }
-
-
-
 </style>

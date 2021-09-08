@@ -3,8 +3,7 @@
         <Navbar />
 
         <main>
-            <Loading 
-            v-if="restaurant != null" />
+            <Loading v-if="restaurant != null" />
             <div v-else class="container">
                 <div class="row">
                     <div class="col-8">
@@ -13,7 +12,12 @@
                             <div class="details container">
                                 <h1>{{ restaurant.name }}</h1>
 
-                                <h6 v-for="(category, index) in restaurant.restaurant_types" :key="index" class="badge badge-pill badge-info mr-2">
+                                <h6
+                                    v-for="(category,
+                                    index) in restaurant.restaurant_types"
+                                    :key="index"
+                                    class="badge badge-pill badge-info mr-2"
+                                >
                                     {{ category.name }}
                                 </h6>
 
@@ -32,7 +36,8 @@
                                 <div
                                     id="contact"
                                     data-toggle="modal"
-                                    data-target="#contactModal">
+                                    data-target="#contactModal"
+                                >
                                     <div>
                                         <i class="fas fa-info-circle mr-3"></i>
                                     </div>
@@ -53,7 +58,8 @@
                                     id="contactModal"
                                     tabindex="-1"
                                     aria-labelledby="exampleModalLabel"
-                                    aria-hidden="true">
+                                    aria-hidden="true"
+                                >
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -110,81 +116,112 @@
                             >
                                 <h3>{{ category.name }}</h3>
 
+                                <div
+                                    class="dish"
+                                    v-for="(dish, index) in dishes"
+                                    :key="index"
+                                >
                                     <div
-                                        class="dish"
-                                        v-for="(dish, index) in dishes"
-                                        :key="index" 
+                                        class="card"
+                                        data-toggle="modal"
+                                        data-target="#dishModal"
+                                    >
+                                        <img
+                                            class="card-img-top"
+                                            :src="'/storage/' + dish.img_path"
+                                            alt=""
+                                        />
+                                        <div class="card-body">
+                                            <h5 class="card-title">
+                                                {{ dish.name }}
+                                            </h5>
+                                            <p class="card-text">
+                                                {{ dish.price }} &euro;
+                                            </p>
+                                            <p class="card-text">
+                                                {{ dish.desc }}
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="modal fade"
+                                        id="dishModal"
+                                        tabindex="-1"
+                                        aria-labelledby="exampleModalLabel"
+                                        aria-hidden="true"
                                     >
                                         <div
-                                            class="card"
-                                            data-toggle="modal"
-                                            data-target="#dishModal"
+                                            class="modal-dialog modal-dialog-centered"
                                         >
-                                            <img
-                                                class="card-img-top"
-                                                :src="
-                                                    '/storage/' + dish.img_path
-                                                "
-                                                alt=""
-                                            />
-                                            <div class="card-body">
-                                                <h5 class="card-title">
-                                                    {{ dish.name }}
-                                                </h5>
-                                                <p class="card-text">
-                                                    {{ dish.price }} &euro;
-                                                </p>
-                                                <p class="card-text">
-                                                    {{ dish.desc }}
-                                                </p>
-                                            </div>
-                                        </div>
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">
+                                                        {{ dish.name }}
+                                                    </h5>
+                                                    <button
+                                                        type="button"
+                                                        class="close"
+                                                        data-dismiss="modal"
+                                                        aria-label="Close"
+                                                    >
+                                                        <span aria-hidden="true"
+                                                            >&times;</span
+                                                        >
+                                                    </button>
+                                                </div>
 
-                                        <div
-                                            class="modal fade"
-                                            id="dishModal"
-                                            tabindex="-1"
-                                            aria-labelledby="exampleModalLabel"
-                                            aria-hidden="true"
-                                        >
-                                            <div
-                                                class="modal-dialog modal-dialog-centered"
-                                            >
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title">
-                                                            {{ dish.name }}
-                                                        </h5>
-                                                        <button
-                                                            type="button"
-                                                            class="close"
-                                                            data-dismiss="modal"
-                                                            aria-label="Close"
+                                                <div class="modal-body">
+                                                    <div class="img-container">
+                                                        <img
+                                                            :src="
+                                                                '/storage/' +
+                                                                    dish.img_path
+                                                            "
+                                                            :alt="dish.name"
+                                                        />
+                                                    </div>
+                                                    <p>
+                                                        {{ dish.desc }}
+                                                    </p>
+                                                    <div
+                                                        class="row justify-content-center"
+                                                    >
+                                                        <div
+                                                            class="col-3 quantity"
                                                         >
                                                             <span
-                                                                aria-hidden="true"
-                                                                >&times;</span
+                                                                class="button-container"
                                                             >
-                                                        </button>
+                                                                <i
+                                                                    class="fas fa-minus"
+                                                                ></i>
+                                                            </span>
+                                                            <span>1</span>
+                                                            <span
+                                                                class="button-container"
+                                                            >
+                                                                <i
+                                                                    class="fas fa-plus"
+                                                                ></i>
+                                                            </span>
+                                                        </div>
                                                     </div>
+                                                </div>
 
-                                                    <div
-                                                        class="modal-body"
-                                                    ></div>
-
-                                                    <div class="modal-footer">
-                                                        <button
-                                                            type="button"
-                                                            class="btn btn-secondary"
-                                                            data-dismiss="modal"
-                                                        >
-                                                            Chiudi
-                                                        </button>
-                                                    </div>
+                                                <div class="modal-footer">
+                                                    <button
+                                                        type="button"
+                                                        class="btn btn-secondary"
+                                                        data-dismiss="modal"
+                                                    >
+                                                        Chiudi
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
                             </div>
                         </div>
                         <!-- /menu -->
@@ -244,7 +281,6 @@ import Navbar from "../../common/Navbar";
 import Footer from "../../common/Footer";
 import Loading from "../../common/Loading";
 
-
 export default {
     name: "Show",
     components: {
@@ -292,10 +328,28 @@ export default {
 
 .dish {
     width: calc(100% / 3 - 20px);
+    #dishModal {
+        .img-container {
+            width: 100%;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+        p {
+            padding: 20px 20px 0;
+            text-align: center;
+            word-break: break-all;
+        }
+    }
 }
 
 #cart {
-    height: 500px;
+    position: fixed;
+    right: 20%;
+    width: calc((100% / 5));
     padding: 30px;
     border-radius: 7px;
     background-color: cornflowerblue;

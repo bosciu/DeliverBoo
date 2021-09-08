@@ -34,6 +34,7 @@
                                     id="contact"
                                     data-toggle="modal"
                                     data-target="#contactModal"
+                                    class="my-3 p-3"
                                 >
                                     <div>
                                         <i class="fas fa-info-circle mr-3"></i>
@@ -109,10 +110,10 @@
                             >
                                 <h3>{{ category.name }}</h3>
                                 <div
-                                    class="dish-container d-flex justify-content-between"
+                                    class="dish-container d-flex justify-content-start flex-wrap mb-4"
                                 >
                                     <div
-                                        class="dish"
+                                        class="dish mb-3 mr-3"
                                         :class="
                                             category.id == dish.dish_category_id
                                                 ? ''
@@ -139,9 +140,6 @@
                                                 </h5>
                                                 <p class="card-text">
                                                     {{ dish.price }} &euro;
-                                                </p>
-                                                <p class="card-text">
-                                                    {{ dish.desc }}
                                                 </p>
                                             </div>
                                         </div>
@@ -311,12 +309,6 @@ export default {
                 .then(res => {
                     this.restaurant = res.data;
                     this.dishes = this.restaurant.dishes;
-
-                    // this.restaurant.dishes.forEach(dish, index => {
-                    //     console.log(dish, index);
-                    //     this.dishes.push(dish);
-
-                    // });
                 })
                 .catch(err => {
                     console.log(err);
@@ -336,24 +328,38 @@ export default {
     display: flex;
     align-items: center;
     cursor: pointer;
+    width: 60%;
+    border: 2px solid salmon;
+    border-radius: 3px;
+    background-color: lightgreen;
 }
 
-.dish {
-    width: calc(100% / 3 - 20px);
-    #dishModal {
-        .img-container {
-            width: 100%;
-            img {
+.dish-container {
+
+    .card {
+        height: 280px;
+        box-shadow: 0 0 5px grey;
+        cursor: pointer;
+    }
+
+    .dish {
+    width: 30%;
+
+        #dishModal {
+            .img-container {
                 width: 100%;
-                height: 100%;
-                object-fit: cover;
-                object-position: center;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: center;
+                }
             }
-        }
-        p {
-            padding: 20px 20px 0;
-            text-align: center;
-            word-break: break-all;
+            p {
+                padding: 20px 20px 0;
+                text-align: center;
+                word-break: break-all;
+            }
         }
     }
 }

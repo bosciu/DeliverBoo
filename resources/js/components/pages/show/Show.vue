@@ -10,20 +10,33 @@
                         <div id="hero" class="py-4">
                             <div class="details container">
                                 <h1>{{ restaurant.name }}</h1>
-                                <span>
+
+                                <h6
+                                    v-for="(category,
+                                    index) in restaurant.restaurant_types"
+                                    :key="index"
+                                    class="badge badge-pill badge-info mr-2"
+                                >
+                                    {{ category.name }}
+                                </h6>
+
+                                <p>
                                     <i class="fas fa-shipping-fast"></i>
                                     {{ restaurant.delivery_price }} &euro;
-                                </span>
-                                <span class="badge badge-pill badge-info"
-                                    >v-for</span
-                                >
-                                <a class="d-block" href="#">iframe mappa?</a>
-                                <h5>
-                                    Indirizzo per esteso con tanto di cap,
-                                    provincia e stato
-                                </h5>
+                                </p>
 
-                                <div id="contact" @click="closeContact()">
+                                <!-- <a class="d-block" href="#">iframe mappa?</a> -->
+                                <h6>
+                                    {{ restaurant.address.address }}
+                                    {{ restaurant.address.city }}
+                                </h6>
+
+                                <!-- contact modal click-->
+                                <div
+                                    id="contact"
+                                    data-toggle="modal"
+                                    data-target="#contactModal"
+                                >
                                     <div>
                                         <i class="fas fa-info-circle mr-3"></i>
                                     </div>
@@ -31,11 +44,63 @@
                                     <div>
                                         <h5>Informazioni sul ristorante</h5>
                                         <h6>
-                                            Intolleranze, allergeni o richieste
-                                            di varia natura
+                                            Intolleranze, allergeni o altre
+                                            richieste
                                         </h6>
                                     </div>
                                 </div>
+                                <!-- /contact modal click-->
+
+                                <!-- modal opened -->
+                                <div
+                                    class="modal fade"
+                                    id="contactModal"
+                                    tabindex="-1"
+                                    aria-labelledby="exampleModalLabel"
+                                    aria-hidden="true"
+                                >
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5
+                                                    class="modal-title"
+                                                    id="exampleModalLabel"
+                                                >
+                                                    Contatta il ristorante
+                                                </h5>
+                                                <button
+                                                    type="button"
+                                                    class="close"
+                                                    data-dismiss="modal"
+                                                    aria-label="Close"
+                                                >
+                                                    <span aria-hidden="true"
+                                                        >&times;</span
+                                                    >
+                                                </button>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <h6>
+                                                    Hai allergie, intolleranze o
+                                                    altre richieste? Contattaci!
+                                                </h6>
+                                                <p>{{ restaurant.phone }}</p>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button
+                                                    type="button"
+                                                    class="btn btn-secondary"
+                                                    data-dismiss="modal"
+                                                >
+                                                    Chiudi
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /modal opened -->
                             </div>
                         </div>
                         <!-- /Hero restaurant -->
@@ -43,23 +108,88 @@
                         <!-- menu -->
                         <div class="menu container py-5">
                             <div
-                                class="d-flex align-items-center justify-content-start"
+                                v-for="(category,
+                                index) in restaurant.dish_categories"
+                                :key="index"
+                                class="align-items-center justify-content-start"
                             >
-                                <div class="card" style="width: 18rem;">
-                                    v-for per ogni singolo piatto
-                                    <img
-                                        class="card-img-top"
-                                        src=""
-                                        alt="dish name"
-                                    />
-                                    <div class="card-body">
-                                        <h5 class="card-title">
-                                            Nome del piatto
-                                        </h5>
-                                        <p class="card-text">
-                                            Prezzo del piatto
-                                        </p>
-                                        <i class="fas fa-plus"></i>
+                                <h3>{{ category.name }}</h3>
+
+                                <div class="d-flex">
+                                    <div
+                                        v-for="(dish, index) in dishes"
+                                        :key="index"
+                                    >
+                                        <div
+                                            class="card"
+                                            style="width: 18rem;"
+                                            data-toggle="modal"
+                                            data-target="#dishModal"
+                                        >
+                                            <img
+                                                class="card-img-top"
+                                                :src="
+                                                    '/storage/' + dish.img_path
+                                                "
+                                                alt=""
+                                            />
+                                            <div class="card-body">
+                                                <h5 class="card-title">
+                                                    {{ dish.name }}
+                                                </h5>
+                                                <p class="card-text">
+                                                    {{ dish.price }} &euro;
+                                                </p>
+                                                <p class="card-text">
+                                                    {{ dish.desc }}
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            class="modal fade"
+                                            id="dishModal"
+                                            tabindex="-1"
+                                            aria-labelledby="exampleModalLabel"
+                                            aria-hidden="true"
+                                        >
+                                            <div
+                                                class="modal-dialog modal-dialog-centered"
+                                            >
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">
+                                                            {{ dish.name }}
+                                                        </h5>
+                                                        <button
+                                                            type="button"
+                                                            class="close"
+                                                            data-dismiss="modal"
+                                                            aria-label="Close"
+                                                        >
+                                                            <span
+                                                                aria-hidden="true"
+                                                                >&times;</span
+                                                            >
+                                                        </button>
+                                                    </div>
+
+                                                    <div
+                                                        class="modal-body"
+                                                    ></div>
+
+                                                    <div class="modal-footer">
+                                                        <button
+                                                            type="button"
+                                                            class="btn btn-secondary"
+                                                            data-dismiss="modal"
+                                                        >
+                                                            Chiudi
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -128,7 +258,8 @@ export default {
     },
     data: function() {
         return {
-            restaurant: null
+            restaurant: null,
+            dishes: []
         };
     },
     created: function() {
@@ -140,6 +271,13 @@ export default {
                 .get(`http://127.0.0.1:8000/api/${slug}/get-restaurant`)
                 .then(res => {
                     this.restaurant = res.data;
+                    this.dishes = this.restaurant.dishes;
+
+                    // this.restaurant.dishes.forEach(dish, index => {
+                    //     console.log(dish, index);
+                    //     this.dishes.push(dish);
+
+                    // });
                 })
                 .catch(err => {
                     console.log(err);
@@ -153,6 +291,7 @@ export default {
 #contact {
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 #cart {

@@ -208,6 +208,11 @@
                                                                 >
                                                                     <i
                                                                         class="fas fa-plus"
+                                                                        @click="
+                                                                            addItem(
+                                                                                dish
+                                                                            )
+                                                                        "
                                                                     ></i>
                                                                 </span>
                                                             </div>
@@ -298,7 +303,8 @@ export default {
         return {
             restaurant: null,
             isLoaded: false,
-            dishes: []
+            dishes: [],
+            orders: []
         };
     },
     created: function() {
@@ -321,6 +327,18 @@ export default {
                 .catch(err => {
                     console.log(err);
                 });
+        },
+        addItem(dish) {
+            let finded = false;
+            this.orders.forEach(order => {
+                if (order.id === dish.id) {
+                    finded = true;
+                }
+            });
+            if (!finded) {
+                this.orders.push(dish);
+                console.log(this.orders);
+            }
         }
     },
     watch: {

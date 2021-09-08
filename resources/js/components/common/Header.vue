@@ -3,6 +3,9 @@
         <div class="container">
             <Navbar />
             <section id="jumbotron" class="d-flex align-items-center">
+
+                <!-- carousel -->
+
                 <div id="carouselExampleControls" class="carousel slide w-50 mb-5" data-ride="carousel">
                     <div class="carousel-inner rounded">
                         <div class="carousel-item active rounded">
@@ -24,6 +27,9 @@
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
+                
+                <!-- searchbar -->
+
                 <div id="searchbar" class="w-50 d-flex justify-content-around">
                     <div class="w-75 p-4 d-flex justify-content-around rounded">
                         <form class="form-inline justify-center">

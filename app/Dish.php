@@ -20,6 +20,10 @@ class Dish extends Model
         'img_path'
     ];
 
+    protected $hidden = [
+        'dish_category'
+    ];
+
     public function dishCategory() {
         return $this->belongsTo('App\DishCategory');
     }

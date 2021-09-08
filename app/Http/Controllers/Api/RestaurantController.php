@@ -31,7 +31,7 @@ class RestaurantController extends Controller
         $restaurant['dishes'] = $dishes;
         $restaurant['dish_categories'] = $categories;
 
-
+        $restaurant->restaurantTypes;
 
         return response()->json($restaurant);
     }

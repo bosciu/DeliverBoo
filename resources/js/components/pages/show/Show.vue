@@ -3,10 +3,10 @@
         <Navbar />
 
         <main>
-            <div class="container">
+            <Loading v-if="!isLoaded" />
+            <div class="container" v-else>
                 <div class="row">
                     <div class="col-8">
-                        <!-- Hero restaurant -->
                         <div id="hero" class="py-4">
                             <div class="details container">
                                 <h1>{{ restaurant.name }}</h1>
@@ -25,13 +25,11 @@
                                     {{ restaurant.delivery_price }} &euro;
                                 </p>
 
-                                <!-- <a class="d-block" href="#">iframe mappa?</a> -->
                                 <h6>
                                     {{ restaurant.address.address }}
                                     {{ restaurant.address.city }}
                                 </h6>
 
-                                <!-- contact modal click-->
                                 <div
                                     id="contact"
                                     data-toggle="modal"
@@ -49,9 +47,6 @@
                                         </h6>
                                     </div>
                                 </div>
-                                <!-- /contact modal click-->
-
-                                <!-- modal opened -->
                                 <div
                                     class="modal fade"
                                     id="contactModal"
@@ -100,7 +95,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- /modal opened -->
                             </div>
                         </div>
                         <!-- /Hero restaurant -->
@@ -121,6 +115,10 @@
                                         :key="index"
                                     >
                                         <div
+                                            v-if="
+                                                category.id ==
+                                                    dish.dish_category_id
+                                            "
                                             class="card"
                                             style="width: 18rem;"
                                             data-toggle="modal"
@@ -285,16 +283,19 @@
 <script>
 import Navbar from "../../common/Navbar";
 import Footer from "../../common/Footer";
+import Loading from "../../common/Loading";
 
 export default {
     name: "Show",
     components: {
         Navbar,
-        Footer
+        Footer,
+        Loading
     },
     data: function() {
         return {
             restaurant: null,
+            isLoaded: false,
             dishes: []
         };
     },
@@ -318,6 +319,11 @@ export default {
                 .catch(err => {
                     console.log(err);
                 });
+        }
+    },
+    watch: {
+        restaurant() {
+            this.isLoaded = true;
         }
     }
 };

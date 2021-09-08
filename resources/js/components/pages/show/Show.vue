@@ -174,9 +174,45 @@
                                                         </button>
                                                     </div>
 
-                                                    <div
-                                                        class="modal-body"
-                                                    ></div>
+                                                    <div class="modal-body">
+                                                        <div
+                                                            class="img-container"
+                                                        >
+                                                            <img
+                                                                :src="
+                                                                    '/storage/' +
+                                                                        dish.img_path
+                                                                "
+                                                                :alt="dish.name"
+                                                            />
+                                                        </div>
+                                                        <p>
+                                                            {{ dish.desc }}
+                                                        </p>
+                                                        <div
+                                                            class="row justify-content-center"
+                                                        >
+                                                            <div
+                                                                class="col-3 quantity"
+                                                            >
+                                                                <span
+                                                                    class="button-container"
+                                                                >
+                                                                    <i
+                                                                        class="fas fa-minus"
+                                                                    ></i>
+                                                                </span>
+                                                                <span>1</span>
+                                                                <span
+                                                                    class="button-container"
+                                                                >
+                                                                    <i
+                                                                        class="fas fa-plus"
+                                                                    ></i>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
                                                     <div class="modal-footer">
                                                         <button
@@ -294,8 +330,27 @@ export default {
     cursor: pointer;
 }
 
+#dishModal {
+    .img-container {
+        width: 100%;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+    p {
+        padding: 20px 20px 0;
+        text-align: center;
+        word-break: break-all;
+    }
+}
+
 #cart {
-    height: 500px;
+    position: fixed;
+    right: 20%;
+    width: calc((100% / 5));
     padding: 30px;
     border-radius: 7px;
     background-color: cornflowerblue;

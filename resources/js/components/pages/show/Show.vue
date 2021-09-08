@@ -3,7 +3,9 @@
         <Navbar />
 
         <main>
-            <div class="container">
+            <Loading 
+            v-if="restaurant != null" />
+            <div v-else class="container">
                 <div class="row">
                     <div class="col-8">
                         <!-- Hero restaurant -->
@@ -11,12 +13,7 @@
                             <div class="details container">
                                 <h1>{{ restaurant.name }}</h1>
 
-                                <h6
-                                    v-for="(category,
-                                    index) in restaurant.restaurant_types"
-                                    :key="index"
-                                    class="badge badge-pill badge-info mr-2"
-                                >
+                                <h6 v-for="(category, index) in restaurant.restaurant_types" :key="index" class="badge badge-pill badge-info mr-2">
                                     {{ category.name }}
                                 </h6>
 
@@ -35,8 +32,7 @@
                                 <div
                                     id="contact"
                                     data-toggle="modal"
-                                    data-target="#contactModal"
-                                >
+                                    data-target="#contactModal">
                                     <div>
                                         <i class="fas fa-info-circle mr-3"></i>
                                     </div>
@@ -57,8 +53,7 @@
                                     id="contactModal"
                                     tabindex="-1"
                                     aria-labelledby="exampleModalLabel"
-                                    aria-hidden="true"
-                                >
+                                    aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -115,14 +110,13 @@
                             >
                                 <h3>{{ category.name }}</h3>
 
-                                <div class="d-flex">
                                     <div
+                                        class="dish"
                                         v-for="(dish, index) in dishes"
-                                        :key="index"
+                                        :key="index" 
                                     >
                                         <div
                                             class="card"
-                                            style="width: 18rem;"
                                             data-toggle="modal"
                                             data-target="#dishModal"
                                         >
@@ -191,7 +185,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                             </div>
                         </div>
                         <!-- /menu -->
@@ -249,12 +242,15 @@
 <script>
 import Navbar from "../../common/Navbar";
 import Footer from "../../common/Footer";
+import Loading from "../../common/Loading";
+
 
 export default {
     name: "Show",
     components: {
         Navbar,
-        Footer
+        Footer,
+        Loading
     },
     data: function() {
         return {
@@ -292,6 +288,10 @@ export default {
     display: flex;
     align-items: center;
     cursor: pointer;
+}
+
+.dish {
+    width: calc(100% / 3 - 20px);
 }
 
 #cart {

@@ -1,5 +1,5 @@
 <template>
-    <div id="store">
+    <div id="store" v-if="!loading">
         <header >
             <Navbar />
         </header>
@@ -13,56 +13,111 @@
                     </div>   
                 </div>
                 <div class="list-container pl-4">
-                    <div class="categories pt-3">
-                        <h3>CATEGORIE <i class="fas fa-chevron-up ml-3"></i></h3>
+                    <div class="delivery pt-3 ml-3">
                         <ul>
-                            <!-- <li v-for="(category,index) in categories" :key="index">
-                                {{category.name}}
-                            </li> -->
-                            <li>pesce</li>
-                            <li>carne</li>
-                            <li>verdure</li>
+                            <li>      
+                                <input type="checkbox" aria-label="Checkbox for following text input" class="mr-2">
+                                Consegna <i class="fas fa-bicycle"></i>
+                            </li>
+                            <li>
+                                <input type="checkbox" aria-label="Checkbox for following text input" class="mr-2">
+                                Ritiro <i class="fas fa-people-carry"></i>
+                            </li>
                         </ul>
                     </div>
-                    <div class="diet pt-3">
-                        <h3>REGIMI ALIMENTARI <i class="fas fa-chevron-up ml-3"></i></h3>
+                    <div class="veg pt-3 ml-3">
                         <ul>
-                            <!-- <li v-for="(category,index) in categories" :key="index">
-                                {{category.name}}
-                            </li> -->
-                            <li>veg</li>
-                            <li>vegetariano</li>
+                            <li>      
+                                <input type="checkbox" aria-label="Checkbox for following text input" class="mr-2">
+                                Vegetariano <i class="fas fa-seedling"></i>
+                            </li>
+                            <li>
+                                <input type="checkbox" aria-label="Checkbox for following text input" class="mr-2">
+                                Vegano <i class="fas fa-seedling"></i>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="categories pt-3">
+                        <h3>CATEGORIE <i class="fas fa-chevron-down ml-3"></i></h3>
+                        <ul class="overflow-auto mt-3">
+                            <li v-for="category in categories" :key="category.name">
+                                <a href="#">{{category.name}}</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </aside>
             <section class="pl-5 pr-5">  
                 <h2 class="ml-3 mb-5 mt-4">Ristoranti</h2>
-                <div id="card-container" class="w-100 h-100 d-flex flex-wrap justify-content-around">
-                    <div v-for="card in 5" :key="card" class="card"></div>
+                <div id="card-container" class="w-100 d-flex flex-wrap justify-content-center">
+                    <div v-for="(restaurant,index) in restaurants" :key="index" class="card mt-3 ml-2">
+                        <div class="img-container p-1">
+                            <img :src="'/storage/'+ restaurant.img_path" alt="" class="img-fluid rounded">
+                        </div> 
+                        <div class="info mt-3">
+                            <span>Roma</span>
+                            <h4>{{restaurant.name}}</h4> 
+                            <span v-if="restaurant.free_delivery == 1">Consegna gratuita</span>
+                            <span v-else>Prezzo Consegna: &euro; {{restaurant.delivery_price}}</span>
+                        </div>
+                    </div>
                 </div> 
             </section>
         </main>
     </div>
+    <Loading v-else />
 </template>
 
 <script>
 import Navbar from "../../common/Navbar";
+import Loading from "../../common/Loading";
+
 export default {
     name: "Store",
     components: {
-        Navbar
+        Navbar,
+        Loading
+    },
+    data:function(){
+        return {
+            categories:null,
+            loading: true,
+            restaurants:null
+        }
+    },
+    created:function(){
+        this.getCategories();
+
+        setTimeout(()=>{
+            this.loading = false;
+        },1000);
+
+        this.getRestaurants(); 
     },
     methods: {
         getCategories: function() {
             axios
-                .get('')
+                .get('http://127.0.0.1:8000/api/restaurant-types')
                 .then(
                     res => {
                         this.categories = res.data;
                     }
                 )
                 .catch();
+        },
+        getRestaurants: function() {
+            axios
+                .get('http://127.0.0.1:8000/api/restaurants')
+                .then(
+                    res=> {
+                        this.restaurants = res.data;
+                    }  
+                )
+                .catch(
+                    err=>{
+                        console.log(err);
+                    }
+                );
         }
     }
 }
@@ -77,10 +132,11 @@ export default {
         aside {
             width: 20%;
             .list-container{
-                .categories,.diet{
+                .categories,.veg,.delivery{
                     margin: 0 10px;
                     border-top: 2px solid rgb(240, 235, 235);
                 }
+
                 h3 {
                     font-size: 16px;
                     font-weight: bold;
@@ -89,11 +145,31 @@ export default {
 
                 i {
                     color: $darkGreenFont;
+                    margin-left: 5px;
                 }
 
                 ul {
                     list-style: none;
                     padding-left: 0;
+
+                    li {
+                        a {
+                            color: rgb(61, 59, 59);
+                        }
+
+                        a:hover {
+                            text-decoration: none;
+                            text-transform: uppercase;
+                        }
+                    }
+                }
+
+                .delivery i {
+                    color: $buttonSecondary;
+                }
+
+                .categories ul {
+                    height: 500px;
                 }
             }
         }
@@ -102,9 +178,22 @@ export default {
             width: 80%;
 
             .card {
-                width: 200px;
-                height: 150px;
+                display: flex;
+                flex-direction: column;
+                width: 250px;
+                height: 300px;
                 background-color: rgb(123, 199, 176);
+
+                .img-container {
+                    width: 100%;
+                    height: 50%;                  
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
             }
         }
     }

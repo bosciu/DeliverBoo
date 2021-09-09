@@ -64,6 +64,7 @@
                 </div> 
             </section>
         </main>
+        <Footer />
     </div>
     <Loading v-else />
 </template>
@@ -71,12 +72,14 @@
 <script>
 import Navbar from "../../common/Navbar";
 import Loading from "../../common/Loading";
+import Footer from "../../common/Footer";
 
 export default {
     name: "Store",
     components: {
         Navbar,
-        Loading
+        Loading,
+        Footer
     },
     data:function(){
         return {
@@ -127,8 +130,8 @@ export default {
 @import "./resources/sass/_variables";
 
     main {
-        height: 600px;
-
+        min-height: calc(100vh - 415px);
+        padding-bottom: 20px;
         aside {
             width: 20%;
             .list-container{
@@ -159,6 +162,7 @@ export default {
 
                         a:hover {
                             text-decoration: none;
+                            transition: 0.1s;
                             text-transform: uppercase;
                         }
                     }

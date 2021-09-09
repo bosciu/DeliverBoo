@@ -1,9 +1,9 @@
 <template>
     <div id="navbar-container" class="w-100 pt-2">
         <section id="navbar" class="w-100 d-flex justify-content-between align-center container">
-            <div id="logo" class="w-50 h-100">
+            <router-link tag="div" id="logo" class="w-50 h-100" :to="{name:'home'}">
                 <img src="/images/logos/logo-dark.png" alt="logo" class=" rounded-circle">
-            </div>
+            </router-link>
             <div id="list" class="w-50 h-100">
                 <ul class="d-flex align-items-center">
                     <li class="dropdown">
@@ -16,7 +16,7 @@
                         </div>
                     </li>
                     <li>
-                        <a href="#" class="btn"> <i class="fas fa-utensils"></i> RISTORANTI</a>
+                        <router-link class="btn" tag="a" :to="{ name: 'store'}"> <i class="fas fa-utensils"></i> RISTORANTI</router-link>  
                     </li>
                     <li id="cart" class="btn mr-2">
                         <i class="fas fa-shopping-cart mr-1 ml-1"></i>
@@ -47,6 +47,10 @@ export default {
                 img {
                     width: 17%;
                 }
+            }
+
+            #logo:hover {
+                cursor: pointer;
             }
 
             #list {

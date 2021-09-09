@@ -5,8 +5,8 @@
                 <div >
                     <div class="img-container" >
                         <img :src="'/storage/'+ restaurant.img_path" alt="">
-                        <a href="#"><p>{{restaurant.name}}</p></a>
                     </div>
+                    <router-link tag="a" :to="{ name: 'show' + restaurant.id}"><p>{{restaurant.name}}</p></router-link>
                 </div> 
             </div> 
         </div>  
@@ -72,33 +72,45 @@ export default {
             padding: 30px 30px 50px 30px;
 
             .post-it {
-                width: calc(100% / 4);
-                height: 300px;
-                padding: 50px;
+                width: calc(100% / 4 - 40px);
+                margin: 30px 20px 40px 20px;
                 
                 .img-container {
                     width: 100%;
-                    height: 100%;
+                    height: 300px;
 
                     img {
                         width: 100%;
                         height: 100%;
                         object-fit: cover;
                     }
+                }
+                
+                a {
+                    text-decoration: none;
+                    color: #2E3333;
 
-                    a {
-                        text-decoration: none;
-                        color: #2E3333;
-
-                        p {
-                            margin-top: 20px;
-                            font-weight: bolder;
-                            font-size: 30px;
-                            text-transform: capitalize;
-                        }
+                    p {
+                        margin-top: 20px;
+                        font-weight: bolder;
+                        font-size: 30px;
+                        text-transform: capitalize;
+                        word-break: break-all;
                     }
-                }    
+
+                    p:hover {
+                        transition: 0.2s;
+                        color: $buttonPrimary;
+                    }
+                }
+
+                a:hover {
+                    cursor: pointer;
+                    color: $buttonPrimary;
+                    transition: 0.2s;
+                }
             } 
         }  
-    }
+    
+}
 </style>

@@ -11015,43 +11015,7 @@ a.text-dark:focus {
 }
 
 #restaurant-index {
-  height: calc(100vh - 415px);
-  text-align: center;
-}
-
-#restaurant-index .cards-container {
-  justify-content: flex-start;
-  flex-wrap: wrap;
-}
-
-#restaurant-index .cards-container .card {
-  margin: auto;
-}
-
-#restaurant-index .cards-container .card .img-container {
-  height: 170px;
-}
-
-#restaurant-index .cards-container .card .img-container img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center;
-     object-position: center;
-}
-
-#restaurant-index .cards-container ul {
-  padding: unset;
-  list-style: none;
-}
-
-#restaurant-index .cards-container ul li {
-  padding: 10px 0;
-}
-
-#restaurant-index {
-  height: calc(100vh - 415px);
+  min-height: calc(100vh - 415px);
   text-align: center;
 }
 

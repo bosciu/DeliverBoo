@@ -38,7 +38,7 @@ export default {
             i {
                 color: $buttonPrimary;
                 font-size: 50px;
-                animation: rotate .5s linear infinite;
+                animation: rotate .8s linear infinite;
             }
         }
     }

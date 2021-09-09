@@ -10,12 +10,13 @@
 import MainCategories from "../homepage/main_components/MainCategories";
 import MainCards from "../homepage/main_components/MainCards";
 import MainSearch from "../homepage/main_components/MainSearch";
+
 export default {
     name: "main",
     components: {
         MainCategories,
         MainCards,
-        MainSearch
+        MainSearch,
     }
 };
 </script>

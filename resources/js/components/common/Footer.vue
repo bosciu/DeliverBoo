@@ -2,9 +2,9 @@
     <footer>
         <div class="container">
             <div class="row">
-                <a href="#">
+                <router-link tag="a" :to="{name:'home'}">
                     <img class="logo" src="/images/logos/logo-footer.png" alt="deliverboo logo">
-                </a>
+                </router-link>
                 <div class="col">
                     <ul>
                         <li>
@@ -14,7 +14,7 @@
                             <a href="#">Chi siamo</a>
                         </li>
                         <li>
-                            <a href="#">Ristoranti</a>
+                            <router-link tag="a" :to="{ name: 'store'}"> Ristoranti</router-link>  
                         </li>
                         <li>
                             <a href="#">Diventa nostro partner</a>

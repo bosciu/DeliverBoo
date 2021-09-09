@@ -15,7 +15,8 @@ class RestaurantTypeTableSeeder extends Seeder
         $types = config('restaurantTypes');
         foreach ($types as $type) {
             $newRestaurantType = new RestaurantType();
-            $newRestaurantType->name = $type;
+            $newRestaurantType->name = $type['name'];
+            $newRestaurantType->img_path = $type['img_path'];
             $newRestaurantType->save();
         }
     }

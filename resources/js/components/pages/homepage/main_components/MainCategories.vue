@@ -3,22 +3,21 @@
         id="main-categories"
         class="container d-flex flex-wrap justify-content-between py-4"
     >
-        <div
-            class="category text-center my-4"
-            v-for="(category, index) in randomMainCategories"
-            :key="index"
-        >
-            <!-- <div class="category-image">
-                <img src="" alt="">
-            </div> -->
-            <div class="content text-center text-uppercase">
-                <a href="#" class="p-3">
-                    <h3>
-                        {{ category.name }}
-                    </h3>
-                </a>
+        <router-link to="" class="text-center my-4"
+        v-for="(category, index) in randomMainCategories" :key="index">
+
+            <div class="category-image">
+                <img :src="category.img_path" alt="">
             </div>
-        </div>
+
+            <div class="layover"></div>
+
+            <div class="content text-uppercase d-flex align-items-center justify-content-center">
+                <h3>
+                    {{ category.name }}
+                </h3>
+            </div>
+        </router-link>
     </section>
 </template>
 
@@ -53,34 +52,57 @@ export default {
 @import "././resources/sass/_variables";
 
 #main-categories {
-    h1 {
-        width: 100%;
-        color: $bgPrimary;
-    }
 
-    .category {
+    a {
         width: calc(100% / 2 - 30px);
-        border: 1px solid black;
+        display: block;
         height: 200px;
+        color: white;
         position: relative;
-        display: inline-block;
-        background-color: grey;
+        box-shadow: 0 0 5px black;
+        overflow: hidden;
+        border-radius: 5px;
+
+        &:hover .content {
+            transform: scale(1.2);
+        }
+        
+        .category-image {
+            width: 100%;
+            height: 100%;
+            
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+                filter: blur(1px);
+            }
+        }
+
+
+        .layover {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: black;
+            opacity: 0.7;
+        }
 
         .content {
-            display: inline-block;
+            width: 100%;
+            height: 100%;
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-
-            a {
-                display: block;
-                min-width: 30%;
-                color: white;
-                transition: transform 0.2s;
-                &:hover {
-                    transform: scale(1.2);
-                }
+            top: 0;
+            left: 0;
+            display: inline-block;
+            transition: transform 0.2s;
+            h3 {
+                font-size: 30px;
+                font-weight: 700;
+                letter-spacing: 4px;
             }
         }
     }

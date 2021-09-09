@@ -1,15 +1,15 @@
 <template>
-    <div class="cork">
-        <div v-for="restaurant in restaurants" :key="restaurant.id" class="post-it">
-            <div class="content">
-                <div class="img-container">
-                    <img :src="'/storage/'+ restaurant.img_path" alt="">
-                </div>
-                <div class="text">
-                    <p class="mt-3">{{restaurant.name}}</p>
-                </div>
+    <div class="content">
+        <div class="container">
+           <div v-for="restaurant in randomMainRestaurants" :key="restaurant.id" class="post-it d-flex">
+                <div >
+                    <div class="img-container" >
+                        <img :src="'/storage/'+ restaurant.img_path" alt="">
+                        <a href="#"><p>{{restaurant.name}}</p></a>
+                    </div>
+                </div> 
             </div> 
-        </div>
+        </div>  
     </div>  
 </template>
 
@@ -18,11 +18,25 @@ export default {
     name: "MainCards",
     data:function(){
         return {
-            restaurants:[]
+            restaurants:[],
+            randomMainRestaurants:[]
         }
     },
     created:function(){
-        this.getRestaurants(); 
+        // this.getRestaurants();
+
+        axios
+            .get("http://127.0.0.1:8000/api/restaurants")
+            .then(res => {
+                const restaurants = res.data;
+                const randomOrder = restaurants.sort(() => 0.5 - Math.random());
+                const eightRandom = randomOrder.slice(0, 8);
+
+                this.randomMainRestaurants = eightRandom;
+            })
+            .catch(err => {
+                console.log(err);
+            });
     },
     methods: {
         getRestaurants: function() {
@@ -47,54 +61,44 @@ export default {
 <style lang="scss" scoped>
 @import "./resources/sass/_variables";
 
-    .cork {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-        padding: 30px;
-        background-image: url('/images/cork-bg.jpg');
+    .content {
+        background-color: $bgSecondary;
         
-        .post-it {
-            position: relative;
+        .container {
             display: flex;
-            width: calc(100% / 4);
-            height: 300px;
-            background-image: url('/images/post-it.png');
-            background-size: contain;
-            background-repeat: no-repeat;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 30px 50px 30px;
 
-            .content {
-                position: absolute;
-                top: 15%;
-                left: 15%;
-                transform: rotate(-11deg);
-
+            .post-it {
+                width: calc(100% / 4);
+                height: 300px;
+                padding: 50px;
+                
                 .img-container {
-                width: 50%;
-                height: 50%;
+                    width: 100%;
+                    height: 100%;
 
                     img {
                         width: 100%;
+                        height: 100%;
                         object-fit: cover;
-                        border-radius: 10px;
-                        box-shadow: 2px 2px rgba(0, 0, 0, 0.3);
                     }
-                }
-        
-                .text {
-                    p {
-                        font-size: 20px;
-                        font-weight: bolder;
-                        text-transform: uppercase;
-                        color: #2D3232;
-                    }
-                }
-            }
 
-                
-            
-        }
-        
+                    a {
+                        text-decoration: none;
+                        color: #2E3333;
+
+                        p {
+                            margin-top: 20px;
+                            font-weight: bolder;
+                            font-size: 30px;
+                            text-transform: capitalize;
+                        }
+                    }
+                }    
+            } 
+        }  
     }
 </style>

@@ -22,7 +22,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm">
             <div class="container">
                 <div class="logo-container">
                     <a class="navbar-brand" href="{{ url('/') }}">
@@ -74,9 +74,102 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main>
             @yield('content')
         </main>
+
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <a class="logo-footer" href="#">
+                            <img src="/images/logos/logo-footer.png" alt="deliverboo-logo">
+                        </a>
+                    </div>
+                    <div class="col">
+                        <ul>
+                            <li>
+                                <h5>Scopri DeliverBoo</h5>
+                            </li>
+                            <li>
+                                <a href="#">Chi siamo</a>
+                            </li>
+                            <li>
+                                <a href="#">Ristoranti</a>
+                            </li>
+                            <li>
+                                <a href="#">Diventa nostro partner</a>
+                            </li>
+                            <li>
+                                <a href="#">Lavora con noi</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <ul>
+                            <li>
+                                <h5>Note legali</h5>
+                            </li>
+                            <li>
+                                <a href="#">Termini &amp; Condizioni</a>
+                            </li>
+                            <li>
+                                <a href="#">Informativa sulla privacy</a>
+                            </li>
+                            <li>
+                                <a href="#">Cookies</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <ul>
+                            <li>
+                                <h5>Aiuto</h5>
+                            </li>
+                            <li>
+                                <a href="#">Contatti</a>
+                            </li>
+                            <li>
+                                <a href="#">FAQ</a>
+                            </li>
+                            <li>
+                                <a href="#">Tipi di cucina</a>
+                            </li>
+                            <li>
+                                <a href="#">Mappa del sito</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col">
+                    <ul>
+                        <li>
+                            <h5>Porta DeliverBoo con te</h5>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="https://www.palestrauniverso.it/wp-content/uploads/2018/05/google-play-11.png" alt="download-from-googleplay">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Download_on_the_App_Store_Badge_IT_RGB_blk.svg/1280px-Download_on_the_App_Store_Badge_IT_RGB_blk.svg.png" alt="download-from-appstore">
+                            </a>
+                        </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="logo-container container">
+                <div>
+                    <i class="fab fa-facebook"></i>
+                    <i class="fab fa-twitter-square"></i>
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <div>
+                    <span>&copy; 2021 DeliverBoo</span>
+                </div>
+            </div>
+        </footer>
     </div>
 </body>
 </html>

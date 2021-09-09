@@ -16,9 +16,9 @@ body {
     #app {
         font-size: 17px;
         letter-spacing: 1px;
-        background-color: beige;
         nav {
-            background: linear-gradient(103deg, $bgPrimary 33%, $bgSecondary 55%, $buttonSecondary);
+            height: 100px;
+            background-color: $bgPrimary;
             .navbar-brand {
                 img {
                     width: 100%;
@@ -37,9 +37,94 @@ body {
                 }
             }
         }
+        .homepage {
+            position: relative;
+            height: calc(100vh - 415px);
+            .text-container {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+        footer {
+            height: 315px;
+            background-color: #434848;
+            padding: 30px 0;
+            .container {
+                .row {
+                    display: flex;
+                    justify-content: space-around;
+                    .col {
+                        display: flex;
+                        justify-content: center;
+                        background-color: #2e3333;
+                        margin: 10px;
+                        .logo-footer {
+                            margin-top: 50px;
+                        }
+                        img {
+                            display: block;
+                            width: 100px;
+                            margin: auto;
+                        }
+                    }
+                }
+            }
+            ul {
+                margin: 0;
+                padding: 20px;
+                li {
+                    list-style-type: none;
+                    font-size: 14px;
+                    h5 {
+                        font-size: 18px;
+                        margin-bottom: 10px;
+                        color: white;
+                    }
+                }
+                a {
+                    text-decoration: none;
+                    color: white;
+                    &:hover {
+                        cursor: pointer;
+                        color: $darkGreenFont;
+                    }
+                }
+            }
+            .logo-container {
+                display: flex;
+                justify-content: space-between;
+                span {
+                    color: lightgray;
+                }
+                i {
+                    font-size: 26px;
+                    padding: 2px;
+                    color: white;
+                    &.fa-facebook:hover {
+                        cursor: pointer;
+                        color: #1d6fe5;
+                    }
+                    &.fa-twitter-square:hover {
+                        cursor: pointer;
+                        color: #2e9bf0;
+                    }
+                    &.fa-instagram:hover {
+                        cursor: pointer;
+                        color: #ec0f26;
+                    }
+                }
+            }
+        }
     }
-}
-
-.vh-80 {
-    height: 80vh;
+    #checkout {
+        min-height: calc(100vh - 415px);
+        position: relative;
+        .form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
 }

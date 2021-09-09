@@ -92,7 +92,7 @@
 
             {{-- restaurant image --}}
             <div class="restaurant-image">
-                <img class="img-fluid" src="{{ asset('storage/' . $restaurant->img_path) }}" alt="{{ $restaurant->name }} immagine">
+                <img src="{{ asset('storage/' . $restaurant->img_path) }}" alt="{{ $restaurant->name }} immagine">
             </div>
             {{-- /restaurant image --}}
 

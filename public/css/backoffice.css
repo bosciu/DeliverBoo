@@ -10983,8 +10983,18 @@ a.text-dark:focus {
   height: 20px;
 }
 
+#dish-index {
+  min-height: calc(100vh - 415px);
+}
+
 #dish-index a.first-link {
   margin: 10px 0 20px;
+}
+
+#dish-index h3 span {
+  border-radius: 100px;
+  padding: 0 15px;
+  background-color: #fdd0af;
 }
 
 #dish-index table {
@@ -11005,11 +11015,12 @@ a.text-dark:focus {
 }
 
 #restaurant-index {
+  height: calc(100vh - 415px);
   text-align: center;
 }
 
 #restaurant-index .cards-container {
-  justify-content: space-evenly;
+  justify-content: flex-start;
   flex-wrap: wrap;
 }
 
@@ -11018,7 +11029,7 @@ a.text-dark:focus {
 }
 
 #restaurant-index .cards-container .card .img-container {
-  height: 240px;
+  height: 170px;
 }
 
 #restaurant-index .cards-container .card .img-container img {
@@ -11040,11 +11051,12 @@ a.text-dark:focus {
 }
 
 #restaurant-index {
+  height: calc(100vh - 415px);
   text-align: center;
 }
 
 #restaurant-index .cards-container {
-  justify-content: space-evenly;
+  justify-content: flex-start;
   flex-wrap: wrap;
 }
 
@@ -11053,7 +11065,7 @@ a.text-dark:focus {
 }
 
 #restaurant-index .cards-container .card .img-container {
-  height: 240px;
+  height: 170px;
 }
 
 #restaurant-index .cards-container .card .img-container img {
@@ -11074,6 +11086,10 @@ a.text-dark:focus {
   padding: 10px 0;
 }
 
+#restaurant-show {
+  height: calc(100vh - 415px);
+}
+
 #restaurant-show .details ul {
   list-style: none;
   -webkit-padding-start: 0;
@@ -11089,18 +11105,28 @@ a.text-dark:focus {
 }
 
 #restaurant-show .details .restaurant-image {
-  width: 50%;
+  width: 450px;
+  height: 300px;
   box-shadow: 0 0 10px black;
+}
+
+#restaurant-show .details .restaurant-image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
 }
 
 body #app {
   font-size: 17px;
   letter-spacing: 1px;
-  background-color: beige;
 }
 
 body #app nav {
-  background: linear-gradient(320deg, #fdd0af 0%, #fdd0af 40%, #7cc0ad 43%, #7cc0ad 100%);
+  height: 100px;
+  background-color: #7CC0AD;
 }
 
 body #app nav .navbar-brand img {
@@ -11122,7 +11148,110 @@ body #app nav .logo-container a {
   height: 100%;
 }
 
-.vh-80 {
-  height: 80vh;
+body #app .homepage {
+  position: relative;
+  height: calc(100vh - 415px);
+}
+
+body #app .homepage .text-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+body #app footer {
+  height: 315px;
+  background-color: #434848;
+  padding: 30px 0;
+}
+
+body #app footer .container .row {
+  display: flex;
+  justify-content: space-around;
+}
+
+body #app footer .container .row .col {
+  display: flex;
+  justify-content: center;
+  background-color: #2e3333;
+  margin: 10px;
+}
+
+body #app footer .container .row .col .logo-footer {
+  margin-top: 50px;
+}
+
+body #app footer .container .row .col img {
+  display: block;
+  width: 100px;
+  margin: auto;
+}
+
+body #app footer ul {
+  margin: 0;
+  padding: 20px;
+}
+
+body #app footer ul li {
+  list-style-type: none;
+  font-size: 14px;
+}
+
+body #app footer ul li h5 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: white;
+}
+
+body #app footer ul a {
+  text-decoration: none;
+  color: white;
+}
+
+body #app footer ul a:hover {
+  cursor: pointer;
+  color: #41b3a3;
+}
+
+body #app footer .logo-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+body #app footer .logo-container span {
+  color: lightgray;
+}
+
+body #app footer .logo-container i {
+  font-size: 26px;
+  padding: 2px;
+  color: white;
+}
+
+body #app footer .logo-container i.fa-facebook:hover {
+  cursor: pointer;
+  color: #1d6fe5;
+}
+
+body #app footer .logo-container i.fa-twitter-square:hover {
+  cursor: pointer;
+  color: #2e9bf0;
+}
+
+body #app footer .logo-container i.fa-instagram:hover {
+  cursor: pointer;
+  color: #ec0f26;
+}
+
+body #checkout {
+  min-height: calc(100vh - 415px);
+  position: relative;
+}
+
+body #checkout .form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 

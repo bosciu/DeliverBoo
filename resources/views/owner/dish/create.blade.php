@@ -6,16 +6,18 @@
     <form action="{{route('owner.dish.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('POST')
-        <input type="hidden" name="restaurant_id" value="{{$id}}">
-        <label for="restaurant-type" class="d-block">Seleziona la categoria del piatto</label>
-        <select required class="custom-select @error('dish_category_id') is-invalid @enderror mb-3" id="dish-category" name="dish_category_id">
-            <option selected disabled>Seleziona la tipologia</option>
-            @foreach ($dishCategories as $category)
-                <option value="{{$category->id}}">{{$category->name}}</option>
-            @endforeach
-        </select>
-        <div class="invalid-feedback">
-            @error('dish_category_id') {{ $message }} @enderror
+        <div class="mb-3">
+            <input type="hidden" name="restaurant_id" value="{{$id}}">
+            <label for="restaurant-type" class="d-block">Seleziona la tipologia del piatto</label>
+            <select required class="custom-select @error('dish_category_id') is-invalid @enderror" id="dish-category" name="dish_category_id">
+                <option selected disabled>Seleziona la tipologia</option>
+                @foreach ($dishCategories as $category)
+                    <option value="{{$category->id}}">{{$category->name}}</option>
+                @endforeach
+            </select>
+            <div class="invalid-feedback ">
+                @error('dish_category_id') {{ $message }} @enderror
+            </div>
         </div>
     
         <div class="form-group">

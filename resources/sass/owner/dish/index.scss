@@ -2,6 +2,13 @@
     a.first-link {
         margin: 10px 0 20px;
     }
+
+    h3 span {
+        border-radius: 100px;
+        padding: 0 15px;
+        background-color: $bgSecondary;
+    }
+    
     table {
         background-color: #d9fbe1;
         text-align: center;

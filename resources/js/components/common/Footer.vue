@@ -3,7 +3,9 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <img src="/images/logos/logo-footer.png" alt="deliverboo logo">
+                    <a class="logo-footer" href="#">
+                        <img src="/images/logos/logo-footer.png" alt="deliverboo-logo">
+                    </a>
                 </div>
                 <div class="col">
                     <ul>
@@ -79,7 +81,6 @@
             </div>
         </div>
         <div class="logo-container container">
-            <!-- icone non ancora inserite in pagina -->
             <div>
                 <i class="fab fa-facebook"></i>
                 <i class="fab fa-twitter-square"></i>
@@ -98,12 +99,12 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 
 @import "./resources/sass/_variables";
 
 footer {
-    background-color: #2E3333;
+    background-color: #434848;
     padding: 30px 0;
 }
 .container {
@@ -111,9 +112,18 @@ footer {
             display: flex;
             justify-content: space-around;
             .col {
-                background-color: #434848;
+                display: flex;
+                justify-content: center;
+                background-color: #2E3333;
                 margin: 10px;
-                border: 1px solid black;
+                .logo-footer {
+                    margin-top: 50px;
+                }
+                img {
+                    display: block;
+                    width: 100px;
+                    margin: auto;
+                }
             }
         }
 }
@@ -137,9 +147,6 @@ ul {
             color: $darkGreenFont;
         } 
     }
-    img {
-        width: 100px;
-    }
 }
 .logo-container {
     display: flex;
@@ -147,6 +154,22 @@ ul {
         span {
             color: lightgray;
         }
+        i {
+            font-size: 26px;
+            padding: 2px;
+            color: white;
+                &.fa-facebook:hover {
+                    cursor: pointer;
+                    color: #1D6FE5;
+                }
+                &.fa-twitter-square:hover {
+                    cursor: pointer;
+                    color: #2E9BF0;
+                }
+                &.fa-instagram:hover {
+                    cursor: pointer;
+                    color: #ec0f26;
+                }
+        }
 }
-
 </style>

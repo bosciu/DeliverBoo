@@ -230,7 +230,7 @@ class DishController extends Controller
         $dish->delete();
 
         return redirect()
-        ->route('owner.dish.index',compact('restaurant_id'))
+        ->route('owner.dish.index',$restaurant_id)
         ->with('deleted', "$dish->name eliminato con successo.");
     }
 }

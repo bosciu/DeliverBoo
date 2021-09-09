@@ -79,7 +79,7 @@
                 <section class="col-6">
 
                     <label for="restaurant-type" class="d-block" >Tipologie Ristorante (Max 4)</label>
-                    <select onchange="printBadge(this.value)" class="form-select mt-2" id="restaurant-type" aria-label="Default select example">
+                    <select required onchange="printBadge(this.value)" class="form-select mt-2 @error('restaurant-types') is-invalid @enderror" id="restaurant-type" aria-label="Default select example">
                         <option selected>Seleziona la tipologia</option>
                         @foreach ($restaurantTypes as $type)
                             <option value="{{$type->name}}">{{$type->name}}</option>
@@ -92,6 +92,9 @@
                                 <input type="hidden" value="{{ $restaurantType->name }}" name="restaurant-types[]">
                             </span>
                         @endforeach
+                    </div>
+                    <div class="invalid-feedback">
+                        @error('restaurant-types') {{ $message }} @enderror
                     </div>
 
                     <div class="form-check mb-3 mt-4">

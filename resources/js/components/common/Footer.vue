@@ -79,7 +79,7 @@
             </div>
         </div>
         <div class="logo-container container">
-            <div>
+            <div class="icons">
                 <i class="fab fa-facebook"></i>
                 <i class="fab fa-twitter-square"></i>
                 <i class="fab fa-instagram"></i>
@@ -135,10 +135,10 @@ ul {
     li {
         list-style-type: none;
         font-size: 12px;
-        line-height: 24px;
+        line-height: 20px;
         h6 {
             font-size: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             color: white;
         }
     }   
@@ -156,25 +156,28 @@ ul {
     justify-content: space-between;
     align-items: center;
     padding: 5px;
-        span {
-            color: lightgray;
+        .icons {
+            margin-left: 33px;
         }
-        i {
-            font-size: 26px;
-            padding: 8px;
-            color: white;
-                &.fa-facebook:hover {
-                    cursor: pointer;
-                    color: #1977F2;
-                }
-                &.fa-twitter-square:hover {
-                    cursor: pointer;
-                    color: #55ACEE;
-                }
-                &.fa-instagram:hover {
-                    cursor: pointer;
-                    color: #E94574;
-                }
-        }
+            span {
+                color: lightgray;
+            }
+            i {
+                font-size: 26px;
+                padding: 8px;
+                color: white;
+                    &.fa-facebook:hover {
+                        cursor: pointer;
+                        color: #1977F2;
+                    }
+                    &.fa-twitter-square:hover {
+                        cursor: pointer;
+                        color: #55ACEE;
+                    }
+                    &.fa-instagram:hover {
+                        cursor: pointer;
+                        color: #E94574;
+                    }
+            }
 }
 </style>

@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 class DishController extends Controller
 {
     private $validationArray = [
-        'dish_category_id' => 'exists:dish_categories,id',
+        'dish_category_id' => 'required|exists:dish_categories,id',
         'restaurant_id' => 'exists:restaurants,id',
         'name' => 'required|string|max:100',
         'desc' => 'required|string',
@@ -36,7 +36,7 @@ class DishController extends Controller
         $restaurant = Restaurant::where('id', $id)->firstOrFail();
 
         if($userId === $restaurant->user_id) {
-            $dishes = Dish::where('restaurant_id', $id)->get();
+            $dishes = Dish::where('restaurant_id', $id)->orderBy('updated_at', 'DESC')->get();
 
             $categoriesId = [];
             $categories = [];

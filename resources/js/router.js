@@ -21,7 +21,7 @@ const router = new VueRouter({
             component: Store
         },
         {
-            path: "/:slug/show",
+            path: "/:slug",
             name: "store",
             component: Show
         }

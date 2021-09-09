@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
+    public function prepareCheckout(){
+        return view('checkout');
+    }
+
     public function goCheckout(){
         $gateway = new Braintree\Gateway([
             'environment' => config('services.braintree.environment'),
@@ -17,7 +21,7 @@ class PaymentController extends Controller
     
         $token = $gateway->ClientToken()->generate();
     
-        return view('checkout', ['token' => $token]); 
+        return view('orderConfirm', ['token' => $token]); 
     }
 
     public function doCheckout(Request $request){

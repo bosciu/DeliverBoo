@@ -152,10 +152,29 @@
 
                     <!-- CARRELLO -->
                     <div class="col-4" id="cart">
-                        <div id="checkout">
-                            Vai alla cassa
+                        <div class="layover" v-if="anotherRest"></div>
+                        <div id="checkout-another" v-if="anotherRest">
+                            <span>Carrello in un altro ristorante</span>
+                            <router-link to="#"
+                                >Per visualizzare il tuo carrello, clicca
+                                qui!</router-link
+                            >
                         </div>
-                        <div class="products container mt-3">
+                        <div
+                            id="checkout"
+                            v-else-if="this.orderDishes.length > 0"
+                        >
+                            <a :href="this.$route.params.slug + '/checkout'"
+                                >Vai alla cassa</a
+                            >
+                        </div>
+                        <div id="checkout" v-else>
+                            Aggiungi articoli al carrello
+                        </div>
+                        <div
+                            class="products container mt-3"
+                            v-if="!anotherRest"
+                        >
                             <!-- CICLO SUI PRODOTTI -->
                             <div
                                 class="row align-items-center"
@@ -190,7 +209,10 @@
                             </div>
                             <hr />
                         </div>
-                        <div class="subtotal">
+                        <div
+                            class="subtotal"
+                            v-if="this.orderDishes.length > 0 && !anotherRest"
+                        >
                             <div class="row mt-3">
                                 <div class="col-8">Subtotale</div>
                                 <div class="col text-right">
@@ -235,12 +257,25 @@ export default {
             isLoaded: false,
             dishes: [],
             orderDishes: [],
-            finded: false
+            finded: false,
+            sum: 0,
+            subTotal: 0
         };
     },
     created: function() {
         this.getRestaurant(this.$route.params.slug);
         this.orderDishes = JSON.parse(localStorage.getItem("orders"));
+    },
+    computed: {
+        anotherRest() {
+            if (this.orderDishes.length > 0) {
+                if (this.orderDishes[0].restaurant_id == this.restaurant.id) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        }
     },
     methods: {
         getRestaurant: function(slug) {
@@ -249,6 +284,15 @@ export default {
                 .then(res => {
                     this.restaurant = res.data;
                     this.dishes = this.restaurant.dishes;
+                    let subTotal = 0;
+                    this.orderDishes.forEach(orderDish => {
+                        subTotal += orderDish.price * orderDish.quantity;
+                    });
+                    this.subTotal = subTotal.toFixed(2);
+                    this.sum = (
+                        parseFloat(this.subTotal) +
+                        this.restaurant.delivery_price
+                    ).toFixed(2);
                 })
                 .catch(err => {
                     console.log(err);
@@ -261,6 +305,7 @@ export default {
                 this.orderDishes.forEach(orderDish => {
                     if (orderDish.id === dish.id) {
                         orderDish.quantity++;
+                        this.$forceUpdate();
                     }
                 });
                 localStorage.setItem(
@@ -268,6 +313,14 @@ export default {
                     JSON.stringify(this.orderDishes)
                 );
             }
+            let subTotal = 0;
+            this.orderDishes.forEach(orderDish => {
+                subTotal += orderDish.price * orderDish.quantity;
+            });
+            this.subTotal = subTotal.toFixed(2);
+            this.sum = (
+                parseFloat(this.subTotal) + this.restaurant.delivery_price
+            ).toFixed(2);
         },
         removeItem(dish) {
             this.orderDishes.forEach((orderDish, index) => {
@@ -276,10 +329,19 @@ export default {
                         this.orderDishes.splice(index, 1);
                     } else {
                         orderDish.quantity--;
+                        this.$forceUpdate();
                     }
                 }
             });
             localStorage.setItem("orders", JSON.stringify(this.orderDishes));
+            let subTotal = 0;
+            this.orderDishes.forEach(orderDish => {
+                subTotal += orderDish.price * orderDish.quantity;
+            });
+            this.subTotal = subTotal.toFixed(2);
+            this.sum = (
+                parseFloat(this.subTotal) + this.restaurant.delivery_price
+            ).toFixed(2);
         },
         setDish(dish) {
             let finded = false;
@@ -300,25 +362,15 @@ export default {
                     this.orderDishes[this.orderDishes.length - 1].quantity = 1;
                 } else {
                     this.orderDishes[findedIndex].quantity++;
-                    /* if (isNaN(this.orderDishes[findedIndex].quantity)) {
-                        this.orderDishes[findedIndex].quantity = 2;
-                    }
-                    this.orderDishes[findedIndex].quantity++; */
                 }
             }
             localStorage.setItem("orders", JSON.stringify(this.orderDishes));
-        }
-    },
-    computed: {
-        subTotal() {
             let subTotal = 0;
             this.orderDishes.forEach(orderDish => {
                 subTotal += orderDish.price * orderDish.quantity;
             });
-            return subTotal.toFixed(2);
-        },
-        sum() {
-            return (
+            this.subTotal = subTotal.toFixed(2);
+            this.sum = (
                 parseFloat(this.subTotal) + this.restaurant.delivery_price
             ).toFixed(2);
         }
@@ -381,6 +433,8 @@ export default {
     padding: 30px;
     border-radius: 7px;
     background-color: cornflowerblue;
+    overflow: hidden;
+
     #checkout {
         padding: 15px 20px;
         border-radius: 7px;
@@ -388,7 +442,25 @@ export default {
         background-color: #fdd0af;
         box-shadow: 0 4px 8px black;
         text-align: center;
-        cursor: pointer;
+    }
+    #checkout-another {
+        padding: 15px 20px;
+        border-radius: 7px;
+        font-weight: 700;
+        background-color: #fdd0af;
+        box-shadow: 0 4px 8px black;
+        text-align: center;
+        position: relative;
+        z-index: 100;
+        overflow: hidden;
+    }
+    .layover {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        right: 0;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.5);
     }
     .products {
         .quantity {

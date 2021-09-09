@@ -38,7 +38,8 @@ export default {
 @import "./resources/sass/_variables";
     #navbar-container {
          #navbar {
-            height: 80px;
+            height: 92px;
+            border-bottom: 2px solid white;
 
             #logo{
                 display: flex;

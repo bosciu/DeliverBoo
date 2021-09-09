@@ -30,7 +30,7 @@
                 
                 <!-- searchbar -->
 
-                <div id="searchbar" class="w-50 d-flex justify-content-around">
+                <div id="searchbar" class="w-50 d-flex">
                     <div class="w-75 p-4 d-flex justify-content-around rounded">
                         <form class="form-inline justify-center">
                             <label for="" class="mb-2">Cerca il Ristorante o la categoria! <i class="fas fa-arrow-circle-down ml-2"></i></label>
@@ -57,7 +57,7 @@
 <style lang="scss" scoped>
 @import "./resources/sass/_variables";
     header {
-        background: linear-gradient(103deg, $bgPrimary 33%, $bgSecondary 55%, $buttonSecondary);
+        background-color: #7CC0AD;
 
         #jumbotron {
             margin-top: 100px;
@@ -86,6 +86,9 @@
                     }
                 }
             } 
+            #searchbar {
+                justify-content: flex-end;
+            }
         }
     }
 </style>

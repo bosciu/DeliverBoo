@@ -27,7 +27,8 @@ class RestaurantController extends Controller
         'zip_code' => 'required|string|max:5',
         'province' => 'required|string|max:2',
         'country' => 'max:70',
-        'restaurant-types' => 'array|required|min:1|max:4'
+        'restaurant-types' => 'array|required|min:1|max:4',
+        'restaurant-types.*' => 'required'
     ];
 
     /**
@@ -78,9 +79,11 @@ class RestaurantController extends Controller
 
         $restaurantTypes = array();
 
-        foreach ($data['restaurant-types'] as $value) {
-            $restaurantType = RestaurantType::where('name',$value)->firstOrFail();
-            $restaurantTypes[] = $restaurantType->id;
+        if(array_key_exists('restaurant-types', $data)){
+            foreach ($data['restaurant-types'] as $value) {
+                $restaurantType = RestaurantType::where('name',$value)->firstOrFail();
+                $restaurantTypes[] = $restaurantType->id;
+            }
         }
     
 

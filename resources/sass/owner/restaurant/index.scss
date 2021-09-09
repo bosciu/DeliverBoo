@@ -1,11 +1,12 @@
 #restaurant-index {
+    min-height: calc(100vh - 415px);
     .cards-container {
         justify-content: flex-start;
         flex-wrap: wrap;
         .card {
             margin: auto;
             .img-container {
-                height: 240px;
+                height: 170px;
                 img {
                     width: 100%;
                     height: 100%;

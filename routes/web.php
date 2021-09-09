@@ -32,4 +32,7 @@ Route::middleware('auth')
         Route::get('{id}/dish/create', 'DishController@create')->name('dish.create');
 });
 
+Route::get('{slug}/order-confirm', 'PaymentController@goCheckout');
+Route::post('/checkout', 'PaymentController@doCheckout');
+
 Route::get('{any?}', 'HomeController@main')->where('any', '.*')->name('home');

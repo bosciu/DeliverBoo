@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container pb-3" id="dish-index">
+<div class="container py-4" id="dish-index">
 
   @if (session('created'))
     <div class="alert alert-success">{{ session('created') }}</div>

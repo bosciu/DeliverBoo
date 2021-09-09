@@ -2,15 +2,13 @@
     <footer>
         <div class="container">
             <div class="row">
-                <div class="col">
-                    <a class="logo-footer" href="#">
-                        <img src="/images/logos/logo-footer.png" alt="deliverboo-logo">
-                    </a>
-                </div>
+                <a href="#">
+                    <img class="logo" src="/images/logos/logo-footer.png" alt="deliverboo logo">
+                </a>
                 <div class="col">
                     <ul>
                         <li>
-                            <h5>Scopri DeliverBoo</h5>
+                            <h6>Scopri DeliverBoo</h6>
                         </li>
                         <li>
                             <a href="#">Chi siamo</a>
@@ -29,7 +27,7 @@
                 <div class="col">
                     <ul>
                         <li>
-                            <h5>Note legali</h5>
+                            <h6>Note legali</h6>
                         </li>
                         <li>
                             <a href="#">Termini &amp; Condizioni</a>
@@ -45,7 +43,7 @@
                 <div class="col">
                     <ul>
                         <li>
-                            <h5>Aiuto</h5>
+                            <h6>Aiuto</h6>
                         </li>
                         <li>
                             <a href="#">Contatti</a>
@@ -64,7 +62,7 @@
                 <div class="col">
                 <ul>
                     <li>
-                        <h5>Porta DeliverBoo con te</h5>
+                        <h6>Porta DeliverBoo con te</h6>
                     </li>
                     <li>
                         <a href="#">
@@ -110,32 +108,37 @@ footer {
 .container {
         .row {
             display: flex;
+            align-items: center;
             justify-content: space-around;
             .col {
                 display: flex;
                 justify-content: center;
+                height: 200px;
+                margin: 5px;
                 background-color: #2E3333;
-                margin: 10px;
-                .logo-footer {
-                    margin-top: 50px;
-                }
                 img {
                     display: block;
                     width: 100px;
-                    margin: auto;
                 }
             }
         }
+        .logo {
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 5px;
+        }
 }
 ul {
+    width: 180px;
     margin: 0;
     padding: 20px;
     li {
         list-style-type: none;
-        font-size: 14px;
-        h5 {
-            font-size: 18px;
-            margin-bottom: 10px;
+        font-size: 12px;
+        line-height: 24px;
+        h6 {
+            font-size: 15px;
+            margin-bottom: 20px;
             color: white;
         }
     }   
@@ -151,24 +154,26 @@ ul {
 .logo-container {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding: 5px;
         span {
             color: lightgray;
         }
         i {
             font-size: 26px;
-            padding: 2px;
+            padding: 8px;
             color: white;
                 &.fa-facebook:hover {
                     cursor: pointer;
-                    color: #1D6FE5;
+                    color: #1977F2;
                 }
                 &.fa-twitter-square:hover {
                     cursor: pointer;
-                    color: #2E9BF0;
+                    color: #55ACEE;
                 }
                 &.fa-instagram:hover {
                     cursor: pointer;
-                    color: #ec0f26;
+                    color: #E94574;
                 }
         }
 }

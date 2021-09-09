@@ -16,6 +16,7 @@ class CreateRestaurantTypesTable extends Migration
         Schema::create('restaurant_types', function (Blueprint $table) {
             $table->id();
             $table->string('name', 30);
+            $table->string('img_path', 100);
             $table->timestamps();
         });
     }

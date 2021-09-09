@@ -2,13 +2,10 @@
     <div id="navbar-container" class="w-100 pt-2">
         <section id="navbar" class="w-100 d-flex justify-content-between align-center container">
             <div id="logo" class="w-50 h-100">
-                <img src="/images/logos/logo-dark.png" alt="logo" class="h-100 rounded-circle">
+                <img src="/images/logos/logo-dark.png" alt="logo" class=" rounded-circle">
             </div>
             <div id="list" class="w-50 h-100">
                 <ul class="d-flex align-items-center">
-                    <li id="cart" class="rounded-circle mr-2">
-                        <i class="fas fa-shopping-cart"></i>
-                    </li>
                     <li class="dropdown">
                         <a class=" dropdown-toggle btn" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-home"></i>
                         REGISTRATI O ACCEDI
@@ -19,7 +16,11 @@
                         </div>
                     </li>
                     <li>
-                        <a href="#" class="btn"> <i class="fas fa-bars"></i> MENU'</a>
+                        <a href="#" class="btn"> <i class="fas fa-utensils"></i> RISTORANTI</a>
+                    </li>
+                    <li id="cart" class="btn mr-2">
+                        <i class="fas fa-shopping-cart mr-1 ml-1"></i>
+                        <span class="pr-1">&euro; 0</span>
                     </li>
                 </ul>
             </div> 
@@ -40,8 +41,10 @@ export default {
             height: 80px;
 
             #logo{
+                display: flex;
+                align-items: center;
                 img {
-                    width: 15%;
+                    width: 17%;
                 }
             }
 
@@ -75,8 +78,7 @@ export default {
                         display: flex;
                         justify-content: center;
                         align-items: center;
-                        width: 30px;
-                        height: 30px;
+                        padding: 1px;
                         color: $darkGreenFont;
                         border: 1px solid $darkGreenFont;
                         background-color: $bgSecondary;

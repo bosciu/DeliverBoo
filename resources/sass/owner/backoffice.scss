@@ -18,7 +18,7 @@ body {
         letter-spacing: 1px;
         background-color: beige;
         nav {
-            background: linear-gradient( 320deg, #fdd0af 0%, #fdd0af 40%, #7cc0ad 43%, #7cc0ad 100%);
+            background: linear-gradient(103deg, $bgPrimary 33%, $bgSecondary 55%, $buttonSecondary);
             .navbar-brand {
                 img {
                     width: 100%;

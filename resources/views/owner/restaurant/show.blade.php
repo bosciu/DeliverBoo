@@ -17,15 +17,17 @@
         <h1>{{ $restaurant->name }}</h1>
 
         {{-- button container top --}}
-        <div class="button-container my-4">
+        <div class="button-container mt-3 mb-5">
 
-            <a href="{{ route('owner.restaurants.edit', $restaurant->id) }}" class="btn btn-warning mb-3 mr-3">Modifica il ristorante</a>
+            <a href="{{ route('owner.restaurants.edit', $restaurant->id) }}" class="btn btn-warning mr-3">Modifica il ristorante</a>
 
             @if ($restaurant->calendar_id)
-                <a href="{{ route('owner.calendar.edit', $restaurant->calendar_id) }}" class="btn btn-info mb-3">Visualizza e modifica gli orari del ristorante</a>
+                <a href="{{ route('owner.calendar.edit', $restaurant->calendar_id) }}" class="btn btn-info mr-3">Visualizza e modifica gli orari del ristorante</a>
             @else
-                <a href="{{ route('owner.calendar.create', $restaurant->id) }}" class="btn btn-info mb-3">Aggiungi gli orari del ristorante</a>
+                <a href="{{ route('owner.calendar.create', $restaurant->id) }}" class="btn btn-info mr-3">Aggiungi gli orari del ristorante</a>
             @endif
+
+            <a href="{{ route('owner.dish.index', $restaurant->id) }}" class="btn btn-primary mr-3">Vai al menù</a>
         </div>
         {{-- /button container top --}}
 
@@ -98,9 +100,7 @@
 
         {{-- button container bottom --}}
         <div class="button-container my-4">
-            <a href="{{ route('owner.dish.index', $restaurant->id) }}" class="btn btn-primary mb-3 mr-3">Menù</a>
-
-            <a href="{{ route('owner.restaurants.index') }}" class="btn btn-secondary mb-3">Torna all'elenco dei ristoranti</a>
+            <a href="{{ route('owner.restaurants.index') }}" class="btn btn-secondary mb-3">Torna ai ristoranti</a>
         </div>
         {{-- /button container bottom --}}
 

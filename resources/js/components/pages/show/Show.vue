@@ -1,7 +1,6 @@
 <template>
     <div id="show">
         <Navbar />
-
         <main>
             <Loading v-if="!isLoaded" />
             <div v-else class="container">
@@ -34,6 +33,7 @@
                                     id="contact"
                                     data-toggle="modal"
                                     data-target="#contactModal"
+                                    class="my-3 p-3"
                                 >
                                     <div>
                                         <i class="fas fa-info-circle mr-3"></i>
@@ -109,10 +109,10 @@
                             >
                                 <h3>{{ category.name }}</h3>
                                 <div
-                                    class="dish-container d-flex justify-content-between"
+                                    class="dish-container d-flex justify-content-start flex-wrap mb-4"
                                 >
                                     <div
-                                        class="dish"
+                                        class="dish mb-3 mr-3"
                                         :class="
                                             category.id == dish.dish_category_id
                                                 ? ''
@@ -120,6 +120,7 @@
                                         "
                                         v-for="(dish, index) in dishes"
                                         :key="index"
+                                        @click="setDish(dish)"
                                     >
                                         <div
                                             class="card"
@@ -140,90 +141,6 @@
                                                 <p class="card-text">
                                                     {{ dish.price }} &euro;
                                                 </p>
-                                                <p class="card-text">
-                                                    {{ dish.desc }}
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        <div
-                                            class="modal fade"
-                                            id="dishModal"
-                                            tabindex="-1"
-                                            aria-labelledby="exampleModalLabel"
-                                            aria-hidden="true"
-                                        >
-                                            <div
-                                                class="modal-dialog modal-dialog-centered"
-                                            >
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title">
-                                                            {{ dish.name }}
-                                                        </h5>
-                                                        <button
-                                                            type="button"
-                                                            class="close"
-                                                            data-dismiss="modal"
-                                                            aria-label="Close"
-                                                        >
-                                                            <span
-                                                                aria-hidden="true"
-                                                                >&times;</span
-                                                            >
-                                                        </button>
-                                                    </div>
-
-                                                    <div class="modal-body">
-                                                        <div
-                                                            class="img-container"
-                                                        >
-                                                            <img
-                                                                :src="
-                                                                    '/storage/' +
-                                                                        dish.img_path
-                                                                "
-                                                                :alt="dish.name"
-                                                            />
-                                                        </div>
-                                                        <p>
-                                                            {{ dish.desc }}
-                                                        </p>
-                                                        <div
-                                                            class="row justify-content-center"
-                                                        >
-                                                            <div
-                                                                class="col-3 quantity"
-                                                            >
-                                                                <span
-                                                                    class="button-container"
-                                                                >
-                                                                    <i
-                                                                        class="fas fa-minus"
-                                                                    ></i>
-                                                                </span>
-                                                                <span>1</span>
-                                                                <span
-                                                                    class="button-container"
-                                                                >
-                                                                    <i
-                                                                        class="fas fa-plus"
-                                                                    ></i>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="modal-footer">
-                                                        <button
-                                                            type="button"
-                                                            class="btn btn-secondary"
-                                                            data-dismiss="modal"
-                                                        >
-                                                            Chiudi
-                                                        </button>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -233,32 +150,52 @@
                         <!-- /menu -->
                     </div>
 
+                    <!-- CARRELLO -->
                     <div class="col-4" id="cart">
                         <div id="checkout">
                             Vai alla cassa
                         </div>
                         <div class="products container mt-3">
-                            <div class="row align-items-center">
+                            <!-- CICLO SUI PRODOTTI -->
+                            <div
+                                class="row align-items-center"
+                                v-for="orderDish in orderDishes"
+                                :key="orderDish.id"
+                            >
                                 <div class="col-3 quantity">
                                     <span class="button-container">
-                                        <i class="fas fa-minus"></i>
+                                        <i
+                                            class="fas fa-minus"
+                                            @click="removeItem(orderDish)"
+                                        ></i>
                                     </span>
-                                    <span>1</span>
+                                    <span>{{ orderDish.quantity }}</span>
                                     <span class="button-container">
-                                        <i class="fas fa-plus"></i>
+                                        <i
+                                            class="fas fa-plus"
+                                            @click="addItem(orderDish)"
+                                        ></i>
                                     </span>
                                 </div>
                                 <div class="col-6 single-product">
-                                    Nome Articolo
+                                    {{ orderDish.name }}
                                 </div>
-                                <div class="col-3 tot">12,00€</div>
+                                <div class="col-3 tot">
+                                    {{
+                                        (
+                                            orderDish.price * orderDish.quantity
+                                        ).toFixed(2)
+                                    }}€
+                                </div>
                             </div>
                             <hr />
                         </div>
                         <div class="subtotal">
                             <div class="row mt-3">
                                 <div class="col-8">Subtotale</div>
-                                <div class="col text-right">20.00 €</div>
+                                <div class="col text-right">
+                                    {{ subTotal }} €
+                                </div>
                             </div>
                             <div class="row my-3">
                                 <div class="col-8">Spese di consegna</div>
@@ -268,9 +205,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-8">Totale</div>
-                                <div class="col text-right">
-                                    Somma €
-                                </div>
+                                <div class="col text-right">{{ sum }} €</div>
                             </div>
                         </div>
                     </div>
@@ -298,11 +233,14 @@ export default {
         return {
             restaurant: null,
             isLoaded: false,
-            dishes: []
+            dishes: [],
+            orderDishes: [],
+            finded: false
         };
     },
     created: function() {
         this.getRestaurant(this.$route.params.slug);
+        this.orderDishes = JSON.parse(localStorage.getItem("orders"));
     },
     methods: {
         getRestaurant: function(slug) {
@@ -311,21 +249,86 @@ export default {
                 .then(res => {
                     this.restaurant = res.data;
                     this.dishes = this.restaurant.dishes;
-
-                    // this.restaurant.dishes.forEach(dish, index => {
-                    //     console.log(dish, index);
-                    //     this.dishes.push(dish);
-
-                    // });
                 })
                 .catch(err => {
                     console.log(err);
                 });
+        },
+        addItem(dish) {
+            if (this.orderDishes.length == 0) {
+                this.setDish(dish);
+            } else {
+                this.orderDishes.forEach(orderDish => {
+                    if (orderDish.id === dish.id) {
+                        orderDish.quantity++;
+                    }
+                });
+                localStorage.setItem(
+                    "orders",
+                    JSON.stringify(this.orderDishes)
+                );
+            }
+        },
+        removeItem(dish) {
+            this.orderDishes.forEach((orderDish, index) => {
+                if (orderDish.id === dish.id) {
+                    if (orderDish.quantity == 1) {
+                        this.orderDishes.splice(index, 1);
+                    } else {
+                        orderDish.quantity--;
+                    }
+                }
+            });
+            localStorage.setItem("orders", JSON.stringify(this.orderDishes));
+        },
+        setDish(dish) {
+            let finded = false;
+            let findedIndex = undefined;
+            if (this.orderDishes.length <= 0) {
+                this.orderDishes.push(dish);
+                this.orderDishes[0].quantity = 1;
+            } else {
+                for (let index = 0; index < this.orderDishes.length; index++) {
+                    const orderDish = this.orderDishes[index];
+                    if (orderDish.id === dish.id) {
+                        finded = true;
+                        findedIndex = index;
+                    }
+                }
+                if (!finded) {
+                    this.orderDishes.push(dish);
+                    this.orderDishes[this.orderDishes.length - 1].quantity = 1;
+                } else {
+                    this.orderDishes[findedIndex].quantity++;
+                    /* if (isNaN(this.orderDishes[findedIndex].quantity)) {
+                        this.orderDishes[findedIndex].quantity = 2;
+                    }
+                    this.orderDishes[findedIndex].quantity++; */
+                }
+            }
+            localStorage.setItem("orders", JSON.stringify(this.orderDishes));
+        }
+    },
+    computed: {
+        subTotal() {
+            let subTotal = 0;
+            this.orderDishes.forEach(orderDish => {
+                subTotal += orderDish.price * orderDish.quantity;
+            });
+            return subTotal.toFixed(2);
+        },
+        sum() {
+            return (
+                parseFloat(this.subTotal) + this.restaurant.delivery_price
+            ).toFixed(2);
         }
     },
     watch: {
         restaurant() {
             this.isLoaded = true;
+        },
+        orderDishes() {
+            localStorage.setItem("orders", JSON.stringify(this.orderDishes));
         }
     }
 };
@@ -336,24 +339,37 @@ export default {
     display: flex;
     align-items: center;
     cursor: pointer;
+    width: 60%;
+    border: 2px solid salmon;
+    border-radius: 3px;
+    background-color: lightgreen;
 }
 
-.dish {
-    width: calc(100% / 3 - 20px);
-    #dishModal {
-        .img-container {
-            width: 100%;
-            img {
+.dish-container {
+    .card {
+        height: 280px;
+        box-shadow: 0 0 5px grey;
+        cursor: pointer;
+    }
+
+    .dish {
+        width: 30%;
+
+        #dishModal {
+            .img-container {
                 width: 100%;
-                height: 100%;
-                object-fit: cover;
-                object-position: center;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: center;
+                }
             }
-        }
-        p {
-            padding: 20px 20px 0;
-            text-align: center;
-            word-break: break-all;
+            p {
+                padding: 20px 20px 0;
+                text-align: center;
+                word-break: break-all;
+            }
         }
     }
 }

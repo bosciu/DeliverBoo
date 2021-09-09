@@ -48,7 +48,7 @@
                 </div>
             </aside>
             <section class="pl-5 pr-5">  
-                <h2 class="ml-3 mb-5 mt-4">Ristoranti</h2>
+                <h2 class="ml-4 mb-5 mt-4">Ristoranti</h2>
                 <div id="card-container" class="w-100 d-flex flex-wrap justify-content-center">
                     <div v-for="(restaurant,index) in restaurants" :key="index" class="card mt-3 ml-2">
                         <div class="img-container p-1">
@@ -64,19 +64,23 @@
                 </div> 
             </section>
         </main>
+    <Footer />
     </div>
     <Loading v-else />
+    
 </template>
 
 <script>
 import Navbar from "../../common/Navbar";
 import Loading from "../../common/Loading";
+import Footer from "../../common/Footer";
 
 export default {
     name: "Store",
     components: {
         Navbar,
-        Loading
+        Loading,
+        Footer
     },
     data:function(){
         return {
@@ -127,7 +131,7 @@ export default {
 @import "./resources/sass/_variables";
 
     main {
-        height: 600px;
+        min-height: calc(100vh - 407px);
 
         aside {
             width: 20%;
@@ -153,6 +157,11 @@ export default {
                     padding-left: 0;
 
                     li {
+
+                        input {
+                            cursor: pointer;
+                        }
+
                         a {
                             color: rgb(61, 59, 59);
                         }
@@ -180,13 +189,16 @@ export default {
             .card {
                 display: flex;
                 flex-direction: column;
+                flex-wrap: wrap;
                 width: 250px;
                 height: 300px;
+                margin : 20px;
+                padding: 10px;
                 background-color: rgb(123, 199, 176);
 
                 .img-container {
                     width: 100%;
-                    height: 50%;                  
+                    height: 60%;                  
 
                     img {
                         width: 100%;

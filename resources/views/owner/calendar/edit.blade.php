@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container py-4">
     <h1>Modifica il calendario</h1>
     <div class="container">
         <form action="{{route('owner.calendar.update', $calendar)}}" method="POST">

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container" id="dish_create">
+<div class="container py-4" id="dish_create">
     <h4>Pagina creazione piatto</h4>
     <form action="{{route('owner.dish.update',$dish)}}" method="POST" enctype="multipart/form-data">
         @csrf

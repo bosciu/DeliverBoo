@@ -9,16 +9,11 @@
         <label for="restaurant-type" class="d-block">Seleziona la categoria del piatto</label>
         <select required class="custom-select @error('dish_category_id') is-invalid @enderror mb-3" id="dish-category" name="dish_category_id">
             <option selected disabled>Seleziona la tipologia</option>
+
             @foreach ($dishCategories as $category)
-                @if ($category->id==$dish->dish_category_id){
-                    <option selected value="{{$category->id}}">{{$category->name}}</option>
-                }@elseif(old('dish_category_id')) {
-                    @if ($category->id==old('dish_category_id')){
-                        <option selected value="{{$category->id}}">{{$category->name}}</option>
-                    }
-                    @endif
-                }  
-                @endif
+                <option value="{{$category->id}}" {{ ($category->id == old('category_id', $dish->dish_category_id)) ? 'selected' : '' }}>
+                    {{$category->name}}
+                </option>
             @endforeach
         </select>
         <div class="invalid-feedback">

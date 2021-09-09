@@ -89,8 +89,15 @@ export default {
             display: flex;
             flex-wrap: wrap;
             min-height: 100px;
+        
+            &:hover {
+                
+            }
             h3 {
                 text-transform: capitalize;
+                background-color: rgba($color: #000000, $alpha: 0.5);
+                padding: 5px 10px;
+                border-radius: 5px;
             }
             p {
                 margin: 0;
@@ -100,6 +107,8 @@ export default {
                 display: flex;
                 flex-wrap: wrap;
                 width: 100%;
+                border-radius: 5px;
+                overflow:hidden;
                 // border: 2px solid black;
                     &.comfort {
                         height: 200px;

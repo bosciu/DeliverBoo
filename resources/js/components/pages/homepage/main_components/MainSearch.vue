@@ -6,7 +6,11 @@
                 <span
                     v-for="(category, index) in restaurantTypes"
                     :key="index"
-                    class="badge badge-pill badge-light"
+                    class="
+                    badge 
+                    badge-pill 
+                    badge-light
+                    btn-secondary"
                     >{{ category.name }}</span
                 >
             </div>
@@ -40,7 +44,7 @@ export default {
 <style lang="scss" scoped>
 section {
     padding: 20px 0 35px;
-    background-color: lightseagreen;
+    background-color: #7CC0AD;
     h4 {
         padding: 15px 0;
         font-size: 40px;
@@ -53,6 +57,11 @@ section {
             font-size: 18px;
             cursor: pointer;
             box-shadow: 0 4px 8px black;
+            transition: transform 0.2s linear;
+
+            &:hover {
+                transform: scale(1.1, 1.1);
+            }
         }
     }
 }

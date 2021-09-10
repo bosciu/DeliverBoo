@@ -69,10 +69,6 @@
         'img_path' => '/images/restaurant_types_images/Comfort food.jpg'
         ],
         [
-        'name' => 'Consegna gratuita',
-        'img_path' => '/images/restaurant_types_images/Consegna gratuita.jpg'
-        ],
-        [
         'name' => 'Coreano',
         'img_path' => '/images/restaurant_types_images/Coreano.jpg'
         ],

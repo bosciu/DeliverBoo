@@ -20,37 +20,43 @@
                 <div class="list-container pl-4">
                     <div class="delivery pt-3 ml-3">
                         <ul>
+
                             <li>
                                 <input
                                     type="checkbox"
-                                    aria-label="Checkbox for following text input"
                                     class="mr-2"
+                                    id="free-delivery"
                                 />
-                                Consegna <i class="fas fa-bicycle"></i>
+                                <label for="free-delivery">
+                                    Consegna gratuita <i class="fas fa-bicycle"></i>
+                                </label>
                             </li>
+
                             <li>
                                 <input
                                     type="checkbox"
-                                    aria-label="Checkbox for following text input"
                                     class="mr-2"
+                                    id="take-away" 
+                                    @click="takeAway"
                                 />
-                                Ritiro <i class="fas fa-people-carry"></i>
+                                <label for="take-away">
+                                    Ritiro <i class="fas fa-people-carry"></i>
+                                </label>
                             </li>
                         </ul>
                     </div>
 
                     <div class="categories pt-3">
                         <h3>
-                            CATEGORIE <i class="fas fa-chevron-down ml-3"></i>
+                            CATEGORIE<i class="fas fa-chevron-down ml-3"></i>
                         </h3>
                         <ul class="overflow-auto mt-3">
                             <li
                                 v-for="category in categories"
                                 :key="category.name"
-                                @click="setFilter(category)"
                             >
-                                <input type="checkbox" />
-                                <label class="" for="">
+                                <input type="checkbox" :id="category.name" @click="setFilter(category)"/>
+                                <label :for="category.name">
                                     {{ category.name }}
                                 </label>
                             </li>
@@ -58,39 +64,42 @@
                     </div>
                 </div>
             </aside>
-            <section class="pl-5 pr-5">
-                <h2 class="ml-4 mb-5 mt-4">Ristoranti</h2>
+            <section class="px-5 mr-5">
+                <h2 class="my-4">Ristoranti</h2>
+
                 <h4 v-if="filteredRestaurants.length == 0">
                     Non ci sono ristoranti in questa categoria
                 </h4>
-                <div id="card-container" class="w-100 d-flex flex-wrap" v-else>
+
+                <div class="w-100 d-flex flex-wrap" v-else>
                     <router-link
                         v-for="(restaurant, index) in filteredRestaurants"
                         :key="index"
-                        class="card mt-3 ml-2"
+                        class="card restaurant mb-4 mr-4"
                         :to="{
                             name: 'show',
                             params: { slug: restaurant.slug }
                         }"
                     >
-                        <div class="img-container p-1">
+                        <div class="img-container">
                             <img
                                 :src="restaurant.img_path"
                                 alt=""
-                                class="img-fluid rounded"
+                                class="rounded"
                             />
                         </div>
-                        <div class="info mt-3">
-                            <span>Roma</span>
-                            <h4>{{ restaurant.name }}</h4>
+
+                        <div class="card-body mt-3">
+                            <span class="card-text">Milano</span>
+                            <h4 class="card-title">{{ restaurant.name }}</h4>
                             <span v-if="restaurant.free_delivery == 1"
                                 >Consegna gratuita</span
                             >
                             <span v-else
-                                >Prezzo Consegna: &euro;
-                                {{ restaurant.delivery_price }}</span
+                                >Prezzo Consegna: {{ restaurant.delivery_price }} &euro;</span
                             >
                         </div>
+
                     </router-link>
                 </div>
             </section>
@@ -118,7 +127,8 @@ export default {
             loading: true,
             restaurants: null,
             filteredRestaurants: [],
-            filter: []
+            filter: [],
+            takeAway: false
         };
     },
     created: function() {
@@ -157,7 +167,18 @@ export default {
                 let index = this.filter.indexOf(category.id);
                 this.filter.splice(index, 1);
             }
+        },
+        takeAway() {
+            // this.filteredRestaurants = [];
+
+            // this.restaurants.forEach(restaurant => {
+            //     if (restaurant.take_away == 1) {
+            //         this.filteredRestaurants.push(restaurant);
+            //     }
+            // });
+            console.log('sono dentro');
         }
+
     },
     watch: {
         filter() {
@@ -172,7 +193,7 @@ export default {
                             this.filteredRestaurants.forEach(
                                 filteredRestaurant => {
                                     if (
-                                        filteredRestaurant.id != restaurant.id
+                                        filteredRestaurant.id = restaurant.id
                                     ) {
                                         this.filteredRestaurants.push(
                                             restaurant
@@ -189,6 +210,7 @@ export default {
                 this.filteredRestaurants = this.restaurants;
             }
         }
+
     }
 };
 </script>
@@ -201,8 +223,10 @@ main {
         color: unset;
         text-decoration: unset;
     }
+
     min-height: calc(100vh - 415px);
     padding-bottom: 20px;
+
     aside {
         width: 20%;
         .list-container {
@@ -227,18 +251,8 @@ main {
                 padding-left: 0;
 
                 li {
-                    input {
+                    input:hover, label:hover {
                         cursor: pointer;
-                    }
-
-                    a {
-                        color: rgb(61, 59, 59);
-                    }
-
-                    a:hover {
-                        text-decoration: none;
-                        transition: 0.1s;
-                        text-transform: uppercase;
                     }
                 }
             }
@@ -256,24 +270,21 @@ main {
     section {
         width: 80%;
 
-        .card {
-            display: flex;
-            flex-direction: column;
-            flex-wrap: wrap;
-            width: 250px;
-            height: 300px;
-            margin: 20px;
-            padding: 10px;
-            background-color: rgb(123, 199, 176);
+        .restaurant {
+            width: calc((100% / 4) - 30px);
+            padding: 2px;
+            box-shadow: 0 0 5px grey;
 
             .img-container {
                 width: 100%;
-                height: 60%;
+                height: 150px;
+                padding: 5px;
 
                 img {
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
+                    object-position: center;
                 }
             }
         }

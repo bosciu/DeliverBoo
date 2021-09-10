@@ -11,9 +11,7 @@
                     <div class="img-container">
                         <img :src="'/storage/' + restaurant.img_path" alt="" />
                     </div>
-                    <router-link tag="a" :to="{ name: 'show' + restaurant.id }"
-                        ><p>{{ restaurant.name }}</p></router-link
-                    >
+                    <p>{{ restaurant.name }}</p>
                 </div>
             </router-link>
         </div>

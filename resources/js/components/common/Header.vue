@@ -9,13 +9,19 @@
                 <div id="carouselExampleControls" class="carousel slide w-50 mb-5" data-ride="carousel">
                     <div class="carousel-inner rounded">
                         <div class="carousel-item active rounded">
-                            <img class="d-block w-100" src="/images/logos/logo-dark.png" alt="">
+                            <router-link to="#">
+                                <img class="d-block w-100" :src="'/storage/' + randomHeaderRestaurants[0].img_path"  alt="">
+                            </router-link>
                         </div>
                         <div class="carousel-item rounded">
-                            <img class="d-block w-100" src="/images/logos/logo.png" alt="">
+                            <router-link to="#">
+                                <img class="d-block w-100" :src="'/storage/' + randomHeaderRestaurants[1].img_path" alt="">
+                            </router-link>
                         </div>
                         <div class="carousel-item rounded">
-                            <img class="d-block w-100" src="/images/logos/logo-footer.png" alt="">
+                            <router-link to="#">
+                                <img class="d-block w-100" :src="'/storage/' + randomHeaderRestaurants[2].img_path" alt="">
+                            </router-link>
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -50,6 +56,27 @@
         name: "Header",
         components: {
             Navbar
+        },
+        data:function(){
+            return {
+                restaurants:[],
+                randomHeaderRestaurants:[]
+            }
+        },
+        created:function(){
+
+        axios
+            .get("http://127.0.0.1:8000/api/restaurants")
+            .then(res => {
+                const restaurants = res.data;
+                const randomOrder = restaurants.sort(() => 0.5 - Math.random());
+                const threeRandom = randomOrder.slice(0, 3);
+
+                this.randomHeaderRestaurants = threeRandom;
+            })
+            .catch(err => {
+                console.log(err);
+            });
         }
     };
 </script>

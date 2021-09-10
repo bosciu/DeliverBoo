@@ -44,19 +44,23 @@ export default {
             .catch(err => {
                 console.log(err);
             });
-    },
-    methods: {
-        getRestaurants: function() {
-            axios
-                .get("http://127.0.0.1:8000/api/restaurants")
-                .then(res => {
-                    this.restaurants = res.data;
-                })
-                .catch(err => {
-                    console.log(err);
-                });
-        }
     }
+    // methods: {
+    //     getRestaurants: function() {
+    //         axios
+    //             .get('http://127.0.0.1:8000/api/restaurants')
+    //             .then(
+    //                 res=> {
+    //                     this.restaurants = res.data
+    //                 }
+    //             )
+    //             .catch(
+    //                 err=>{
+    //                     console.log(err);
+    //                 }
+    //             );
+    //     }
+    // }
 };
 </script>
 

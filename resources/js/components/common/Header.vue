@@ -9,17 +9,17 @@
                 <div id="carouselExampleControls" class="carousel slide w-50 mb-5" data-ride="carousel">
                     <div class="carousel-inner rounded">
                         <div class="carousel-item active rounded">
-                            <router-link to="#">
+                            <router-link :to="{ name: 'show',params:{slug:randomHeaderRestaurants[0].slug} }">
                                 <img class="d-block w-100" :src="'/storage/' + randomHeaderRestaurants[0].img_path"  alt="">
                             </router-link>
                         </div>
                         <div class="carousel-item rounded">
-                            <router-link to="#">
+                            <router-link :to="{ name: 'show',params:{slug:randomHeaderRestaurants[1].slug} }">
                                 <img class="d-block w-100" :src="'/storage/' + randomHeaderRestaurants[1].img_path" alt="">
                             </router-link>
                         </div>
                         <div class="carousel-item rounded">
-                            <router-link to="#">
+                            <router-link :to="{ name: 'show',params:{slug:randomHeaderRestaurants[2].slug} }">
                                 <img class="d-block w-100" :src="'/storage/' + randomHeaderRestaurants[2].img_path" alt="">
                             </router-link>
                         </div>

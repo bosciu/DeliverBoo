@@ -38,7 +38,7 @@
                             </li>
                         </ul>
                     </div>
-                    
+
                     <div class="categories pt-3">
                         <h3>
                             CATEGORIE <i class="fas fa-chevron-down ml-3"></i>
@@ -49,7 +49,7 @@
                                 :key="category.name"
                                 @click="setFilter(category)"
                             >
-                                <input type="checkbox">
+                                <input type="checkbox" />
                                 <label class="" for="">
                                     {{ category.name }}
                                 </label>
@@ -60,12 +60,10 @@
             </aside>
             <section class="pl-5 pr-5">
                 <h2 class="ml-4 mb-5 mt-4">Ristoranti</h2>
-                <h4 v-if="filteredRestaurants.length == 0">Non ci sono ristoranti in questa categoria</h4>
-                <div
-                    id="card-container"
-                    class="w-100 d-flex flex-wrap"
-                    v-else
-                >
+                <h4 v-if="filteredRestaurants.length == 0">
+                    Non ci sono ristoranti in questa categoria
+                </h4>
+                <div id="card-container" class="w-100 d-flex flex-wrap" v-else>
                     <router-link
                         v-for="(restaurant, index) in filteredRestaurants"
                         :key="index"
@@ -77,7 +75,7 @@
                     >
                         <div class="img-container p-1">
                             <img
-                                :src="'/storage/' + restaurant.img_path"
+                                :src="restaurant.img_path"
                                 alt=""
                                 class="img-fluid rounded"
                             />
@@ -171,12 +169,18 @@ export default {
                         if (this.filteredRestaurants.length == 0) {
                             this.filteredRestaurants.push(restaurant);
                         } else {
-                            this.filteredRestaurants.forEach(filteredRestaurant => {
-                                if (filteredRestaurant.id != restaurant.id) {
-                                    this.filteredRestaurants.push(restaurant);
+                            this.filteredRestaurants.forEach(
+                                filteredRestaurant => {
+                                    if (
+                                        filteredRestaurant.id != restaurant.id
+                                    ) {
+                                        this.filteredRestaurants.push(
+                                            restaurant
+                                        );
+                                    }
                                 }
-                            });
-                        }                 
+                            );
+                        }
                     }
                 });
             });

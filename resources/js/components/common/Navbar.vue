@@ -52,6 +52,7 @@
                     </li>
                     <li id="cart" class="btn mr-2" v-if="haveOrders">
                         <router-link
+                            class="btn"
                             :to="{
                                 name: 'show',
                                 params: { slug: orderDishes[0].slug }

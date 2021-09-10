@@ -213,10 +213,6 @@
         'img_path' => '/images/restaurant_types_images/Smoothie.jpg'
         ],
         [
-        'name' => 'Smoothie',
-        'img_path' => '/images/restaurant_types_images/Smoothie.jpg'
-        ],
-        [
         'name' => 'Spuntini',
         'img_path' => '/images/restaurant_types_images/Spuntini.jpg'
         ],

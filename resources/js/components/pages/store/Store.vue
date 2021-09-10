@@ -38,26 +38,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="veg pt-3 ml-3">
-                        <ul>
-                            <li>
-                                <input
-                                    type="checkbox"
-                                    aria-label="Checkbox for following text input"
-                                    class="mr-2"
-                                />
-                                Vegetariano <i class="fas fa-seedling"></i>
-                            </li>
-                            <li>
-                                <input
-                                    type="checkbox"
-                                    aria-label="Checkbox for following text input"
-                                    class="mr-2"
-                                />
-                                Vegano <i class="fas fa-seedling"></i>
-                            </li>
-                        </ul>
-                    </div>
+                    
                     <div class="categories pt-3">
                         <h3>
                             CATEGORIE <i class="fas fa-chevron-down ml-3"></i>
@@ -66,8 +47,12 @@
                             <li
                                 v-for="category in categories"
                                 :key="category.name"
+                                @click="setFilter(category)"
                             >
-                                <a href="#">{{ category.name }}</a>
+                                <input type="checkbox">
+                                <label class="" for="">
+                                    {{ category.name }}
+                                </label>
                             </li>
                         </ul>
                     </div>
@@ -75,12 +60,14 @@
             </aside>
             <section class="pl-5 pr-5">
                 <h2 class="ml-4 mb-5 mt-4">Ristoranti</h2>
+                <h4 v-if="filteredRestaurants.length == 0">Non ci sono ristoranti in questa categoria</h4>
                 <div
                     id="card-container"
-                    class="w-100 d-flex flex-wrap justify-content-center"
+                    class="w-100 d-flex flex-wrap"
+                    v-else
                 >
                     <router-link
-                        v-for="(restaurant, index) in restaurants"
+                        v-for="(restaurant, index) in filteredRestaurants"
                         :key="index"
                         class="card mt-3 ml-2"
                         :to="{
@@ -131,7 +118,9 @@ export default {
         return {
             categories: null,
             loading: true,
-            restaurants: null
+            restaurants: null,
+            filteredRestaurants: [],
+            filter: []
         };
     },
     created: function() {
@@ -157,10 +146,44 @@ export default {
                 .get("http://127.0.0.1:8000/api/restaurants")
                 .then(res => {
                     this.restaurants = res.data;
+                    this.filteredRestaurants = res.data;
                 })
                 .catch(err => {
                     console.log(err);
                 });
+        },
+        setFilter: function(category) {
+            if (!this.filter.includes(category.id)) {
+                this.filter.push(category.id);
+            } else {
+                let index = this.filter.indexOf(category.id);
+                this.filter.splice(index, 1);
+            }
+        }
+    },
+    watch: {
+        filter() {
+            this.filteredRestaurants = [];
+
+            this.restaurants.forEach(restaurant => {
+                restaurant.restaurant_types.forEach(type => {
+                    if (this.filter.includes(type.id)) {
+                        if (this.filteredRestaurants.length == 0) {
+                            this.filteredRestaurants.push(restaurant);
+                        } else {
+                            this.filteredRestaurants.forEach(filteredRestaurant => {
+                                if (filteredRestaurant.id != restaurant.id) {
+                                    this.filteredRestaurants.push(restaurant);
+                                }
+                            });
+                        }                 
+                    }
+                });
+            });
+
+            if (this.filter.length == 0) {
+                this.filteredRestaurants = this.restaurants;
+            }
         }
     }
 };
@@ -180,7 +203,6 @@ main {
         width: 20%;
         .list-container {
             .categories,
-            .veg,
             .delivery {
                 margin: 0 10px;
                 border-top: 2px solid rgb(240, 235, 235);

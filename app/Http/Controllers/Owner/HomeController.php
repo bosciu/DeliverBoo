@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function main() {
+        $restaurants = config('restaurant');
         return view('owner.home');
     }
 }

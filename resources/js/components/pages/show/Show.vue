@@ -169,7 +169,9 @@
                             id="checkout"
                             v-else-if="this.orderDishes.length > 0"
                         >
-                            <a :href="this.$route.params.slug + '/checkout'"
+                            <a
+                                @click="sendOrder"
+                                :href="this.$route.params.slug + '/checkout'"
                                 >Vai alla cassa</a
                             >
                         </div>
@@ -270,6 +272,9 @@ export default {
     created: function() {
         this.getRestaurant(this.$route.params.slug);
         this.orderDishes = JSON.parse(localStorage.getItem("orders"));
+        if (!this.orderDishes) {
+            this.orderDishes = [];
+        }
     },
     computed: {
         anotherRest() {
@@ -392,6 +397,14 @@ export default {
                     parseFloat(this.subTotal) + this.restaurant.delivery_price
                 ).toFixed(2);
             }
+        },
+        sendOrder() {
+            axios
+                .post("http://127.0.0.1:8000/api/da-gianni/checkout", {
+                    ...this.orderDishes
+                })
+                .then(response => {})
+                .catch(err => console.log(err));
         }
     },
     watch: {
@@ -461,6 +474,13 @@ export default {
         background-color: #fdd0af;
         box-shadow: 0 4px 8px black;
         text-align: center;
+        span {
+            color: black;
+            cursor: pointer;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
     }
     #checkout-another {
         padding: 15px 20px;

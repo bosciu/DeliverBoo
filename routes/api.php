@@ -22,3 +22,5 @@ Route::namespace('Api')
         Route::get('restaurants', 'RestaurantController@getRestaurants');
         Route::get('restaurant-types', 'RestaurantController@getRestaurantTypes');
     });
+    
+Route::post('{slug}/checkout', 'PaymentController@prepareCheckout');

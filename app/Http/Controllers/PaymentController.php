@@ -4,12 +4,26 @@ namespace App\Http\Controllers;
 
 use Braintree;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PaymentController extends Controller
 {
+    private $validationArray = [
+        'name' => 'required|string|max:100',
+            'address' => 'required|string|max:100',
+            'zip_code' => 'required|string|max:5',
+            'surname' =>  'required|string|max:100',
+            'city' => 'required|string|max:60',
+            'province' => 'required|string|max:2',
+    ];
+    
+
     public function prepareCheckout(Request $request){
-        $data = $request->all();
-        return $this->seeCheckout($data);
+        $request->validate($this->validationArray);
+        $data  = $request->all();
+        return response($content=$data,$status = 200);
+
+        /* return $this->seeCheckout($data); */
     }
 
     public function seeCheckout($data){

@@ -105,7 +105,7 @@
                                 v-for="(category,
                                 index) in restaurant.dish_categories"
                                 :key="index"
-                                class="row"
+                                class="row flex-column"
                             >
                                 <h3>{{ category.name }}</h3>
                                 <div
@@ -363,6 +363,8 @@ export default {
                     this.orderDishes.push(dish);
                     this.orderDishes[0].quantity = 1;
                     this.orderDishes[0].slug = this.$route.params.slug;
+                    this.orderDishes[0].restaurant = this.restaurant.name;
+                    this.orderDishes[0].delivery_price = this.restaurant.delivery_price;
                 } else {
                     for (
                         let index = 0;

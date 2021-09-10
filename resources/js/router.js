@@ -6,6 +6,7 @@ Vue.use(VueRouter);
 import Homepage from "./components/pages/homepage/Homepage.vue";
 import Store from "./components/pages/store/Store.vue";
 import Show from "./components/pages/show/Show.vue";
+import Checkout from "./components/pages/checkout/Checkout.vue";
 
 const router = new VueRouter({
     mode: "history",
@@ -24,6 +25,11 @@ const router = new VueRouter({
             path: "/:slug",
             name: "show",
             component: Show
+        },
+        {
+            path: "/:slug/checkout",
+            name: "checkout",
+            component: Checkout
         }
     ]
 });

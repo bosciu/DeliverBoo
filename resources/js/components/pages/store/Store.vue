@@ -79,10 +79,14 @@
                     id="card-container"
                     class="w-100 d-flex flex-wrap justify-content-center"
                 >
-                    <div
+                    <router-link
                         v-for="(restaurant, index) in restaurants"
                         :key="index"
                         class="card mt-3 ml-2"
+                        :to="{
+                            name: 'show',
+                            params: { slug: restaurant.slug }
+                        }"
                     >
                         <div class="img-container p-1">
                             <img
@@ -102,7 +106,7 @@
                                 {{ restaurant.delivery_price }}</span
                             >
                         </div>
-                    </div>
+                    </router-link>
                 </div>
             </section>
         </main>
@@ -166,6 +170,10 @@ export default {
 @import "./resources/sass/_variables";
 
 main {
+    a {
+        color: unset;
+        text-decoration: unset;
+    }
     min-height: calc(100vh - 415px);
     padding-bottom: 20px;
     aside {

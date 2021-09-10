@@ -155,8 +155,13 @@
                         <div class="layover" v-if="anotherRest"></div>
                         <div id="checkout-another" v-if="anotherRest">
                             <span>Carrello in un altro ristorante</span>
-                            <router-link to="#"
-                                >Per visualizzare il tuo carrello, clicca
+                            <router-link
+                                :to="{
+                                    name: 'show',
+                                    params: { slug: orderDishes[0].slug }
+                                }"
+                            >
+                                Per visualizzare il tuo carrello, clicca
                                 qui!</router-link
                             >
                         </div>
@@ -285,6 +290,8 @@ export default {
                     this.restaurant = res.data;
                     this.dishes = this.restaurant.dishes;
                     let subTotal = 0;
+                    if (this.orderDishes.length > 0) {
+                    }
                     this.orderDishes.forEach(orderDish => {
                         subTotal += orderDish.price * orderDish.quantity;
                     });
@@ -344,35 +351,47 @@ export default {
             ).toFixed(2);
         },
         setDish(dish) {
-            let finded = false;
-            let findedIndex = undefined;
-            if (this.orderDishes.length <= 0) {
-                this.orderDishes.push(dish);
-                this.orderDishes[0].quantity = 1;
-            } else {
-                for (let index = 0; index < this.orderDishes.length; index++) {
-                    const orderDish = this.orderDishes[index];
-                    if (orderDish.id === dish.id) {
-                        finded = true;
-                        findedIndex = index;
+            if (!this.anotherRest) {
+                let finded = false;
+                let findedIndex = undefined;
+                if (this.orderDishes.length <= 0) {
+                    this.orderDishes.push(dish);
+                    this.orderDishes[0].quantity = 1;
+                    this.orderDishes[0].slug = this.$route.params.slug;
+                } else {
+                    for (
+                        let index = 0;
+                        index < this.orderDishes.length;
+                        index++
+                    ) {
+                        const orderDish = this.orderDishes[index];
+                        if (orderDish.id === dish.id) {
+                            finded = true;
+                            findedIndex = index;
+                        }
+                    }
+                    if (!finded) {
+                        this.orderDishes.push(dish);
+                        this.orderDishes[
+                            this.orderDishes.length - 1
+                        ].quantity = 1;
+                    } else {
+                        this.orderDishes[findedIndex].quantity++;
                     }
                 }
-                if (!finded) {
-                    this.orderDishes.push(dish);
-                    this.orderDishes[this.orderDishes.length - 1].quantity = 1;
-                } else {
-                    this.orderDishes[findedIndex].quantity++;
-                }
+                localStorage.setItem(
+                    "orders",
+                    JSON.stringify(this.orderDishes)
+                );
+                let subTotal = 0;
+                this.orderDishes.forEach(orderDish => {
+                    subTotal += orderDish.price * orderDish.quantity;
+                });
+                this.subTotal = subTotal.toFixed(2);
+                this.sum = (
+                    parseFloat(this.subTotal) + this.restaurant.delivery_price
+                ).toFixed(2);
             }
-            localStorage.setItem("orders", JSON.stringify(this.orderDishes));
-            let subTotal = 0;
-            this.orderDishes.forEach(orderDish => {
-                subTotal += orderDish.price * orderDish.quantity;
-            });
-            this.subTotal = subTotal.toFixed(2);
-            this.sum = (
-                parseFloat(this.subTotal) + this.restaurant.delivery_price
-            ).toFixed(2);
         }
     },
     watch: {

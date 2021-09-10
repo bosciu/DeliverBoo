@@ -33,7 +33,7 @@ Route::middleware('auth')
 });
 
 Route::get('{slug}/order-confirm', 'PaymentController@goCheckout');
-Route::get('{slug}/checkout', 'PaymentController@prepareCheckout');
-Route::post('/checkout', 'PaymentController@doCheckout');
+Route::get('{slug}/checkout', 'PaymentController@seeCheckout');
+/* Route::post('/checkout', 'PaymentController@doCheckout'); */
 
 Route::get('{any?}', 'HomeController@main')->where('any', '.*')->name('home');

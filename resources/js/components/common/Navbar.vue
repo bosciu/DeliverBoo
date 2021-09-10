@@ -50,16 +50,20 @@
                             RISTORANTI</router-link
                         >
                     </li>
-                    <li id="cart" class="btn mr-2">
+                    <li id="cart" class="btn mr-2" v-if="haveOrders">
                         <router-link
                             :to="{
                                 name: 'show',
-                                params: { slug: this.orderDishes[0].slug }
+                                params: { slug: orderDishes[0].slug }
                             }"
                         >
                             <i class="fas fa-shopping-cart mr-1 ml-1"></i>
                             <span class="pr-1">&euro; {{ sum }}</span>
                         </router-link>
+                    </li>
+                    <li id="cart" class="btn mr-2" v-else>
+                        <i class="fas fa-shopping-cart mr-1 ml-1"></i>
+                        <span class="pr-1">&euro; {{ sum }}</span>
                     </li>
                 </ul>
             </div>
@@ -77,14 +81,25 @@ export default {
     },
     created() {
         this.orderDishes = JSON.parse(localStorage.getItem("orders"));
+        if (!this.orderDishes) {
+            this.orderDishes = [];
+        }
     },
     computed: {
         sum() {
             let sum = 0;
-            this.orderDishes.forEach(orderDish => {
-                sum += parseFloat(orderDish.price);
-            });
+            if (this.orderDishes) {
+                this.orderDishes.forEach(orderDish => {
+                    sum += parseFloat(orderDish.price);
+                });
+            }
             return sum.toFixed(2);
+        },
+        haveOrders() {
+            if (this.orderDishes.length > 0) {
+                return true;
+            }
+            return false;
         }
     }
 };

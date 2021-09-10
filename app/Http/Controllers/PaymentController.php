@@ -7,7 +7,13 @@ use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
-    public function prepareCheckout(){
+    public function prepareCheckout(Request $request){
+        $data = $request->all();
+        return $this->seeCheckout($data);
+    }
+
+    public function seeCheckout($data){
+        var_dump($data);
         return view('checkout');
     }
 

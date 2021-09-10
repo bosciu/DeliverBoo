@@ -43,6 +43,11 @@ class RestaurantController extends Controller
 
     public function getRestaurants(){
         $restaurants = Restaurant::all();
+        
+        foreach ($restaurants as $restaurant) {
+            $restaurant->restaurantTypes;
+        }
+
         return response()->json($restaurants);
     }
 

@@ -149,6 +149,7 @@ export default {
                             color: $darkGreenFont;
                         }
                     }
+                    
                 }
 
                 #cart {
@@ -156,10 +157,12 @@ export default {
                     justify-content: center;
                     align-items: center;
                     padding: 1px;
+                    height: 29px;
                     color: $darkGreenFont;
                     border: 1px solid $darkGreenFont;
                     background-color: $bgSecondary;
                 }
+                
             }
         }
     }

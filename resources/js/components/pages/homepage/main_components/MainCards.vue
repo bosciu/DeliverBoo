@@ -9,7 +9,7 @@
             >
                 <div>
                     <div class="img-container">
-                        <img :src="'/storage/' + restaurant.img_path" alt="" />
+                        <img :src="restaurant.img_path" :alt="restaurant.name" />
                     </div>
                     <p>{{ restaurant.name }}</p>
                 </div>
@@ -71,49 +71,48 @@ export default {
     .container {
         display: flex;
         flex-wrap: wrap;
-        align-items: center;
+        // align-items: center;
         justify-content: center;
-        padding: 30px 30px 50px 30px;
+        padding: 30px 0;
 
         .post-it {
             width: calc(100% / 4 - 40px);
-            margin: 30px 20px 40px 20px;
+            // margin: 30px 20px 40px 20px;
+            margin: 20px;
 
             .img-container {
-                width: 100%;
-                height: 300px;
+            width: 100%;
+            height: 300px;
+            border-radius: 5px;
+            overflow: hidden;
 
                 img {
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
                 }
+            
             }
 
-            a {
-                text-decoration: none;
-                color: #2e3333;
-
-                p {
-                    margin-top: 20px;
-                    font-weight: bolder;
-                    font-size: 30px;
-                    text-transform: capitalize;
-                    word-break: break-all;
-                }
-
-                p:hover {
-                    transition: 0.2s;
-                    color: $buttonPrimary;
-                }
+            p {
+            margin-top: 10px;
+            font-weight: bolder;
+            font-size: 16px;
+            text-transform: capitalize;
+            word-break: break-all;
+            color: #2D3232;
             }
 
-            a:hover {
-                cursor: pointer;
-                color: $buttonPrimary;
+            p:hover {
                 transition: 0.2s;
+                cursor: pointer;
             }
+
+        }
+        a:hover {
+        text-decoration: none;
         }
     }
+    
 }
 </style>

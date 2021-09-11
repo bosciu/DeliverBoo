@@ -2,7 +2,11 @@
     <header class="w-100">
         <div class="container">
             <Navbar />
-            <section id="jumbotron" class="d-flex align-items-center">
+            <section
+                id="jumbotron"
+                class="d-flex align-items-center"
+                :class="searchedRestaurants.length > 1 ? 'dropVisible' : ''"
+            >
                 <!-- carousel -->
 
                 <div
@@ -100,11 +104,58 @@
                                 type="search"
                                 placeholder="Cerca"
                                 aria-label="Search"
+                                v-model="queryString"
                             />
                             <button class="btn my-2 my-sm-0" type="submit">
                                 Cerca
                             </button>
                         </form>
+                    </div>
+                    <div class="my-drop overflow-auto" v-if="queryString != ''">
+                        <table
+                            class="table-dark table"
+                            v-if="searchedRestaurants.length > 0"
+                        >
+                            <tbody>
+                                <tr
+                                    v-for="searchRestaurant in searchedRestaurants"
+                                    :key="searchRestaurant.id"
+                                    class="py-1"
+                                >
+                                    <td scope="row">
+                                        <div class="img-container">
+                                            <img
+                                                :src="searchRestaurant.img_path"
+                                                :alt="searchRestaurant.name"
+                                            />
+                                        </div>
+                                    </td>
+                                    <td>{{ searchRestaurant.name }}</td>
+                                    <td>
+                                        <router-link
+                                            class="btn btn-primary"
+                                            :to="{
+                                                name: 'show',
+                                                params: {
+                                                    slug: searchRestaurant.slug
+                                                }
+                                            }"
+                                        >
+                                            Apri
+                                        </router-link>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table v-else class="table-dark table">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        La ricerca non ha prodotto risultati.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </section>
@@ -122,7 +173,9 @@ export default {
     data: function() {
         return {
             restaurants: [],
-            randomHeaderRestaurants: []
+            randomHeaderRestaurants: [],
+            searchedRestaurants: [],
+            queryString: ""
         };
     },
     created: function() {
@@ -138,6 +191,20 @@ export default {
             .catch(err => {
                 console.log(err);
             });
+    },
+    watch: {
+        queryString() {
+            console.log("Quesry fatta");
+            axios
+                .post("http://127.0.0.1:8000/api/search-restaurants", {
+                    query: this.queryString
+                })
+                .then(res => {
+                    console.log(res.data);
+                    this.searchedRestaurants = res.data;
+                })
+                .catch(err => console.log(err));
+        }
     }
 };
 </script>
@@ -146,16 +213,19 @@ export default {
 @import "./resources/sass/_variables";
 header {
     background-color: #7cc0ad;
-    background-image: url('/images/sfondo.png');
+    background-image: url("/images/sfondo.png");
     background-size: contain;
     background-position: right;
     background-repeat: no-repeat;
 
     #jumbotron {
         margin-top: 100px;
+        &.dropVisible {
+            padding-bottom: 100px;
+        }
 
         #carouselExampleControls {
-            box-shadow: 0 0 4px rgba(0,0,0,0.9);
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.9);
             overflow: hidden;
             img {
                 height: 300px;
@@ -165,6 +235,8 @@ header {
         }
 
         #searchbar {
+            position: relative;
+            justify-content: flex-end;
             div {
                 background-color: white;
                 border: 1px solid rgb(158, 156, 156);
@@ -184,9 +256,36 @@ header {
                     color: #41b3a3;
                 }
             }
-        }
-        #searchbar {
-            justify-content: flex-end;
+            .my-drop {
+                position: absolute;
+                z-index: 100;
+                top: 110%;
+                width: 75%;
+                max-height: 200px;
+                background-color: rgba(0, 0, 0, 0.8);
+                color: white;
+                table {
+                    margin-bottom: 0;
+                    tr {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-around;
+                        td {
+                            border: unset;
+                            .img-container {
+                                width: 60px;
+                                height: 60px;
+                                img {
+                                    width: 100%;
+                                    height: 100%;
+                                    object-fit: cover;
+                                    object-position: center;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

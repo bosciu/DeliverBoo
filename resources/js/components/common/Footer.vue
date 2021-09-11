@@ -2,8 +2,12 @@
     <footer>
         <div class="container">
             <div class="row">
-                <router-link tag="a" :to="{name:'home'}">
-                    <img class="logo" src="/images/logos/logo-footer.png" alt="deliverboo logo">
+                <router-link :to="{ name: 'home' }">
+                    <img
+                        class="logo"
+                        src="/images/logos/logo-footer.png"
+                        alt="deliverboo logo"
+                    />
                 </router-link>
                 <div class="col">
                     <ul>
@@ -14,7 +18,9 @@
                             <a href="#">Chi siamo</a>
                         </li>
                         <li>
-                            <router-link tag="a" :to="{ name: 'store'}"> Ristoranti</router-link>  
+                            <router-link :to="{ name: 'store' }">
+                                Ristoranti</router-link
+                            >
                         </li>
                         <li>
                             <a href="#">Diventa nostro partner</a>
@@ -60,20 +66,26 @@
                     </ul>
                 </div>
                 <div class="col">
-                <ul>
-                    <li>
-                        <h6>Porta DeliverBoo con te</h6>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img src="https://www.palestrauniverso.it/wp-content/uploads/2018/05/google-play-11.png" alt="download-from-googleplay">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Download_on_the_App_Store_Badge_IT_RGB_blk.svg/1280px-Download_on_the_App_Store_Badge_IT_RGB_blk.svg.png" alt="download-from-appstore">
-                        </a>
-                    </li>
+                    <ul>
+                        <li>
+                            <h6>Porta DeliverBoo con te</h6>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img
+                                    src="https://www.palestrauniverso.it/wp-content/uploads/2018/05/google-play-11.png"
+                                    alt="download-from-googleplay"
+                                />
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img
+                                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Download_on_the_App_Store_Badge_IT_RGB_blk.svg/1280px-Download_on_the_App_Store_Badge_IT_RGB_blk.svg.png"
+                                    alt="download-from-appstore"
+                                />
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -98,7 +110,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 @import "./resources/sass/_variables";
 
 footer {
@@ -106,27 +117,27 @@ footer {
     padding: 30px 0;
 }
 .container {
-        .row {
+    .row {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        .col {
             display: flex;
-            align-items: center;
-            justify-content: space-around;
-            .col {
-                display: flex;
-                justify-content: center;
-                height: 200px;
-                margin: 5px;
-                background-color: #2E3333;
-                img {
-                    display: block;
-                    width: 100px;
-                }
+            justify-content: center;
+            height: 200px;
+            margin: 5px;
+            background-color: #2e3333;
+            img {
+                display: block;
+                width: 100px;
             }
         }
-        .logo {
-            height: 200px;
-            border-radius: 50%;
-            margin: 0 5px;
-        }
+    }
+    .logo {
+        height: 200px;
+        border-radius: 50%;
+        margin: 0 5px;
+    }
 }
 ul {
     width: 180px;
@@ -141,14 +152,14 @@ ul {
             margin-bottom: 10px;
             color: white;
         }
-    }   
+    }
     a {
         text-decoration: none;
         color: white;
         &:hover {
             cursor: pointer;
             color: $darkGreenFont;
-        } 
+        }
     }
 }
 .logo-container {
@@ -156,28 +167,28 @@ ul {
     justify-content: space-between;
     align-items: center;
     padding: 5px;
-        .icons {
-            margin-left: 33px;
+    .icons {
+        margin-left: 33px;
+    }
+    span {
+        color: lightgray;
+    }
+    i {
+        font-size: 26px;
+        padding: 8px;
+        color: white;
+        &.fa-facebook:hover {
+            cursor: pointer;
+            color: #1977f2;
         }
-            span {
-                color: lightgray;
-            }
-            i {
-                font-size: 26px;
-                padding: 8px;
-                color: white;
-                    &.fa-facebook:hover {
-                        cursor: pointer;
-                        color: #1977F2;
-                    }
-                    &.fa-twitter-square:hover {
-                        cursor: pointer;
-                        color: #55ACEE;
-                    }
-                    &.fa-instagram:hover {
-                        cursor: pointer;
-                        color: #E94574;
-                    }
-            }
+        &.fa-twitter-square:hover {
+            cursor: pointer;
+            color: #55acee;
+        }
+        &.fa-instagram:hover {
+            cursor: pointer;
+            color: #e94574;
+        }
+    }
 }
 </style>

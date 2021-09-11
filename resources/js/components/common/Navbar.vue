@@ -4,16 +4,13 @@
             id="navbar"
             class="w-100 d-flex justify-content-between align-center container pb-3"
         >
-            <div
-                id="logo"
-                class="w-50 h-100"
-            >
+            <div id="logo" class="w-50 h-100">
                 <router-link
-                tag="img"
-                :to="{ name: 'home' }"
-                src="/images/logos/logo-dark.png"
-                alt="logo"
-                class=" rounded-circle"
+                    tag="img"
+                    :to="{ name: 'home' }"
+                    src="/images/logos/logo-dark.png"
+                    alt="logo"
+                    class=" rounded-circle"
                 >
                 </router-link>
             </div>
@@ -42,11 +39,7 @@
                         </div>
                     </li>
                     <li>
-                        <router-link
-                            class="btn"
-                            tag="a"
-                            :to="{ name: 'store' }"
-                        >
+                        <router-link class="btn" :to="{ name: 'store' }">
                             <i class="fas fa-utensils"></i>
                             RISTORANTI</router-link
                         >
@@ -147,7 +140,6 @@ export default {
                             color: $darkGreenFont;
                         }
                     }
-                    
                 }
 
                 #cart {
@@ -160,7 +152,6 @@ export default {
                     border: 1px solid $darkGreenFont;
                     background-color: $bgSecondary;
                 }
-                
             }
         }
     }

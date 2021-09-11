@@ -63,9 +63,9 @@
                             <span class="pr-1">&euro; {{ sum }}</span>
                         </router-link>
                     </li>
-                    <li id="cart" class="btn mr-2" v-else>
-                        <i class="fas fa-shopping-cart mr-1 ml-1"></i>
-                        <span class="pr-1">&euro; {{ sum }}</span>
+                    <li id="cart" class="btn mr-2 " v-else>
+                        <i class="fas fa-shopping-cart ml-1"></i>
+                        <span >&euro; {{ sum }}</span>
                     </li>
                 </ul>
             </div>
@@ -151,14 +151,17 @@ export default {
                 }
 
                 #cart {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    padding: 1px;
-                    height: 29px;
                     color: $darkGreenFont;
                     border: 1px solid $darkGreenFont;
                     background-color: $bgSecondary;
+
+                    i {
+                        font-size: 12px;
+                    }
+
+                    span {
+                        font-size: 13px
+                    };
                 }
                 
             }

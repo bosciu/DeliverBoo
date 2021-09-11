@@ -49,7 +49,8 @@
                                 <input
                                     type="checkbox"
                                     :id="category.name"
-                                    @click="setFilter(category)"
+                                    :checked="category.id == filterFromHome"
+                                    @change="setFilter(category)"
                                 />
                                 <label :for="category.name">
                                     {{ category.name }}
@@ -127,6 +128,7 @@ export default {
             freeDeliveryFilter: false
         };
     },
+    props: ['filterFromHome'],
     created: function() {
         this.getCategories();
 
@@ -135,6 +137,9 @@ export default {
         }, 1000);
 
         this.getRestaurants();
+
+        this.filter.push(this.filterFromHome);
+
     },
     watch: {
         filter() {

@@ -19,7 +19,8 @@ const router = new VueRouter({
         {
             path: "/store",
             name: "store",
-            component: Store
+            component: Store,
+            props: true
         },
         {
             path: "/:slug",

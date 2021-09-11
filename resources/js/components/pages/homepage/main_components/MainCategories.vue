@@ -3,7 +3,8 @@
         id="main-categories"
         class="container d-flex flex-wrap justify-content-between py-4"
     >
-        <router-link to="" class="text-center my-4"
+
+        <router-link :to="{ name: 'store', params: { filterFromHome: category.id } }" class="text-center my-4"
         v-for="(category, index) in randomMainCategories" :key="index">
 
             <div class="category-image">

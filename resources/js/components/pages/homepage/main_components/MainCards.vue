@@ -1,6 +1,7 @@
 <template>
-    <div class="content">
-        <div class="container">
+    <div class="content pt-5 text-center">
+        <h2>I nostri Ristoranti!</h2>
+        <div class="container d-flex flex-wrap justify-content-center text-left">
             <router-link
                 v-for="restaurant in randomMainRestaurants"
                 :key="restaurant.id"
@@ -14,7 +15,7 @@
                             :alt="restaurant.name"
                         />
                     </div>
-                    <p>{{ restaurant.name }}</p>
+                    <p class="mt-3">{{ restaurant.name }}</p>
                 </div>
             </router-link>
         </div>
@@ -71,15 +72,16 @@ export default {
 .content {
     background-color: $bgSecondary;
 
+    h2 {
+        font-size: 40px;
+        font-weight: bolder;
+    }
+
     .container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
         padding: 30px 0;
 
         .post-it {
             width: calc(100% / 4 - 40px);
-            // margin: 30px 20px 40px 20px;
             margin: 20px;
 
             .img-container {
@@ -87,6 +89,7 @@ export default {
                 height: 300px;
                 border-radius: 5px;
                 overflow: hidden;
+                box-shadow: 0 0 2px black;
 
                 img {
                     width: 100%;
@@ -96,21 +99,22 @@ export default {
             }
 
             p {
-                margin-top: 10px;
                 font-weight: bolder;
-                font-size: 16px;
+                font-size: 18px;
                 text-transform: capitalize;
                 word-break: break-all;
                 color: #2d3232;
             }
-
-            p:hover {
-                transition: 0.2s;
-                cursor: pointer;
-            }
         }
-        a:hover {
+
+        .post-it:hover ,a:hover {
+            transition: 0.2s;
+            transform: scale(1.1);
             text-decoration: none;
+        }
+        .post-it:hover p {
+            color:$buttonPrimary;
+            transition: 0.2s;
         }
     }
 }

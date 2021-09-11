@@ -2,20 +2,21 @@
     <div id="navbar-container" class="w-100 pt-2">
         <section
             id="navbar"
-            class="w-100 d-flex justify-content-between align-center container"
+            class="w-100 d-flex justify-content-between align-center container pb-3"
         >
-            <router-link
-                tag="div"
+            <div
                 id="logo"
                 class="w-50 h-100"
-                :to="{ name: 'home' }"
             >
-                <img
-                    src="/images/logos/logo-dark.png"
-                    alt="logo"
-                    class=" rounded-circle"
-                />
-            </router-link>
+                <router-link
+                tag="img"
+                :to="{ name: 'home' }"
+                src="/images/logos/logo-dark.png"
+                alt="logo"
+                class=" rounded-circle"
+                >
+                </router-link>
+            </div>
             <div id="list" class="w-50 h-100">
                 <ul class="d-flex align-items-center">
                     <li class="dropdown">
@@ -117,12 +118,9 @@ export default {
             display: flex;
             align-items: center;
             img {
-                width: 17%;
+                width: 19%;
+                cursor: pointer;
             }
-        }
-
-        #logo:hover {
-            cursor: pointer;
         }
 
         #list {

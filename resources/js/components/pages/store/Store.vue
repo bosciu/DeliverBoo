@@ -1,5 +1,5 @@
 <template>
-    <div id="store" v-if="!loading">
+    <div id="store" v-if="!loading" class="pt-2">
         <header>
             <Navbar />
         </header>
@@ -49,8 +49,7 @@
                                 <input
                                     type="checkbox"
                                     :id="category.name"
-                                    :checked="category.id == filterFromHome"
-                                    @change="setFilter(category)"
+                                    @click="setFilter(category)"
                                 />
                                 <label :for="category.name">
                                     {{ category.name }}
@@ -128,7 +127,6 @@ export default {
             freeDeliveryFilter: false
         };
     },
-    props: ['filterFromHome'],
     created: function() {
         this.getCategories();
 
@@ -137,9 +135,6 @@ export default {
         }, 1000);
 
         this.getRestaurants();
-
-        this.filter.push(this.filterFromHome);
-
     },
     watch: {
         filter() {

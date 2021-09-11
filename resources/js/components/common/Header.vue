@@ -7,7 +7,7 @@
 
                 <div
                     id="carouselExampleControls"
-                    class="carousel slide w-50 mb-5"
+                    class="carousel slide w-50 mb-5 rounded"
                     data-ride="carousel"
                 >
                     <div class="carousel-inner rounded">
@@ -21,7 +21,7 @@
                                 }"
                             >
                                 <img
-                                    class="d-block w-100"
+                                    class="d-block w-100 rounded"
                                     :src="randomHeaderRestaurants[0].img_path"
                                     alt=""
                                 />
@@ -146,11 +146,17 @@ export default {
 @import "./resources/sass/_variables";
 header {
     background-color: #7cc0ad;
+    background-image: url('/images/sfondo.png');
+    background-size: contain;
+    background-position: right;
+    background-repeat: no-repeat;
 
     #jumbotron {
         margin-top: 100px;
 
         #carouselExampleControls {
+            box-shadow: 0 0 4px rgba(0,0,0,0.9);
+            overflow: hidden;
             img {
                 height: 300px;
                 object-fit: cover;
@@ -161,10 +167,15 @@ header {
         #searchbar {
             div {
                 background-color: white;
+                border: 1px solid rgb(158, 156, 156);
+
+                label {
+                    font-weight: bolder;
+                }
 
                 button {
-                    background-color: #fdd0af;
-                    border: 2px solid #41b3a3;
+                    background-color: $bgSecondary;
+                    border: 2px solid $darkGreenFont;
                     font-weight: bold;
                     color: #41b3a3;
                 }

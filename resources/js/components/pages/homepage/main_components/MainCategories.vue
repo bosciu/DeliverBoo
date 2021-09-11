@@ -1,8 +1,11 @@
 <template>
-    <section
+    <div class="text-center pt-5 pb-5">
+        <h2>Scegli la tua Categoria preferita!</h2>
+        <section
         id="main-categories"
         class="container d-flex flex-wrap justify-content-between py-4"
     >
+        
 
         <router-link :to="{ name: 'store', params: { filterFromHome: category.id } }" class="text-center my-4"
         v-for="(category, index) in randomMainCategories" :key="index">
@@ -20,6 +23,8 @@
             </div>
         </router-link>
     </section>
+    </div>
+    
 </template>
 
 <script>
@@ -51,6 +56,11 @@ export default {
 
 <style lang="scss" scoped>
 @import "././resources/sass/_variables";
+
+ h2 {
+        font-size: 40px;
+        font-weight: bolder;
+    }
 
 #main-categories {
 

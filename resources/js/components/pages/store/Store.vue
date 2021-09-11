@@ -49,7 +49,7 @@
                                 <input
                                     type="checkbox"
                                     :id="category.name"
-                                    :checked="category.id == filterFromHome"
+                                    :checked="checkFunction(category)"
                                     @change="setFilter(category)"
                                 />
                                 <label :for="category.name">
@@ -125,10 +125,13 @@ export default {
             filteredRestaurants: [],
             filter: [],
             takeAwayFilter: false,
-            freeDeliveryFilter: false
+            freeDeliveryFilter: false,
+            counterTest: 0,
+            isChecked: false,
+            firstFilterSelected: false
         };
     },
-    props: ['filterFromHome'],
+    props: ["filterFromHome"],
     created: function() {
         this.getCategories();
 
@@ -137,10 +140,11 @@ export default {
         }, 1000);
 
         this.getRestaurants();
-
-        this.filter.push(this.filterFromHome);
-
+        if (this.filterFromHome) {
+            this.filteredRestaurant = [];
+        }
     },
+    computed: {},
     watch: {
         filter() {
             this.filteredRestaurants = [];
@@ -179,18 +183,48 @@ export default {
                 .get("http://127.0.0.1:8000/api/restaurants")
                 .then(res => {
                     this.restaurants = res.data;
-                    this.filteredRestaurants = res.data;
+                    if (this.filterFromHome) {
+                        this.restaurants.forEach(restaurant => {
+                            if (
+                                restaurant.restaurant_types.includes(
+                                    this.filterFromHome
+                                )
+                            ) {
+                                this.filteredRestaurants.push(restaurant);
+                            }
+                        });
+                    } else {
+                        this.filteredRestaurants = res.data;
+                    }
                 })
                 .catch(err => {
                     console.log(err);
                 });
         },
         setFilter: function(category) {
-            if (!this.filter.includes(category.id)) {
-                this.filter.push(category.id);
+            this.freeDeliveryFilter = false;
+            this.takeAwayFilter = false;
+            if (
+                this.filterFromHome &&
+                this.counterTest == 0 &&
+                this.filterFromHome == category.id
+            ) {
+                this.filteredRestaurants = this.restaurants;
+                this.counterTest++;
+            } else if (
+                this.filterFromHome &&
+                this.counterTest == 0 &&
+                this.filterFromHome != category.id
+            ) {
+                this.filter.push(this.filterFromHome, category.id);
+                this.counterTest++;
             } else {
-                let index = this.filter.indexOf(category.id);
-                this.filter.splice(index, 1);
+                if (!this.filter.includes(category.id)) {
+                    this.filter.push(category.id);
+                } else {
+                    let index = this.filter.indexOf(category.id);
+                    this.filter.splice(index, 1);
+                }
             }
         },
         takeAway() {
@@ -205,6 +239,7 @@ export default {
             } else {
                 this.filteredRestaurants = this.restaurants;
             }
+            this.firstFilterSelected = true;
         },
         freeDelivery() {
             this.takeAwayFilter = false;
@@ -217,6 +252,18 @@ export default {
                 });
             } else {
                 this.filteredRestaurants = this.restaurants;
+            }
+            this.firstFilterSelected = true;
+        },
+        checkFunction(category) {
+            if (category.id == this.filterFromHome) {
+                return true;
+            }
+            if (
+                this.takeAwayFilter == true ||
+                this.freeDeliveryFilter == true
+            ) {
+                return false;
             }
         }
     }

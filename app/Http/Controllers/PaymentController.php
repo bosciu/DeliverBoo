@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Address;
+use App\Dish;
+use App\Order;
 use Braintree;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -19,11 +22,41 @@ class PaymentController extends Controller
     
 
     public function prepareCheckout(Request $request){
+        $totalIsValid = true;
+        $total = 0;
         $request->validate($this->validationArray);
         $data  = $request->all();
-        return response($content=$data,$status = 200);
-
-        /* return $this->seeCheckout($data); */
+        foreach ($data['order'] as $singleDish) {
+            $dish = Dish::where('id', $singleDish['id'])->firstOrFail();
+            if($dish->price != $singleDish['price']){
+                $totalIsValid = false;
+            }else{
+                $total += $singleDish['price'] * $singleDish['quantity'];
+            }
+        }
+        if($totalIsValid){
+            $data['total'] = $total + $data['order'][0]['delivery_price'];
+            $newAddress = new Address();
+            $newAddress->address = $data['address'];
+            $newAddress->city = $data['city'];
+            $newAddress->zip_code = $data['zip_code'];
+            $newAddress->province = $data['province'];
+            $newAddress->save();
+    
+            $newOrder = new Order();
+            $newOrder->restaurant_id = $data['order'][0]['restaurant_id'];
+            $newOrder->address_id = $newAddress->id;
+            $newOrder->name = $data['name'];
+            $newOrder->surname = $data['surname'];
+            $newOrder->total = $data['total'];
+            $newOrder->payment_status = false;
+            $newOrder->payment_provider = "prova";
+            $newOrder->save();
+    
+            return response($content=$data,$status = 200);
+        }else{
+            return response($content="Errore",$status = 422);
+        }
     }
 
     public function seeCheckout($data){
@@ -32,6 +65,7 @@ class PaymentController extends Controller
     }
 
     public function goCheckout(){
+        $order = Order::latest()->first();
         $gateway = new Braintree\Gateway([
             'environment' => config('services.braintree.environment'),
             'merchantId' => env('BTREE_MERCHANT_ID'),
@@ -41,7 +75,7 @@ class PaymentController extends Controller
     
         $token = $gateway->ClientToken()->generate();
     
-        return view('orderConfirm', ['token' => $token]); 
+        return view('orderConfirm', ['token' => $token, 'amount' => $order->total]); 
     }
 
     public function doCheckout(Request $request){
@@ -72,7 +106,8 @@ class PaymentController extends Controller
         if ($result->success) {
             $transaction = $result->transaction;
             // header("Location: transaction.php?id=" . $transaction->id);
-    
+            $order = Order::latest()->first();
+            $order->update(['payment_status' => 1]);
             return back()->with('success_message', 'Transaction successful. The ID is:'. $transaction->id);
         } else {
             $errorString = "";

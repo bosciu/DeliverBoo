@@ -5,7 +5,12 @@
         <div class="alert alert-success">
           {{session('success_message')}}
         </div>
-    @endif
+        <div class="text-center">
+          <h4 >Pagamento completato con successo!</h4>
+          <h5>Il tuo ordine arriverà tra $$generatopre minuti$$ minuti.</h5>
+          <a href="/">Torna alla home!</a>
+        </div>
+    @else
     <div class="content py-4" id="checkout">
       <div class="order-detail">
         <h5 class="text-center">Riepilogo oridne</h5>
@@ -16,9 +21,9 @@
             @method('POST')
             <section>
                 <label for="amount">
-                    <span class="input-label">Amount</span>
                     <div class="input-wrapper amount-wrapper">
-                        <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" value="10">
+                        <h3 class="text-center">Totale: € {{number_format((float)$amount, 2, ',', '')}}</h3>
+                        <input id="amount" name="amount" type="hidden" value="{{$amount}}">
                     </div>
                 </label>
 
@@ -28,10 +33,11 @@
             </section>
 
             <input id="nonce" name="payment_method_nonce" type="hidden" />
-            <button class="button" type="submit"><span>Test Transaction</span></button>
+            <button class="btn btn-success" type="submit"><span>Paga</span></button>
         </form>
       </div>
     </div>
+    @endif
     <script src="https://js.braintreegateway.com/web/dropin/1.31.2/js/dropin.min.js"></script>
         <script>
             var form = document.querySelector('#payment-form');

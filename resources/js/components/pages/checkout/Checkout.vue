@@ -34,7 +34,7 @@
                 >Desideri modificare l'ordine? Clicca qui!</router-link
             >
             <h4 class="text-center mt-4">Inserisci i dati per la spedizione</h4>
-            <form action="#" method="POST" ref="form">
+            <form method="POST" ref="form">
                 <div class="row justify-content-between">
                     <div class="col-6">
                         <div class="form-group">
@@ -176,7 +176,11 @@ export default {
                         order: this.order
                     }
                 )
-                .then(res => console.log(res))
+                .then(res => {
+                    console.log(res);
+                    localStorage.clear();
+                    document.location.href = "/order-confirm";
+                })
                 .catch(err => console.log(err));
         }
     }

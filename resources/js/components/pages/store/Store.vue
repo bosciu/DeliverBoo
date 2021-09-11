@@ -5,22 +5,9 @@
         </header>
         <main class="pt-5 d-flex">
             <aside>
-                <div id="searchbar" class="w-100 d-flex justify-content-around">
-                    <div class="p-4 d-flex justify-content-around rounded">
-                        <form class="form-inline justify-content-center">
-                            <input
-                                class="form-control mr-sm-3 w-75"
-                                type="search"
-                                placeholder="Cerca"
-                                aria-label="Search"
-                            />
-                        </form>
-                    </div>
-                </div>
                 <div class="list-container pl-4">
                     <div class="delivery pt-3 ml-3">
                         <ul>
-
                             <li>
                                 <input
                                     type="checkbox"
@@ -28,7 +15,8 @@
                                     id="free-delivery"
                                 />
                                 <label for="free-delivery">
-                                    Consegna gratuita <i class="fas fa-bicycle"></i>
+                                    Consegna gratuita
+                                    <i class="fas fa-bicycle"></i>
                                 </label>
                             </li>
 
@@ -36,8 +24,7 @@
                                 <input
                                     type="checkbox"
                                     class="mr-2"
-                                    id="take-away" 
-                                    @click="takeAway"
+                                    id="take-away"
                                 />
                                 <label for="take-away">
                                     Ritiro <i class="fas fa-people-carry"></i>
@@ -55,7 +42,11 @@
                                 v-for="category in categories"
                                 :key="category.name"
                             >
-                                <input type="checkbox" :id="category.name" @click="setFilter(category)"/>
+                                <input
+                                    type="checkbox"
+                                    :id="category.name"
+                                    @click="setFilter(category)"
+                                />
                                 <label :for="category.name">
                                     {{ category.name }}
                                 </label>
@@ -96,10 +87,10 @@
                                 >Consegna gratuita</span
                             >
                             <span v-else
-                                >Prezzo Consegna: {{ restaurant.delivery_price }} &euro;</span
+                                >Prezzo Consegna:
+                                {{ restaurant.delivery_price }} &euro;</span
                             >
                         </div>
-
                     </router-link>
                 </div>
             </section>
@@ -127,8 +118,7 @@ export default {
             loading: true,
             restaurants: null,
             filteredRestaurants: [],
-            filter: [],
-            takeAway: false
+            filter: []
         };
     },
     created: function() {
@@ -140,6 +130,39 @@ export default {
 
         this.getRestaurants();
     },
+    watch: {
+        filter() {
+            this.filteredRestaurants = [];
+            this.restaurants.forEach(restaurant => {
+                this.filter.forEach(singleFilter => {
+                    if (restaurant.restaurant_types.includes(singleFilter)) {
+                        let finded = false;
+                        this.filteredRestaurants.forEach(filteredRestaurant => {
+                            if (filteredRestaurant.id == restaurant.id) {
+                                finded = true;
+                            }
+                        });
+                        if (!finded) {
+                            this.filteredRestaurants.push(restaurant);
+                        }
+                    }
+                });
+            });
+            if (this.filter.length == 0) {
+                this.filteredRestaurants = this.restaurants;
+            }
+        }
+        /*         takeAwayFilter() {
+            if (!this.takeAwayFilter) {
+                console.log("da falso a vero");
+                !this.takeAwayFilter;
+            } else {
+                console.log("da vero a falso");
+                !this.takeAwayFilter;
+            }
+        } */
+    },
+
     methods: {
         getCategories: function() {
             axios
@@ -167,50 +190,7 @@ export default {
                 let index = this.filter.indexOf(category.id);
                 this.filter.splice(index, 1);
             }
-        },
-        takeAway() {
-            // this.filteredRestaurants = [];
-
-            // this.restaurants.forEach(restaurant => {
-            //     if (restaurant.take_away == 1) {
-            //         this.filteredRestaurants.push(restaurant);
-            //     }
-            // });
-            console.log('sono dentro');
         }
-
-    },
-    watch: {
-        filter() {
-            this.filteredRestaurants = [];
-
-            this.restaurants.forEach(restaurant => {
-                restaurant.restaurant_types.forEach(type => {
-                    if (this.filter.includes(type.id)) {
-                        if (this.filteredRestaurants.length == 0) {
-                            this.filteredRestaurants.push(restaurant);
-                        } else {
-                            this.filteredRestaurants.forEach(
-                                filteredRestaurant => {
-                                    if (
-                                        filteredRestaurant.id = restaurant.id
-                                    ) {
-                                        this.filteredRestaurants.push(
-                                            restaurant
-                                        );
-                                    }
-                                }
-                            );
-                        }
-                    }
-                });
-            });
-
-            if (this.filter.length == 0) {
-                this.filteredRestaurants = this.restaurants;
-            }
-        }
-
     }
 };
 </script>
@@ -251,7 +231,8 @@ main {
                 padding-left: 0;
 
                 li {
-                    input:hover, label:hover {
+                    input:hover,
+                    label:hover {
                         cursor: pointer;
                     }
                 }

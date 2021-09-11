@@ -13,6 +13,8 @@
                                     type="checkbox"
                                     class="mr-2"
                                     id="free-delivery"
+                                    v-model="freeDeliveryFilter"
+                                    @change="freeDelivery"
                                 />
                                 <label for="free-delivery">
                                     Consegna gratuita
@@ -25,6 +27,8 @@
                                     type="checkbox"
                                     class="mr-2"
                                     id="take-away"
+                                    v-model="takeAwayFilter"
+                                    @change="takeAway"
                                 />
                                 <label for="take-away">
                                     Ritiro <i class="fas fa-people-carry"></i>
@@ -118,7 +122,9 @@ export default {
             loading: true,
             restaurants: null,
             filteredRestaurants: [],
-            filter: []
+            filter: [],
+            takeAwayFilter: false,
+            freeDeliveryFilter: false
         };
     },
     created: function() {
@@ -152,15 +158,6 @@ export default {
                 this.filteredRestaurants = this.restaurants;
             }
         }
-        /*         takeAwayFilter() {
-            if (!this.takeAwayFilter) {
-                console.log("da falso a vero");
-                !this.takeAwayFilter;
-            } else {
-                console.log("da vero a falso");
-                !this.takeAwayFilter;
-            }
-        } */
     },
 
     methods: {
@@ -189,6 +186,32 @@ export default {
             } else {
                 let index = this.filter.indexOf(category.id);
                 this.filter.splice(index, 1);
+            }
+        },
+        takeAway() {
+            this.freeDeliveryFilter = false;
+            this.filteredRestaurants = [];
+            if (this.takeAwayFilter) {
+                this.restaurants.forEach(restaurant => {
+                    if (restaurant.take_away) {
+                        this.filteredRestaurants.push(restaurant);
+                    }
+                });
+            } else {
+                this.filteredRestaurants = this.restaurants;
+            }
+        },
+        freeDelivery() {
+            this.takeAwayFilter = false;
+            this.filteredRestaurants = [];
+            if (this.freeDeliveryFilter) {
+                this.restaurants.forEach(restaurant => {
+                    if (restaurant.free_delivery) {
+                        this.filteredRestaurants.push(restaurant);
+                    }
+                });
+            } else {
+                this.filteredRestaurants = this.restaurants;
             }
         }
     }

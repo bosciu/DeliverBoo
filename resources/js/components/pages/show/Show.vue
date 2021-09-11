@@ -1,5 +1,5 @@
 <template>
-    <div id="show">
+    <div id="show" class="pt-2">
         <Navbar />
         <main>
             <Loading v-if="!isLoaded" />

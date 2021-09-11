@@ -100,15 +100,12 @@
                                 <i class="fas fa-arrow-circle-down ml-2"></i
                             ></label>
                             <input
-                                class="form-control mr-sm-3 w-75"
+                                class="form-control mr-sm-3 w-100"
                                 type="search"
                                 placeholder="Cerca"
                                 aria-label="Search"
                                 v-model="queryString"
                             />
-                            <button class="btn my-2 my-sm-0" type="submit">
-                                Cerca
-                            </button>
                         </form>
                     </div>
                     <div class="my-drop overflow-auto" v-if="queryString != ''">

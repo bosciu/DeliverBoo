@@ -14,7 +14,6 @@
                     class="carousel slide w-50 mb-5 rounded"
                     data-ride="carousel"
                 >
-
                     <div class="carousel-inner rounded">
                         <div class="carousel-item active rounded">
                             <router-link
@@ -25,7 +24,6 @@
                                     }
                                 }"
                             >
-
                                 <div class="layover"></div>
 
                                 <h2>{{ randomHeaderRestaurants[0].name }}</h2>
@@ -117,52 +115,61 @@
                             />
                         </form>
                     </div>
-                    <div class="my-drop overflow-auto rounded" v-if="queryString != ''">
-                        <table
-                            class="table-dark table"
-                            v-if="searchedRestaurants.length > 0"
+                    <transition name="fade">
+                        <div
+                            class="my-drop overflow-auto"
+                            v-if="queryString != ''"
                         >
-                            <tbody>
-                                <tr
-                                    v-for="searchRestaurant in searchedRestaurants"
-                                    :key="searchRestaurant.id"
-                                    class="py-1"
-                                >
-                                    <td scope="row">
-                                        <div class="img-container">
-                                            <img
-                                                :src="'/storage' + searchRestaurant.img_path"
-                                                :alt="searchRestaurant.name"
-                                            />
-                                        </div>
-                                    </td>
-                                    <td>{{ searchRestaurant.name }}</td>
-                                    <td>
-                                        <router-link
-                                            class="btn btn-primary"
-                                            :to="{
-                                                name: 'show',
-                                                params: {
-                                                    slug: searchRestaurant.slug
-                                                }
-                                            }"
-                                        >
-                                            Apri
-                                        </router-link>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <table v-else class="table-dark table">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        La ricerca non ha prodotto risultati.
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                            <table
+                                class="table-dark table"
+                                v-if="searchedRestaurants.length > 0"
+                            >
+                                <tbody>
+                                    <tr
+                                        v-for="searchRestaurant in searchedRestaurants"
+                                        :key="searchRestaurant.id"
+                                        class="py-1"
+                                    >
+                                        <td scope="row">
+                                            <div class="img-container">
+                                                <img
+                                                    :src="
+                                                        searchRestaurant.img_path
+                                                    "
+                                                    :alt="searchRestaurant.name"
+                                                />
+                                            </div>
+                                        </td>
+                                        <td>{{ searchRestaurant.name }}</td>
+                                        <td>
+                                            <router-link
+                                                class="btn btn-primary"
+                                                :to="{
+                                                    name: 'show',
+                                                    params: {
+                                                        slug:
+                                                            searchRestaurant.slug
+                                                    }
+                                                }"
+                                            >
+                                                Apri
+                                            </router-link>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table v-else class="table-dark table">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            La ricerca non ha prodotto
+                                            risultati.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </transition>
                 </div>
             </section>
         </div>
@@ -258,8 +265,6 @@ header {
                     object-position: center;
                 }
             }
-
-            
         }
 
         .layover {
@@ -273,6 +278,13 @@ header {
         }
 
         #searchbar {
+            .fade-enter-active,
+            .fade-leave-active {
+                transition: opacity 0.5s;
+            }
+            .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+                opacity: 0;
+            }
             position: relative;
             justify-content: flex-end;
             div {
@@ -302,7 +314,7 @@ header {
                 max-height: 200px;
                 background-color: rgba(0, 0, 0, 0.8);
                 color: white;
-                
+
                 table {
                     margin-bottom: 0;
                     tr {

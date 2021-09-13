@@ -24,6 +24,8 @@ Route::middleware('auth')
         Route::resource('calendar','CalendarController', [
             'except' => ['index', 'create']
         ]);
+        Route::get('/admin/orders', 'OrderController@index')->name('order.index');
+        Route::get('/admin/{order}/order', 'OrderController@show')->name('order.show');
         Route::get('{id}/calendar', 'CalendarController@create')->name('calendar.create');
         Route::resource('dish', 'DishController', [
             'except' => ['index', 'create']

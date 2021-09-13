@@ -122,7 +122,7 @@
                                     <td scope="row">
                                         <div class="img-container">
                                             <img
-                                                :src="searchRestaurant.img_path"
+                                                :src="'/storage' + searchRestaurant.img_path"
                                                 :alt="searchRestaurant.name"
                                             />
                                         </div>

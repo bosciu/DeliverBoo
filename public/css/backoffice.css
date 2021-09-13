@@ -10994,7 +10994,7 @@ a.text-dark:focus {
 #dish-index h3 span {
   border-radius: 100px;
   padding: 0 15px;
-  background-color: #fdd0af;
+  background-color: #FFEAE4;
 }
 
 #dish-index table {
@@ -11051,7 +11051,7 @@ a.text-dark:focus {
 }
 
 #restaurant-show {
-  height: calc(100vh - 415px);
+  min-height: calc(100vh - 415px);
 }
 
 #restaurant-show .details ul {
@@ -11125,34 +11125,50 @@ body #app .homepage .text-container {
 }
 
 body #app footer {
-  height: 315px;
+  height: 325px;
   background-color: #434848;
   padding: 30px 0;
 }
 
-body #app footer .container .row {
+body #app footer .container {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
+}
+
+body #app footer .container .row {
+  width: 1140px;
+  display: flex;
+  justify-content: center;
+  height: 200px;
 }
 
 body #app footer .container .row .col {
+  width: 200px;
+  max-width: 100%;
+  flex-basis: 0;
+  flex-grow: 1;
   display: flex;
   justify-content: center;
   background-color: #2e3333;
-  margin: 10px;
+  padding: 0 3px;
+  margin: 5px;
 }
 
-body #app footer .container .row .col .logo-footer {
-  margin-top: 50px;
+body #app footer .container .row #logo_footer {
+  height: 200px;
+  border-radius: 50%;
+  margin-top: 5px;
+  overflow: hidden;
 }
 
-body #app footer .container .row .col img {
-  display: block;
-  width: 100px;
-  margin: auto;
+body #app footer .container .row #logo_footer img {
+  vertical-align: middle;
+  border-style: none;
 }
 
 body #app footer ul {
+  width: 180px;
   margin: 0;
   padding: 20px;
 }
@@ -11163,7 +11179,7 @@ body #app footer ul li {
 }
 
 body #app footer ul li h5 {
-  font-size: 18px;
+  font-size: 15px;
   margin-bottom: 10px;
   color: white;
 }
@@ -11178,32 +11194,43 @@ body #app footer ul a:hover {
   color: #41b3a3;
 }
 
+body #app footer ul a img {
+  width: 100px;
+}
+
 body #app footer .logo-container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 5px;
 }
 
 body #app footer .logo-container span {
   color: lightgray;
 }
 
-body #app footer .logo-container i {
+body #app footer .logo-container .icons {
+  margin-top: 10px;
+  margin-left: 42px;
+}
+
+body #app footer .logo-container .icons i {
   font-size: 26px;
-  padding: 2px;
+  padding: 8px;
   color: white;
 }
 
-body #app footer .logo-container i.fa-facebook:hover {
+body #app footer .logo-container .icons i.fa-facebook:hover {
   cursor: pointer;
   color: #1d6fe5;
 }
 
-body #app footer .logo-container i.fa-twitter-square:hover {
+body #app footer .logo-container .icons i.fa-twitter-square:hover {
   cursor: pointer;
   color: #2e9bf0;
 }
 
-body #app footer .logo-container i.fa-instagram:hover {
+body #app footer .logo-container .icons i.fa-instagram:hover {
   cursor: pointer;
   color: #ec0f26;
 }

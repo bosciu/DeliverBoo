@@ -33,7 +33,7 @@
                             aria-labelledby="navbarDropdown"
                         >
                             <a class="dropdown-item" href="/login">ACCEDI</a>
-                            <a class="dropdown-item" href="/register"
+                            <a id="register" class="dropdown-item" href="/register"
                                 >REGISTRATI</a
                             >
                         </div>
@@ -127,11 +127,14 @@ export default {
                 li {
                     padding: 0 10px;
 
+                    #register {
+                        border-top: 1px solid $darkGreenFont;
+                    }
+
                     a {
                         text-decoration: none;
                         font-size: 10px;
                         font-weight: bolder;
-                        border: 1px solid $darkGreenFont;
                         color: $darkGreenFont;
                         background-color: $bgSecondary;
 

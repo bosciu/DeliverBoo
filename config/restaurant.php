@@ -13,7 +13,7 @@ return [
         'free_delivery' => '0',
         'delivery_price' => '2',
         'restaurant_type' => [35],
-        'img_path' => '/images/restaurant_images/officina_del_riso.jpeg',
+        'img_path' => 'restaurant_image/officina_del_riso.jpeg',
     ],
     [
         'user_id' => '2',
@@ -27,7 +27,7 @@ return [
         'free_delivery' => '0',
         'delivery_price' => '3',
         'restaurant_type' => [35,32],
-        'img_path' => '/images/restaurant_images/green_day.jpeg',
+        'img_path' => 'restaurant_image/green_day.jpeg',
     ],
     [
         'user_id' => '3',
@@ -41,7 +41,7 @@ return [
         'free_delivery' => '0',
         'delivery_price' => '2',
         'restaurant_type' => [55,26,24,25],
-        'img_path' => '/images/restaurant_images/the_best.jpeg',
+        'img_path' => 'restaurant_image/the_best.jpeg',
     ],
     [
         'user_id' => '4',
@@ -55,7 +55,7 @@ return [
         'free_delivery' => '0',
         'delivery_price' => '4',
         'restaurant_type' => [22,27,16],
-        'img_path' => '/images/restaurant_images/pasticceria_viscontea.jpeg',
+        'img_path' => 'restaurant_image/pasticceria_viscontea.jpeg',
     ],
     [
         'user_id' => '5',
@@ -69,7 +69,7 @@ return [
         'free_delivery' => '0',
         'delivery_price' => '2',
         'restaurant_type' => [1,54,16,14],
-        'img_path' => '/images/restaurant_images/frankie_s.jpeg',
+        'img_path' => 'restaurant_image/frankie_s.jpeg',
     ],
     [
         'user_id' => '6',
@@ -83,7 +83,7 @@ return [
         'free_delivery' => '0',
         'delivery_price' => '4',
         'restaurant_type' => [25,24],
-        'img_path' => '/images/restaurant_images/delivery_valley.jpeg',
+        'img_path' => 'restaurant_image/delivery_valley.jpeg',
     ],
     [
         'user_id' => '7',
@@ -97,7 +97,7 @@ return [
         'free_delivery' => '0',
         'delivery_price' => '4',
         'restaurant_type' => [55,41,24],
-        'img_path' => '/images/restaurant_images/ciapa_el_taco.jpeg',
+        'img_path' => 'restaurant_image/ciapa_el_taco.jpeg',
     ],
     [
         'user_id' => '8',
@@ -111,7 +111,7 @@ return [
         'free_delivery' => '0',
         'delivery_price' => '1',
         'restaurant_type' => [26,28,58,48],
-        'img_path' => '/images/restaurant_images/sushi_2mi.jpeg',
+        'img_path' => 'restaurant_image/sushi_2mi.jpeg',
     ],
     [
         'user_id' => '9',
@@ -125,7 +125,7 @@ return [
         'free_delivery' => '0',
         'delivery_price' => '3',
         'restaurant_type' => [9,30,7],
-        'img_path' => '/images/restaurant_images/ribot.jpeg',
+        'img_path' => 'restaurant_image/ribot.jpeg',
     ],
     [
         'user_id' => '10',
@@ -139,7 +139,7 @@ return [
         'free_delivery' => '0',
         'delivery_price' => '1',
         'restaurant_type' => [17,34,32],
-        'img_path' => '/images/restaurant_images/insalatona.jpeg',
+        'img_path' => 'restaurant_image/insalatona.jpeg',
     ],
     [
         'user_id' => '11',
@@ -153,7 +153,7 @@ return [
         'free_delivery' => '0',
         'delivery_price' => '1',
         'restaurant_type' => [14,16,22,57],
-        'img_path' => '/images/restaurant_images/ottolina_cafe.jpeg',
+        'img_path' => 'restaurant_image/ottolina_cafe.jpeg',
     ],
     [
         'user_id' => '12',
@@ -167,7 +167,7 @@ return [
         'free_delivery' => '0',
         'delivery_price' => '2',
         'restaurant_type' => [1,35,45,8],
-        'img_path' => '/images/restaurant_images/santa_polenta.jpeg',
+        'img_path' => 'restaurant_image/santa_polenta.jpeg',
     ],
     [
         'user_id' => '13',
@@ -181,7 +181,7 @@ return [
         'free_delivery' => '0',
         'delivery_price' => '3',
         'restaurant_type' => [28,4],
-        'img_path' => '/images/restaurant_images/gastronomia_yamamoto.jpeg',
+        'img_path' => 'restaurant_image/gastronomia_yamamoto.jpeg',
     ],
     [
         'user_id' => '14',
@@ -195,7 +195,7 @@ return [
         'free_delivery' => '0',
         'delivery_price' => '2',
         'restaurant_type' => [41,46,24,58],
-        'img_path' => '/images/restaurant_images/chihuahua_tacos.jpeg',
+        'img_path' => 'restaurant_image/chihuahua_tacos.jpeg',
     ],
     [
         'user_id' => '15',
@@ -209,7 +209,7 @@ return [
         'free_delivery' => '0',
         'delivery_price' => '3',
         'restaurant_type' => [57,28,48],
-        'img_path' => '/images/restaurant_images/nima_sushi.jpeg',
+        'img_path' => 'restaurant_image/nima_sushi.jpeg',
     ],
     [
         'user_id' => '16',
@@ -223,7 +223,7 @@ return [
         'free_delivery' => '0',
         'delivery_price' => '5',
         'restaurant_type' => [1,8],
-        'img_path' => '/images/restaurant_images/tannico_wine_bar.jpeg',
+        'img_path' => 'restaurant_image/tannico_wine_bar.jpeg',
     ],
     [
         'user_id' => '17',
@@ -237,7 +237,7 @@ return [
         'free_delivery' => '0',
         'delivery_price' => '1',
         'restaurant_type' => [6,35,8,47],
-        'img_path' => '/images/restaurant_images/lievita_ravizza.jpeg',
+        'img_path' => 'restaurant_image/lievita_ravizza.jpeg',
     ],
     [
         'user_id' => '18',
@@ -251,7 +251,7 @@ return [
         'free_delivery' => '0',
         'delivery_price' => '3',
         'restaurant_type' => [6,47,46,8],
-        'img_path' => '/images/restaurant_images/focacceria_manuelina.jpeg',
+        'img_path' => 'restaurant_image/focacceria_manuelina.jpeg',
     ],
     [
         'user_id' => '19',
@@ -265,7 +265,7 @@ return [
         'free_delivery' => '0',
         'delivery_price' => '5',
         'restaurant_type' => [45,35,1,34],
-        'img_path' => '/images/restaurant_images/la_pasta_di_nonna_rosa.jpeg',
+        'img_path' => 'restaurant_image/la_pasta_di_nonna_rosa.jpeg',
     ],
     [
         'user_id' => '20',
@@ -279,7 +279,7 @@ return [
         'free_delivery' => '0',
         'delivery_price' => '2',
         'restaurant_type' => [20,22,27,8],
-        'img_path' => '/images/restaurant_images/cioccolatitaliani.jpeg',
+        'img_path' => 'restaurant_image/cioccolatitaliani.jpeg',
     ],
     [
         'user_id' => '21',
@@ -293,7 +293,7 @@ return [
         'free_delivery' => '0',
         'delivery_price' => '1',
         'restaurant_type' => [35,45],
-        'img_path' => '/images/restaurant_images/lasagneria_italiana.jpeg',
+        'img_path' => 'restaurant_image/lasagneria_italiana.jpeg',
     ],
     [
         'user_id' => '22',
@@ -307,7 +307,7 @@ return [
         'free_delivery' => '0',
         'delivery_price' => '3',
         'restaurant_type' => [33,47],
-        'img_path' => '/images/restaurant_images/ristorante_indiano_aangan.jpeg',
+        'img_path' => 'restaurant_image/ristorante_indiano_aangan.jpeg',
     ],
     [
         'user_id' => '23',
@@ -321,7 +321,7 @@ return [
         'free_delivery' => '0',
         'delivery_price' => '2',
         'restaurant_type' => [24,30,39],
-        'img_path' => '/images/restaurant_images/mcdonald_s.jpeg',
+        'img_path' => 'restaurant_image/mcdonald_s.jpeg',
     ],
     [
         'user_id' => '24',
@@ -335,7 +335,7 @@ return [
         'free_delivery' => '0',
         'delivery_price' => '2',
         'restaurant_type' => [24,30,12],
-        'img_path' => '/images/restaurant_images/burger_king.jpeg',
+        'img_path' => 'restaurant_image/burger_king.jpeg',
     ],
     [
         'user_id' => '25',
@@ -349,6 +349,6 @@ return [
         'free_delivery' => '0',
         'delivery_price' => '3',
         'restaurant_type' => [36,24,49,3],
-        'img_path' => '/images/restaurant_images/kfc.jpeg',
+        'img_path' => 'restaurant_image/kfc.jpeg',
     ],
 ];

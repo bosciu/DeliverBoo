@@ -112,83 +112,89 @@ export default {
 <style lang="scss" scoped>
 @import "./resources/sass/_variables";
 
-footer {
-    background-color: #434848;
-    padding: 30px 0;
-}
-.container {
-    .row {
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        .col {
+    footer {
+        background-color: #434848;
+        padding: 30px 0;
+
+        .container {
+            .row {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                .col {
+                    display: flex;
+                    justify-content: center;
+                    height: 200px;
+                    margin: 5px;
+                    background-color: #2e3333;
+                    img {
+                        display: block;
+                        width: 100px;
+                    }
+                }
+            }
+            .logo {
+                height: 200px;
+                border-radius: 50%;
+                margin: 0 5px;
+            }
+        }
+
+        ul {
+            width: 180px;
+            margin: 0;
+            padding: 20px;
+            li {
+                list-style-type: none;
+                font-size: 12px;
+                line-height: 20px;
+                h6 {
+                    font-size: 15px;
+                    margin-bottom: 10px;
+                    color: white;
+                }
+            }
+            a {
+                text-decoration: none;
+                color: white;
+                &:hover {
+                    cursor: pointer;
+                    color: $darkGreenFont;
+                }
+            }
+        }
+
+        .logo-container {
             display: flex;
-            justify-content: center;
-            height: 200px;
-            margin: 5px;
-            background-color: #2e3333;
-            img {
-                display: block;
-                width: 100px;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px;
+            .icons {
+                margin-left: 33px;
+            }
+            span {
+                color: lightgray;
+            }
+            i {
+                font-size: 26px;
+                padding: 8px;
+                color: white;
+                &.fa-facebook:hover {
+                    cursor: pointer;
+                    color: #1977f2;
+                }
+                &.fa-twitter-square:hover {
+                    cursor: pointer;
+                    color: #55acee;
+                }
+                &.fa-instagram:hover {
+                    cursor: pointer;
+                    color: #e94574;
+                }
             }
         }
     }
-    .logo {
-        height: 200px;
-        border-radius: 50%;
-        margin: 0 5px;
-    }
-}
-ul {
-    width: 180px;
-    margin: 0;
-    padding: 20px;
-    li {
-        list-style-type: none;
-        font-size: 12px;
-        line-height: 20px;
-        h6 {
-            font-size: 15px;
-            margin-bottom: 10px;
-            color: white;
-        }
-    }
-    a {
-        text-decoration: none;
-        color: white;
-        &:hover {
-            cursor: pointer;
-            color: $darkGreenFont;
-        }
-    }
-}
-.logo-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px;
-    .icons {
-        margin-left: 33px;
-    }
-    span {
-        color: lightgray;
-    }
-    i {
-        font-size: 26px;
-        padding: 8px;
-        color: white;
-        &.fa-facebook:hover {
-            cursor: pointer;
-            color: #1977f2;
-        }
-        &.fa-twitter-square:hover {
-            cursor: pointer;
-            color: #55acee;
-        }
-        &.fa-instagram:hover {
-            cursor: pointer;
-            color: #e94574;
-        }
-    }
-}
+
+
+
 </style>

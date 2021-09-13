@@ -41,5 +41,24 @@ class RestaurantSeeder extends Seeder
                 $newRestaurant->restaurantTypes()->attach($type);
             }
         }
+        $adminRestaurantAddress = new Address();
+            $adminRestaurantAddress->address = 'Via Milano 17';
+            $adminRestaurantAddress->city = 'Corsico Italia';
+            $adminRestaurantAddress->zip_code = '20144';
+            $adminRestaurantAddress->province = 'MI';
+            $adminRestaurantAddress->save();
+
+        $adminRestaurant = new Restaurant();
+        $adminRestaurant->user_id = 27;
+        $adminRestaurant->address_id = $adminRestaurantAddress->id;
+        $adminRestaurant->name = 'Da Mario';
+        $adminRestaurant->email = 'damario@gmail.com';
+        $adminRestaurant->phone = '3336536178';
+        $adminRestaurant->slug = 'da-mario';
+        $adminRestaurant->take_away = 1;
+        $adminRestaurant->free_delivery = 0;
+        $adminRestaurant->delivery_price = 3.50;
+        $adminRestaurant->img_path = 'restaurant_image/da-mario.jpg';
+        $adminRestaurant->save();
     }
 }

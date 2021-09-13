@@ -14,23 +14,27 @@ const router = new VueRouter({
     routes: [{
             path: "/",
             name: "home",
-            component: Homepage
+            component: Homepage,
+            meta: { title: 'Homepage' }
         },
         {
             path: "/restaurants",
             name: "store",
             component: Store,
-            props: true
+            props: true,
+            meta: { title: 'Ristoranti' }
         },
         {
             path: "/:slug",
             name: "show",
-            component: Show
+            component: Show,
+            meta: { title: 'Menù' }
         },
         {
             path: "/:slug/checkout",
             name: "checkout",
-            component: Checkout
+            component: Checkout,
+            meta: { title: 'Checkout' }
         }
     ]
 });

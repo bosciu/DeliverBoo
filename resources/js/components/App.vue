@@ -15,7 +15,15 @@ export default {
     data() {
         return {};
     },
-    methods: {}
+    methods: {},
+    watch: {
+        $route: {
+            immediate: true,
+            handler(to, from) {
+                document.title = "DeliverBoo | " + to.meta.title;
+            }
+        }
+    }
 };
 </script>
 

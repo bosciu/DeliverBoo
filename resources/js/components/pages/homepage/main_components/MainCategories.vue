@@ -1,6 +1,6 @@
 <template>
     <div class="text-center pt-5 pb-5">
-        <h2>Scegli la tua Categoria preferita!</h2>
+        <h2>Scegli la tua categoria preferita!</h2>
         <section
         id="main-categories"
         class="container d-flex flex-wrap justify-content-between py-4"

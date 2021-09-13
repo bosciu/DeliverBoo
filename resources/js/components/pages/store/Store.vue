@@ -1,5 +1,5 @@
 <template>
-    <div id="store" v-if="!loading" class="pt-2">
+    <div id="store" v-if="!loading">
         <header>
             <Navbar />
         </header>
@@ -39,7 +39,7 @@
 
                     <div class="categories pt-3">
                         <h3>
-                            CATEGORIE<i class="fas fa-chevron-down ml-3"></i>
+                            CATEGORIE
                         </h3>
                         <ul class="overflow-auto mt-3">
                             <li

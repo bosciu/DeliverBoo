@@ -14,6 +14,7 @@
                     class="carousel slide w-50 mb-5 rounded"
                     data-ride="carousel"
                 >
+
                     <div class="carousel-inner rounded">
                         <div class="carousel-item active rounded">
                             <router-link
@@ -24,6 +25,10 @@
                                     }
                                 }"
                             >
+
+                                <div class="layover"></div>
+
+                                <h2>{{ randomHeaderRestaurants[0].name }}</h2>
                                 <img
                                     class="d-block w-100 rounded"
                                     :src="randomHeaderRestaurants[0].img_path"
@@ -40,6 +45,8 @@
                                     }
                                 }"
                             >
+                                <div class="layover"></div>
+                                <h2>{{ randomHeaderRestaurants[1].name }}</h2>
                                 <img
                                     class="d-block w-100"
                                     :src="randomHeaderRestaurants[1].img_path"
@@ -56,6 +63,8 @@
                                     }
                                 }"
                             >
+                                <div class="layover"></div>
+                                <h2>{{ randomHeaderRestaurants[2].name }}</h2>
                                 <img
                                     class="d-block w-100"
                                     :src="randomHeaderRestaurants[2].img_path"
@@ -96,7 +105,7 @@
                     <div class="w-75 p-4 d-flex justify-content-around rounded">
                         <form class="form-inline justify-center">
                             <label for="" class="mb-2"
-                                >Cerca il Ristorante o la categoria!
+                                >Cerca il ristorante!
                                 <i class="fas fa-arrow-circle-down ml-2"></i
                             ></label>
                             <input
@@ -108,7 +117,7 @@
                             />
                         </form>
                     </div>
-                    <div class="my-drop overflow-auto" v-if="queryString != ''">
+                    <div class="my-drop overflow-auto rounded" v-if="queryString != ''">
                         <table
                             class="table-dark table"
                             v-if="searchedRestaurants.length > 0"
@@ -217,6 +226,7 @@ header {
 
     #jumbotron {
         margin-top: 100px;
+        transition: all 0.3s;
         &.dropVisible {
             padding-bottom: 100px;
         }
@@ -224,11 +234,42 @@ header {
         #carouselExampleControls {
             box-shadow: 0 0 4px rgba(0, 0, 0, 0.9);
             overflow: hidden;
-            img {
-                height: 300px;
-                object-fit: cover;
-                object-position: center;
+
+            a {
+                text-transform: uppercase;
+                color: white;
+                text-align: center;
+                &:hover h2 {
+                    color: rgba(255, 255, 255, 0.8);
+                }
+
+                h2 {
+                    font-weight: bolder;
+                    letter-spacing: 4px;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    transition: color 0.2s;
+                }
+                img {
+                    height: 300px;
+                    object-fit: cover;
+                    object-position: center;
+                }
             }
+
+            
+        }
+
+        .layover {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: black;
+            opacity: 0.4;
         }
 
         #searchbar {
@@ -261,12 +302,13 @@ header {
                 max-height: 200px;
                 background-color: rgba(0, 0, 0, 0.8);
                 color: white;
+                
                 table {
                     margin-bottom: 0;
                     tr {
                         display: flex;
                         align-items: center;
-                        justify-content: space-around;
+                        justify-content: space-between;
                         td {
                             border: unset;
                             .img-container {

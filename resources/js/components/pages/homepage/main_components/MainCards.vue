@@ -1,6 +1,6 @@
 <template>
     <div class="content pt-5 text-center">
-        <h2>I nostri Ristoranti!</h2>
+        <h2>I nostri ristoranti!</h2>
         <div class="container d-flex flex-wrap justify-content-center text-left">
             <router-link
                 v-for="restaurant in randomMainRestaurants"

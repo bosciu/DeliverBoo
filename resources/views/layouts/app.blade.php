@@ -79,10 +79,10 @@
         </main>
 
         <footer>
-            <div class="container">
+            <div class="container ">
                 <div class="row">
-                    <div class="col">
-                        <a class="logo-footer" href="#">
+                    <div id="logo_footer" class="col">
+                        <a  class="logo-footer" href="#">
                             <img src="/images/logos/logo-footer.png" alt="deliverboo-logo">
                         </a>
                     </div>
@@ -160,7 +160,7 @@
                 </div>
             </div>
             <div class="logo-container container">
-                <div>
+                <div class="icons">
                     <i class="fab fa-facebook"></i>
                     <i class="fab fa-twitter-square"></i>
                     <i class="fab fa-instagram"></i>

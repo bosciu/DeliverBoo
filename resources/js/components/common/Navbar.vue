@@ -1,5 +1,5 @@
 <template>
-    <div id="navbar-container" class="w-100 pt-2">
+    <div id="navbar-container" class="w-100 pt-3">
         <section
             id="navbar"
             class="w-100 d-flex justify-content-between align-center container pb-3"

@@ -8,6 +8,9 @@
                     <div class="col-8">
                         <div id="hero" class="py-4">
                             <div class="details container">
+                                <div class="img-container rounded mb-3 bt-3">
+                                    <img :src="restaurant.img_path" alt="" class="w-100 h-100">
+                                </div>
                                 <h1>{{ restaurant.name }}</h1>
 
                                 <h6
@@ -421,14 +424,29 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "./resources/sass/_variables";
+
+
+.img-container {
+    width: 450px;
+    height: 300px;
+    box-shadow: 0 0 4px black;
+    overflow: hidden;
+
+    img {
+        object-fit: cover;
+        object-position: center;
+    }
+}
+
 #contact {
     display: flex;
     align-items: center;
     cursor: pointer;
     width: 60%;
-    border: 2px solid salmon;
+    border: 2px solid $darkGreenFont;
     border-radius: 3px;
-    background-color: lightgreen;
+    background-color: $bgPrimary;
 }
 
 .dish-container {
@@ -466,14 +484,15 @@ export default {
     width: calc((100% / 5));
     padding: 30px;
     border-radius: 7px;
-    background-color: cornflowerblue;
+    box-shadow: 0 0 2px black;
+    background-color: rgba($buttonPrimary,0.6);
     overflow: hidden;
 
     #checkout {
         padding: 15px 20px;
         border-radius: 7px;
         font-weight: 700;
-        background-color: #fdd0af;
+        background-color: $bgSecondary;
         box-shadow: 0 4px 8px black;
         text-align: center;
         span {
@@ -488,7 +507,7 @@ export default {
         padding: 15px 20px;
         border-radius: 7px;
         font-weight: 700;
-        background-color: #fdd0af;
+        background-color: $bgSecondary;
         box-shadow: 0 4px 8px black;
         text-align: center;
         position: relative;

@@ -1,9 +1,12 @@
 <template>
     <div id="show">
-        <Navbar />
+        <header>
+          <Navbar />  
+        </header>
+
         <main>
             <Loading v-if="!isLoaded" />
-            <div v-else class="container">
+            <div v-else class="container pt-5">
                 <div class="row">
                     <div class="col-8">
                         <div id="hero" class="py-4">
@@ -430,128 +433,145 @@ export default {
 <style lang="scss" scoped>
 @import "./resources/sass/_variables";
 
-.img-container {
-    width: 450px;
-    height: 300px;
-    box-shadow: 0 0 4px black;
-    overflow: hidden;
-
-    img {
-        object-fit: cover;
-        object-position: center;
-    }
-}
-
-#contact {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    width: 60%;
-    border: 2px solid $darkGreenFont;
-    border-radius: 3px;
-    background-color: $bgPrimary;
-}
-
-.dish-container {
-    .card {
-        height: 280px;
-        box-shadow: 0 0 5px grey;
-        cursor: pointer;
+    header {
+        background-color: $bgPrimary;
+        background-image: url(/images/sfondo-show-store.png);
+        background-size: contain;
+        background-position: right;
+        background-repeat: no-repeat;
+        padding-bottom: 10px;
     }
 
-    .dish {
-        width: 30%;
+    main {
+        background: linear-gradient($bgPrimary, whitesmoke 3%);
+        
+        .img-container {
+            width: 450px;
+            height: 300px;
+            box-shadow: 0 0 4px black;
+            overflow: hidden;
 
-        #dishModal {
-            .img-container {
-                width: 100%;
-                img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    object-position: center;
-                }
-            }
-            p {
-                padding: 20px 20px 0;
-                text-align: center;
-                word-break: break-all;
+            img {
+                object-fit: cover;
+                object-position: center;
             }
         }
-    }
-}
 
-#cart {
-    position: fixed;
-    right: 20%;
-    width: calc((100% / 5));
-    padding: 30px;
-    border-radius: 7px;
-    box-shadow: 0 0 2px black;
-    background-color: rgba($buttonPrimary, 0.6);
-    overflow: hidden;
-
-    #checkout {
-        padding: 15px 20px;
-        border-radius: 7px;
-        font-weight: 700;
-        background-color: $bgSecondary;
-        box-shadow: 0 4px 8px black;
-        text-align: center;
-        span {
-            color: black;
-            cursor: pointer;
-            &:hover {
-                text-decoration: underline;
-            }
-        }
-    }
-    #checkout-another {
-        padding: 15px 20px;
-        border-radius: 7px;
-        font-weight: 700;
-        background-color: $bgSecondary;
-        box-shadow: 0 4px 8px black;
-        text-align: center;
-        position: relative;
-        z-index: 100;
-        overflow: hidden;
-    }
-    .layover {
-        width: 100%;
-        height: 100%;
-        top: 0;
-        right: 0;
-        position: absolute;
-        background-color: rgba(0, 0, 0, 0.5);
-    }
-    .products {
-        .quantity {
+        #contact {
             display: flex;
-            justify-content: space-between;
-            padding: 5px;
-            font-size: 14px;
-            & > .button-container {
-                display: inline-block;
-                position: relative;
-                width: 20px;
-                height: 20px;
-                border-radius: 50%;
-                border: 2px solid coral;
-                margin: 0 2px;
-                font-size: 11px;
+            align-items: center;
+            cursor: pointer;
+            width: 60%;
+            border: 2px solid $darkGreenFont;
+            border-radius: 3px;
+            background-color: $bgPrimary;
+        }
+
+        .dish-container {
+            .card {
+                height: 280px;
+                box-shadow: 0 0 5px grey;
                 cursor: pointer;
-                i {
-                    position: absolute;
-                    top: 45%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
+            }
+
+            .dish {
+                width: 30%;
+
+                #dishModal {
+                    .img-container {
+                        width: 100%;
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            object-position: center;
+                        }
+                    }
+                    p {
+                        padding: 20px 20px 0;
+                        text-align: center;
+                        word-break: break-all;
+                    }
                 }
             }
         }
-        .tot {
-            font-size: 14px;
+
+        #cart {
+            position: fixed;
+            right: 20%;
+            width: calc((100% / 5));
+            padding: 30px;
+            border-radius: 7px;
+            box-shadow: 0 0 2px black;
+            background-color: rgba($buttonPrimary, 0.6);
+            overflow: hidden;
+
+            #checkout {
+                padding: 15px 20px;
+                border-radius: 7px;
+                font-weight: 700;
+                background-color: $bgSecondary;
+                box-shadow: 0 4px 8px black;
+                text-align: center;
+                span {
+                    color: black;
+                    cursor: pointer;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+            #checkout-another {
+                padding: 15px 20px;
+                border-radius: 7px;
+                font-weight: 700;
+                background-color: $bgSecondary;
+                box-shadow: 0 4px 8px black;
+                text-align: center;
+                position: relative;
+                z-index: 100;
+                overflow: hidden;
+            }
+
+            .layover {
+                width: 100%;
+                height: 100%;
+                top: 0;
+                right: 0;
+                position: absolute;
+                background-color: rgba(0, 0, 0, 0.5);
+            }
+
+            .products {
+                .quantity {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 5px;
+                    font-size: 14px;
+                    & > .button-container {
+                        display: inline-block;
+                        position: relative;
+                        width: 20px;
+                        height: 20px;
+                        border-radius: 50%;
+                        border: 2px solid coral;
+                        margin: 0 2px;
+                        font-size: 11px;
+                        cursor: pointer;
+                        i {
+                            position: absolute;
+                            top: 45%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                        }
+                    }
+                }
+                .tot {
+                    font-size: 14px;
+                }
+            }
         }
+
     }
-}
 </style>

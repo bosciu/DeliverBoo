@@ -234,113 +234,114 @@ export default {
 
 <style lang="scss" scoped>
 @import "./resources/sass/_variables";
-header {
-    background-color: #7cc0ad;
-    background-image: url("/images/sfondo.png");
-    background-size: contain;
-    background-position: right;
-    background-repeat: no-repeat;
+    header {
+        background-color: #7cc0ad;
+        background-image: url("/images/sfondo.png");
+        background-size: contain;
+        background-position: right;
+        background-repeat: no-repeat;
 
-    #jumbotron {
-        margin-top: 100px;
-        transition: all 0.3s;
-        &.dropVisible {
-            padding-bottom: 100px;
-        }
+        #jumbotron {
+            margin-top: 100px;
+            transition: all 0.3s;
+            &.dropVisible {
+                padding-bottom: 100px;
+            }
 
-        #carouselExampleControls {
-            box-shadow: 0 0 4px rgba(0, 0, 0, 0.9);
-            overflow: hidden;
+            #carouselExampleControls {
+                box-shadow: 0 0 4px rgba(0, 0, 0, 0.9);
+                overflow: hidden;
 
-            a {
-                text-transform: uppercase;
-                color: white;
-                text-align: center;
-                &:hover h2 {
-                    color: rgba(255, 255, 255, 0.8);
-                }
+                a {
+                    text-transform: uppercase;
+                    color: white;
+                    text-align: center;
+                    &:hover h2 {
+                        color: rgba(255, 255, 255, 0.8);
+                    }
 
-                h2 {
-                    font-weight: bolder;
-                    letter-spacing: 4px;
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    transition: color 0.2s;
-                }
-                img {
-                    height: 300px;
-                    object-fit: cover;
-                    object-position: center;
+                    h2 {
+                        font-weight: bolder;
+                        letter-spacing: 4px;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        transition: color 0.2s;
+                    }
+                    img {
+                        height: 300px;
+                        object-fit: cover;
+                        object-position: center;
+                    }
                 }
             }
-        }
 
-        .layover {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            background-color: black;
-            opacity: 0.4;
-        }
-
-        #searchbar {
-            .fade-enter-active,
-            .fade-leave-active {
-                transition: opacity 0.5s;
-            }
-            .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-                opacity: 0;
-            }
-            position: relative;
-            justify-content: flex-end;
-            div {
-                background-color: white;
-                border: 1px solid rgb(158, 156, 156);
-
-                label {
-                    font-weight: bolder;
-                }
-
-                button {
-                    background-color: $bgSecondary;
-                    border: 2px solid $darkGreenFont;
-                    font-weight: bold;
-                    color: #41b3a3;
-                }
-
-                i {
-                    color: #41b3a3;
-                }
-            }
-            .my-drop {
+            .layover {
+                width: 100%;
+                height: 100%;
                 position: absolute;
-                z-index: 100;
-                top: 110%;
-                width: 75%;
-                max-height: 200px;
-                background-color: rgba(0, 0, 0, 0.8);
-                color: white;
+                top: 0;
+                left: 0;
+                background-color: black;
+                opacity: 0.4;
+            }
 
-                table {
-                    margin-bottom: 0;
-                    tr {
-                        display: flex;
-                        align-items: center;
-                        justify-content: space-between;
-                        td {
-                            border: unset;
-                            .img-container {
-                                width: 60px;
-                                height: 60px;
-                                img {
-                                    width: 100%;
-                                    height: 100%;
-                                    object-fit: cover;
-                                    object-position: center;
+            #searchbar {
+                .fade-enter-active,
+                .fade-leave-active {
+                    transition: opacity 0.5s;
+                }
+                .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+                    opacity: 0;
+                }
+                position: relative;
+                justify-content: flex-end;
+                div {
+                    background-color: white;
+                    border: 1px solid rgb(158, 156, 156);
+
+                    label {
+                        font-weight: bolder;
+                    }
+
+                    button {
+                        background-color: $bgSecondary;
+                        border: 2px solid $darkGreenFont;
+                        font-weight: bold;
+                        color: #41b3a3;
+                    }
+
+                    i {
+                        color: #41b3a3;
+                    }
+                }
+                .my-drop {
+                    position: absolute;
+                    z-index: 100;
+                    top: 110%;
+                    width: 75%;
+                    max-height: 200px;
+                    background-color: rgba(0, 0, 0, 0.8);
+                    color: white;
+
+                    table {
+                        margin-bottom: 0;
+                        tr {
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            td {
+                                border: unset;
+                                .img-container {
+                                    width: 60px;
+                                    height: 60px;
+                                    img {
+                                        width: 100%;
+                                        height: 100%;
+                                        object-fit: cover;
+                                        object-position: center;
+                                    }
                                 }
                             }
                         }
@@ -349,5 +350,4 @@ header {
             }
         }
     }
-}
 </style>

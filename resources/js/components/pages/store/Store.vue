@@ -299,7 +299,7 @@ header {
 }
 
 main {
-    background: linear-gradient($bgPrimary, whitesmoke 3%);
+    background: linear-gradient($bgPrimary, whitesmoke 1%);
     a {
         color: unset;
         text-decoration: unset;

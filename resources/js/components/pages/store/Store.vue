@@ -46,6 +46,7 @@
                                 v-for="category in categories"
                                 :key="category.name"
                             >
+                                <!-- :checked="filter.includes(category.id)" -->
                                 <input
                                     type="checkbox"
                                     :id="category.name"
@@ -228,11 +229,18 @@ export default {
             }
         },
         takeAway() {
+            if (this.filter.length > 0) {
+                while (this.filter.length > 0) {
+                    this.filter.pop();
+                }
+            }
+            /* SI INTERROMPE QUI!! */
             this.freeDeliveryFilter = false;
             this.filteredRestaurants = [];
             if (this.takeAwayFilter) {
                 this.restaurants.forEach(restaurant => {
                     if (restaurant.take_away) {
+                        console.log("cilo per il takeaway");
                         this.filteredRestaurants.push(restaurant);
                     }
                 });
@@ -255,8 +263,16 @@ export default {
             }
             this.firstFilterSelected = true;
         },
-        checkFunction(category) {
-            if (category.id == this.filterFromHome) {
+        checkFunction(category, bool) {
+            if (bool == false) {
+            }
+            if (
+                this.filter.includes(category.id) ||
+                this.filterFromHome == category.id
+            ) {
+                return true;
+            }
+            /* if (category.id == this.filterFromHome) {
                 return true;
             }
             if (
@@ -264,7 +280,7 @@ export default {
                 this.freeDeliveryFilter == true
             ) {
                 return false;
-            }
+            } */
         }
     }
 };

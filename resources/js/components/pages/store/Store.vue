@@ -80,7 +80,7 @@
                     >
                         <div class="img-container">
                             <img
-                                :src="restaurant.img_path"
+                                :src="'/storage/' + restaurant.img_path"
                                 alt=""
                                 class="rounded"
                             />
@@ -289,87 +289,87 @@ export default {
 <style lang="scss" scoped>
 @import "./resources/sass/_variables";
 
-    header {
-        background-color: $bgPrimary;
-        background-image: url(/images/sfondo-show-store.png);
-        background-size: contain;
-        background-position: right;
-        background-repeat: no-repeat;
-        padding-bottom: 10px;
+header {
+    background-color: $bgPrimary;
+    background-image: url(/images/sfondo-show-store.png);
+    background-size: contain;
+    background-position: right;
+    background-repeat: no-repeat;
+    padding-bottom: 10px;
+}
+
+main {
+    background: linear-gradient($bgPrimary, whitesmoke 3%);
+    a {
+        color: unset;
+        text-decoration: unset;
     }
 
-    main {
-        background: linear-gradient($bgPrimary, whitesmoke 3%);
-        a {
-            color: unset;
-            text-decoration: unset;
-        }
+    min-height: calc(100vh - 415px);
+    padding-bottom: 20px;
 
-        min-height: calc(100vh - 415px);
-        padding-bottom: 20px;
+    aside {
+        width: 20%;
+        .list-container {
+            .categories,
+            .delivery {
+                margin: 0 10px;
+                border-top: 2px solid rgb(240, 235, 235);
+            }
 
-        aside {
-            width: 20%;
-            .list-container {
-                .categories,
-                .delivery {
-                    margin: 0 10px;
-                    border-top: 2px solid rgb(240, 235, 235);
-                }
+            h3 {
+                font-size: 16px;
+                font-weight: bold;
+            }
 
-                h3 {
-                    font-size: 16px;
-                    font-weight: bold;
-                }
+            i {
+                color: $darkGreenFont;
+                margin-left: 5px;
+            }
 
-                i {
-                    color: $darkGreenFont;
-                    margin-left: 5px;
-                }
+            ul {
+                list-style: none;
+                padding-left: 0;
 
-                ul {
-                    list-style: none;
-                    padding-left: 0;
-
-                    li {
-                        input:hover,
-                        label:hover {
-                            cursor: pointer;
-                        }
+                li {
+                    input:hover,
+                    label:hover {
+                        cursor: pointer;
                     }
                 }
+            }
 
-                .delivery i {
-                    color: $buttonSecondary;
-                }
+            .delivery i {
+                color: $buttonSecondary;
+            }
 
-                .categories ul {
-                    height: 500px;
-                }
+            .categories ul {
+                height: 500px;
             }
         }
+    }
 
-        section {
-            width: 80%;
+    section {
+        width: 80%;
 
-            .restaurant {
-                width: calc((100% / 4) - 30px);
-                padding: 2px;
-                box-shadow: 0 0 5px grey;
+        .restaurant {
+            width: calc((100% / 4) - 30px);
+            padding: 2px;
+            box-shadow: 0 0 5px grey;
 
-                .img-container {
+            .img-container {
+                width: 100%;
+                height: 150px;
+                padding: 5px;
+
+                img {
                     width: 100%;
-                    height: 150px;
-                    padding: 5px;
-
-                    img {
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                        object-position: center;
-                    }
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: center;
                 }
             }
         }
     }
+}
 </style>

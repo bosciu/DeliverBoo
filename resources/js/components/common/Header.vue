@@ -29,7 +29,10 @@
                                 <h2>{{ randomHeaderRestaurants[0].name }}</h2>
                                 <img
                                     class="d-block w-100 rounded"
-                                    :src="randomHeaderRestaurants[0].img_path"
+                                    :src="
+                                        '/storage/' +
+                                            randomHeaderRestaurants[0].img_path
+                                    "
                                     alt=""
                                 />
                             </router-link>
@@ -47,7 +50,10 @@
                                 <h2>{{ randomHeaderRestaurants[1].name }}</h2>
                                 <img
                                     class="d-block w-100"
-                                    :src="randomHeaderRestaurants[1].img_path"
+                                    :src="
+                                        '/storage/' +
+                                            randomHeaderRestaurants[1].img_path
+                                    "
                                     alt=""
                                 />
                             </router-link>
@@ -65,7 +71,10 @@
                                 <h2>{{ randomHeaderRestaurants[2].name }}</h2>
                                 <img
                                     class="d-block w-100"
-                                    :src="randomHeaderRestaurants[2].img_path"
+                                    :src="
+                                        '/storage/' +
+                                            randomHeaderRestaurants[2].img_path
+                                    "
                                     alt=""
                                 />
                             </router-link>
@@ -134,7 +143,8 @@
                                             <div class="img-container">
                                                 <img
                                                     :src="
-                                                        searchRestaurant.img_path
+                                                        '/storage/' +
+                                                            searchRestaurant.img_path
                                                     "
                                                     :alt="searchRestaurant.name"
                                                 />

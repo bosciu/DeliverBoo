@@ -9,7 +9,11 @@
                         <div id="hero" class="py-4">
                             <div class="details container">
                                 <div class="img-container rounded mb-3 bt-3">
-                                    <img :src="restaurant.img_path" alt="" class="w-100 h-100">
+                                    <img
+                                        :src="'/storage/' + restaurant.img_path"
+                                        alt=""
+                                        class="w-100 h-100"
+                                    />
                                 </div>
                                 <h1>{{ restaurant.name }}</h1>
 
@@ -426,7 +430,6 @@ export default {
 <style lang="scss" scoped>
 @import "./resources/sass/_variables";
 
-
 .img-container {
     width: 450px;
     height: 300px;
@@ -485,7 +488,7 @@ export default {
     padding: 30px;
     border-radius: 7px;
     box-shadow: 0 0 2px black;
-    background-color: rgba($buttonPrimary,0.6);
+    background-color: rgba($buttonPrimary, 0.6);
     overflow: hidden;
 
     #checkout {

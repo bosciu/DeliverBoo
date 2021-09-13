@@ -1,7 +1,9 @@
 <template>
     <div class="content pt-5 text-center">
         <h2>I nostri ristoranti!</h2>
-        <div class="container d-flex flex-wrap justify-content-center text-left">
+        <div
+            class="container d-flex flex-wrap justify-content-center text-left"
+        >
             <router-link
                 v-for="restaurant in randomMainRestaurants"
                 :key="restaurant.id"
@@ -11,7 +13,7 @@
                 <div>
                     <div class="img-container">
                         <img
-                            :src="restaurant.img_path"
+                            :src="'/storage/' + restaurant.img_path"
                             :alt="restaurant.name"
                         />
                     </div>
@@ -107,13 +109,14 @@ export default {
             }
         }
 
-        .post-it:hover ,a:hover {
+        .post-it:hover,
+        a:hover {
             transition: 0.2s;
             transform: scale(1.1);
             text-decoration: none;
         }
         .post-it:hover p {
-            color:$buttonPrimary;
+            color: $buttonPrimary;
             transition: 0.2s;
         }
     }

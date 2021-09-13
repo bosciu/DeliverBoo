@@ -16,9 +16,9 @@
             </div>
             <div id="list" class="w-50 h-100">
                 <ul class="d-flex align-items-center">
-                    <li class="dropdown">
+                    <li class="dropdown btn mr-2">
                         <a
-                            class=" dropdown-toggle btn"
+                            class="dropdown-toggle"
                             href="#"
                             id="navbarDropdown"
                             role="button"
@@ -32,21 +32,25 @@
                             class="dropdown-menu p-0 mt-2"
                             aria-labelledby="navbarDropdown"
                         >
-                            <a class="dropdown-item" href="/login">ACCEDI</a>
-                            <a id="register" class="dropdown-item" href="/register"
+                            <a class="dropdown-item dropdown-link" href="/login"
+                                >ACCEDI</a
+                            >
+                            <a
+                                class="dropdown-item dropdown-link"
+                                id="register"
+                                href="/register"
                                 >REGISTRATI</a
                             >
                         </div>
                     </li>
-                    <li>
-                        <router-link class="btn" :to="{ name: 'store' }">
+                    <li class="btn mr-2">
+                        <router-link :to="{ name: 'store' }">
                             <i class="fas fa-utensils"></i>
                             RISTORANTI</router-link
                         >
                     </li>
                     <li id="cart" class="btn mr-2" v-if="haveOrders">
                         <router-link
-                            class="btn"
                             :to="{
                                 name: 'show',
                                 params: { slug: orderDishes[0].slug }
@@ -56,9 +60,10 @@
                             <span class="pr-1">&euro; {{ sum }}</span>
                         </router-link>
                     </li>
+
                     <li id="cart" class="btn mr-2 " v-else>
                         <i class="fas fa-shopping-cart ml-1"></i>
-                        <span >&euro; {{ sum }}</span>
+                        <span>&euro; {{ sum }}</span>
                     </li>
                 </ul>
             </div>
@@ -124,8 +129,24 @@ export default {
             ul {
                 list-style: none;
 
-                li {
+                li,
+                #cart {
+                    color: $darkGreenFont;
                     padding: 0 10px;
+                    border: 1px solid $darkGreenFont;
+                    background-color: $bgSecondary;
+
+                    &:hover .dropdown-link {
+                        color: $darkGreenFont;
+                    }
+
+                    &:hover {
+                        background-color: $darkGreenFont;
+                    }
+                    &:hover a,
+                    &:hover i {
+                        color: $bgSecondary;
+                    }
 
                     #register {
                         border-top: 1px solid $darkGreenFont;
@@ -136,7 +157,6 @@ export default {
                         font-size: 10px;
                         font-weight: bolder;
                         color: $darkGreenFont;
-                        background-color: $bgSecondary;
 
                         i {
                             padding-right: 3px;
@@ -146,17 +166,17 @@ export default {
                 }
 
                 #cart {
-                    color: $darkGreenFont;
-                    border: 1px solid $darkGreenFont;
-                    background-color: $bgSecondary;
+                    &:hover span {
+                        color: $bgSecondary;
+                    }
 
                     i {
                         font-size: 12px;
                     }
 
                     span {
-                        font-size: 13px
-                    };
+                        font-size: 13px;
+                    }
                 }
             }
         }

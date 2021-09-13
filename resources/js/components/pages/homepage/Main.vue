@@ -21,9 +21,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-main {
-    /* background-color: lightgreen; */
-    /* padding: 20px; */
-}
-</style>
+<style lang="scss" scoped></style>

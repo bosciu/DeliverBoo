@@ -421,7 +421,9 @@ export default {
     },
     watch: {
         restaurant() {
-            this.isLoaded = true;
+            setTimeout(() => {
+                this.isLoaded = true;
+            }, 1000);
         },
         orderDishes() {
             localStorage.setItem("orders", JSON.stringify(this.orderDishes));

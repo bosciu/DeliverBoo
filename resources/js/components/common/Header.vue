@@ -110,7 +110,45 @@
 
                 <div id="searchbar" class="w-50 d-flex">
                     <div class="w-75 p-4 d-flex justify-content-around rounded">
-                        <form class="form-inline justify-center">
+                        <form
+                            class="form-inline justify-center"
+                            v-if="searchedRestaurants.length == 1"
+                            :action="searchedRestaurants[0].slug"
+                        >
+                            <label for="" class="mb-2"
+                                >Cerca il ristorante!
+                                <i class="fas fa-arrow-circle-down ml-2"></i
+                            ></label>
+                            <input
+                                class="form-control mr-sm-3 w-100"
+                                type="search"
+                                placeholder="Cerca"
+                                aria-label="Search"
+                                v-model="queryString"
+                            />
+                        </form>
+                        <form
+                            @submit.prevent
+                            class="form-inline justify-center"
+                            v-else-if="searchedRestaurants.length > 1"
+                        >
+                            <label for="" class="mb-2"
+                                >Cerca il ristorante!
+                                <i class="fas fa-arrow-circle-down ml-2"></i
+                            ></label>
+                            <input
+                                class="form-control mr-sm-3 w-100"
+                                type="search"
+                                placeholder="Cerca"
+                                aria-label="Search"
+                                v-model="queryString"
+                            />
+                        </form>
+                        <form
+                            class="form-inline justify-center"
+                            v-else-if="searchedRestaurants.length < 1"
+                            @submit.prevent
+                        >
                             <label for="" class="mb-2"
                                 >Cerca il ristorante!
                                 <i class="fas fa-arrow-circle-down ml-2"></i

@@ -11,8 +11,16 @@
                     badge-pill 
                     badge-light
                     btn-secondary"
-                    >{{ category.name }}</span
                 >
+                    <router-link
+                        :to="{
+                            name: 'store',
+                            params: { filterFromHome: category.id }
+                        }"
+                    >
+                        {{ category.name }}
+                    </router-link>
+                </span>
             </div>
         </div>
     </section>
@@ -44,7 +52,7 @@ export default {
 <style lang="scss" scoped>
 section {
     padding: 20px 0 35px;
-    background-color: #7CC0AD;
+    background-color: #7cc0ad;
     h4 {
         padding: 15px 0;
         font-size: 40px;
@@ -58,6 +66,10 @@ section {
             cursor: pointer;
             box-shadow: 0 4px 8px black;
             transition: transform 0.2s linear;
+            a {
+                color: unset;
+                text-decoration: unset;
+            }
 
             &:hover {
                 transform: scale(1.1, 1.1);

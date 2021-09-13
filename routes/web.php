@@ -20,7 +20,7 @@ Route::middleware('auth')
     ->name('owner.')
     ->group(function () {
         Route::get('/home', 'HomeController@main')->name('home');
-        Route::resource('restaurants', 'RestaurantController');
+        Route::resource('admin/restaurants', 'RestaurantController');
         Route::resource('calendar','CalendarController', [
             'except' => ['index', 'create']
         ]);

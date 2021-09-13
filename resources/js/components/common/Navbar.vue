@@ -1,5 +1,5 @@
 <template>
-    <div id="navbar-container" class="w-100 pt-4">
+    <div id="navbar-container" class="w-100 pt-3">
         <section
             id="navbar"
             class="w-100 d-flex justify-content-between align-center container pb-3"
@@ -32,8 +32,13 @@
                             class="dropdown-menu p-0 mt-2"
                             aria-labelledby="navbarDropdown"
                         >
-                            <a class="dropdown-item dropdown-link" href="/login">ACCEDI</a>
-                            <a class="dropdown-item dropdown-link" href="/register"
+                            <a class="dropdown-item dropdown-link" href="/login"
+                                >ACCEDI</a
+                            >
+                            <a
+                                class="dropdown-item dropdown-link"
+                                id="register"
+                                href="/register"
                                 >REGISTRATI</a
                             >
                         </div>
@@ -58,7 +63,7 @@
 
                     <li id="cart" class="btn mr-2 " v-else>
                         <i class="fas fa-shopping-cart ml-1"></i>
-                        <span >&euro; {{ sum }}</span>
+                        <span>&euro; {{ sum }}</span>
                     </li>
                 </ul>
             </div>
@@ -124,7 +129,8 @@ export default {
             ul {
                 list-style: none;
 
-                li, #cart {
+                li,
+                #cart {
                     color: $darkGreenFont;
                     padding: 0 10px;
                     border: 1px solid $darkGreenFont;
@@ -134,18 +140,22 @@ export default {
                         color: $darkGreenFont;
                     }
 
-                    &:hover {                   
+                    &:hover {
                         background-color: $darkGreenFont;
                     }
                     &:hover a,
                     &:hover i {
-                        color: $bgSecondary;   
+                        color: $bgSecondary;
+                    }
+
+                    #register {
+                        border-top: 1px solid $darkGreenFont;
                     }
 
                     a {
                         text-decoration: none;
                         font-size: 10px;
-                        font-weight: bolder;                        
+                        font-weight: bolder;
                         color: $darkGreenFont;
 
                         i {
@@ -165,8 +175,8 @@ export default {
                     }
 
                     span {
-                        font-size: 13px
-                    };
+                        font-size: 13px;
+                    }
                 }
             }
         }

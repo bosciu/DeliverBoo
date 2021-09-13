@@ -46,6 +46,7 @@
                                 v-for="category in categories"
                                 :key="category.name"
                             >
+                                <!-- :checked="filter.includes(category.id)" -->
                                 <input
                                     type="checkbox"
                                     :id="category.name"
@@ -228,11 +229,18 @@ export default {
             }
         },
         takeAway() {
+            if (this.filter.length > 0) {
+                while (this.filter.length > 0) {
+                    this.filter.pop();
+                }
+            }
+            /* SI INTERROMPE QUI!! */
             this.freeDeliveryFilter = false;
             this.filteredRestaurants = [];
             if (this.takeAwayFilter) {
                 this.restaurants.forEach(restaurant => {
                     if (restaurant.take_away) {
+                        console.log("cilo per il takeaway");
                         this.filteredRestaurants.push(restaurant);
                     }
                 });
@@ -255,8 +263,16 @@ export default {
             }
             this.firstFilterSelected = true;
         },
-        checkFunction(category) {
-            if (category.id == this.filterFromHome) {
+        checkFunction(category, bool) {
+            if (bool == false) {
+            }
+            if (
+                this.filter.includes(category.id) ||
+                this.filterFromHome == category.id
+            ) {
+                return true;
+            }
+            /* if (category.id == this.filterFromHome) {
                 return true;
             }
             if (
@@ -264,7 +280,7 @@ export default {
                 this.freeDeliveryFilter == true
             ) {
                 return false;
-            }
+            } */
         }
     }
 };
@@ -273,77 +289,87 @@ export default {
 <style lang="scss" scoped>
 @import "./resources/sass/_variables";
 
-main {
-    a {
-        color: unset;
-        text-decoration: unset;
+    header {
+        background-color: $bgPrimary;
+        background-image: url(/images/sfondo-show-store.png);
+        background-size: contain;
+        background-position: right;
+        background-repeat: no-repeat;
+        padding-bottom: 10px;
     }
 
-    min-height: calc(100vh - 415px);
-    padding-bottom: 20px;
+    main {
+        background: linear-gradient($bgPrimary, whitesmoke 3%);
+        a {
+            color: unset;
+            text-decoration: unset;
+        }
 
-    aside {
-        width: 20%;
-        .list-container {
-            .categories,
-            .delivery {
-                margin: 0 10px;
-                border-top: 2px solid rgb(240, 235, 235);
+        min-height: calc(100vh - 415px);
+        padding-bottom: 20px;
+
+        aside {
+            width: 20%;
+            .list-container {
+                .categories,
+                .delivery {
+                    margin: 0 10px;
+                    border-top: 2px solid rgb(240, 235, 235);
+                }
+
+                h3 {
+                    font-size: 16px;
+                    font-weight: bold;
+                }
+
+                i {
+                    color: $darkGreenFont;
+                    margin-left: 5px;
+                }
+
+                ul {
+                    list-style: none;
+                    padding-left: 0;
+
+                    li {
+                        input:hover,
+                        label:hover {
+                            cursor: pointer;
+                        }
+                    }
+                }
+
+                .delivery i {
+                    color: $buttonSecondary;
+                }
+
+                .categories ul {
+                    height: 500px;
+                }
             }
+        }
 
-            h3 {
-                font-size: 16px;
-                font-weight: bold;
-            }
+        section {
+            width: 80%;
 
-            i {
-                color: $darkGreenFont;
-                margin-left: 5px;
-            }
+            .restaurant {
+                width: calc((100% / 4) - 30px);
+                padding: 2px;
+                box-shadow: 0 0 5px grey;
 
-            ul {
-                list-style: none;
-                padding-left: 0;
+                .img-container {
+                    width: 100%;
+                    height: 150px;
+                    padding: 5px;
 
-                li {
-                    input:hover,
-                    label:hover {
-                        cursor: pointer;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        object-position: center;
                     }
                 }
             }
-
-            .delivery i {
-                color: $buttonSecondary;
-            }
-
-            .categories ul {
-                height: 500px;
-            }
         }
     }
-
-    section {
-        width: 80%;
-
-        .restaurant {
-            width: calc((100% / 4) - 30px);
-            padding: 2px;
-            box-shadow: 0 0 5px grey;
-
-            .img-container {
-                width: 100%;
-                height: 150px;
-                padding: 5px;
-
-                img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    object-position: center;
-                }
-            }
-        }
-    }
-}
 </style>

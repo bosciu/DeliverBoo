@@ -21,11 +21,15 @@ class Order extends Model
     }
 
     public function address(){
-        return $this->hasOne('App\Address');
+        return $this->belongsTo('App\Address');
     }
 
     public function dishes(){
         return $this->belongsToMany('App\Dish');
+    }
+
+    public function orderedDishes(){
+        return $this->hasMany('App\OrderedDish');
     }
 
 }

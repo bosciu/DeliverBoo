@@ -62,10 +62,10 @@
                 </div>
             </aside>
             <section class="px-5 mr-5">
-                <h2 class="my-4">Ristoranti</h2>
+                <h2 class="my-4 font-weight-bolder">I nostri ristoranti</h2>
 
                 <h4 v-if="filteredRestaurants.length == 0">
-                    Non ci sono ristoranti in questa categoria
+                    Non ci sono ristoranti in questa categoria.
                 </h4>
 
                 <div class="w-100 d-flex flex-wrap" v-else>
@@ -87,13 +87,13 @@
                         </div>
 
                         <div class="card-body mt-3">
-                            <span class="card-text">Milano</span>
-                            <h4 class="card-title">{{ restaurant.name }}</h4>
+                            <h6 class="card-text"><i class="fas fa-map-marker-alt"></i> Milano</h6>
+                            <h4 class="card-title font-weight-bolder">{{ restaurant.name }}</h4>
                             <span v-if="restaurant.free_delivery == 1"
-                                >Consegna gratuita</span
+                                ><i class="fas fa-tag"></i> Consegna gratuita</span
                             >
-                            <span v-else
-                                >Prezzo Consegna:
+                            <span v-else id="delivery-price" class="font-weight-bolder"
+                                ><i class="fas fa-tag"></i> Prezzo Consegna:
                                 {{ restaurant.delivery_price }} &euro;</span
                             >
                         </div>
@@ -296,10 +296,10 @@ export default {
         background-position: right;
         background-repeat: no-repeat;
         padding-bottom: 10px;
+        box-shadow: 0 0 25px 25px $bgPrimary;
     }
 
     main {
-        background: linear-gradient($bgPrimary, whitesmoke 3%);
         a {
             color: unset;
             text-decoration: unset;
@@ -332,9 +332,20 @@ export default {
                     padding-left: 0;
 
                     li {
+                        label {
+                            border-radius: 100px;
+                            padding: 1px 5px;
+                            transition: 0.1s;
+                        }
+
                         input:hover,
                         label:hover {
                             cursor: pointer;
+                            background-color: $bgPrimary;
+                            color: white;
+                            i {
+                                color: white;
+                            }
                         }
                     }
                 }
@@ -356,6 +367,27 @@ export default {
                 width: calc((100% / 4) - 30px);
                 padding: 2px;
                 box-shadow: 0 0 5px grey;
+
+                h4 {
+                    transition: 0.2s;
+                }
+
+                &:hover {
+                    h4 {
+                        color: $darkGreenFont;
+                    }
+                }
+
+                span {
+                    color: $buttonPrimary;
+                    i {
+                        transform: rotate(90deg);
+                    }
+                }
+
+                #delivery-price {
+                    font-size: 14px;
+                }
 
                 .img-container {
                     width: 100%;

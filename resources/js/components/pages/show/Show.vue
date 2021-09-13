@@ -9,8 +9,8 @@
             <div v-else class="container pt-5">
                 <div class="row">
                     <div class="col-8">
-                        <div id="hero" class="py-4">
-                            <div class="details container">
+                        <div id="hero" class="pt-4">
+                            <div class="details">
                                 <div class="img-container rounded mb-3 bt-3">
                                     <img
                                         :src="'/storage/' + restaurant.img_path"
@@ -18,7 +18,7 @@
                                         class="w-100 h-100"
                                     />
                                 </div>
-                                <h1>{{ restaurant.name }}</h1>
+                                <h1 class="font-weight-bold">{{ restaurant.name }}</h1>
 
                                 <h6
                                     v-for="(category,
@@ -57,6 +57,7 @@
                                         </h6>
                                     </div>
                                 </div>
+
                                 <div
                                     class="modal fade"
                                     id="contactModal"
@@ -68,7 +69,7 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5
-                                                    class="modal-title"
+                                                    class="modal-title font-weight-bolder"
                                                     id="exampleModalLabel"
                                                 >
                                                     Contatta il ristorante
@@ -88,15 +89,15 @@
                                             <div class="modal-body">
                                                 <h6>
                                                     Hai allergie, intolleranze o
-                                                    altre richieste? Contattaci!
+                                                    altre richieste?<br>Contattaci!
                                                 </h6>
-                                                <p>{{ restaurant.phone }}</p>
+                                                <p class="font-weight-bolder">{{ restaurant.phone }}</p>
                                             </div>
 
                                             <div class="modal-footer">
                                                 <button
                                                     type="button"
-                                                    class="btn btn-secondary"
+                                                    class="btn"
                                                     data-dismiss="modal"
                                                 >
                                                     Chiudi
@@ -110,14 +111,14 @@
                         <!-- /Hero restaurant -->
 
                         <!-- menu -->
-                        <div class="menu container py-5">
+                        <div class="menu container pt-2 pb-5">
                             <div
                                 v-for="(category,
                                 index) in restaurant.dish_categories"
                                 :key="index"
                                 class="row flex-column"
                             >
-                                <h3>{{ category.name }}</h3>
+                                <h3 class="text-uppercase font-weight-bolder py-2">{{ category.name }}</h3>
                                 <div
                                     class="dish-container d-flex justify-content-start flex-wrap mb-4"
                                 >
@@ -134,8 +135,6 @@
                                     >
                                         <div
                                             class="card"
-                                            data-toggle="modal"
-                                            data-target="#dishModal"
                                         >
                                             <img
                                                 class="card-img-top"
@@ -151,6 +150,11 @@
                                                 <p class="card-text">
                                                     {{ dish.price }} &euro;
                                                 </p>
+
+                                            </div>
+
+                                            <div class="layover-plus rounded">
+                                                <i class="fas fa-cart-plus"></i>
                                             </div>
                                         </div>
                                     </div>
@@ -442,13 +446,13 @@ export default {
         background-position: right;
         background-repeat: no-repeat;
         padding-bottom: 10px;
+        box-shadow: 0 0 25px 25px $bgPrimary;
     }
 
     main {
-        background: linear-gradient($bgPrimary, whitesmoke 3%);
         
         .img-container {
-            width: 450px;
+            width: 550px;
             height: 300px;
             box-shadow: 0 0 4px black;
             overflow: hidden;
@@ -469,11 +473,53 @@ export default {
             background-color: $bgPrimary;
         }
 
+        #contactModal {
+            .modal-content {
+                background-color: $bgSecondary;
+            }
+
+            p {
+                letter-spacing: 2px;
+                color: $darkGreenFont;
+                text-decoration: underline;
+            }
+
+            .modal-footer {
+                button {
+                    color: $bgSecondary;
+                    background-color: $darkGreenFont;
+                }
+            }
+        }
+
         .dish-container {
             .card {
                 height: 280px;
                 box-shadow: 0 0 5px grey;
                 cursor: pointer;
+                
+                &:hover .layover-plus {
+                    opacity: 1;
+                }
+            }
+
+            .layover-plus {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: 0;
+                background-color: rgba(0, 0, 0, 0.7);
+                transition: 0.3s;
+                i {
+                    color: white;
+                    font-size: 65px;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
             }
 
             .dish {

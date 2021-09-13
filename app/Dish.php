@@ -35,4 +35,8 @@ class Dish extends Model
     public function orders() {
         return $this->hasMany('App\Order');
     }
+
+    public function orderDishes(){
+        return $this->hasMany('App\Dish');
+    }
 }

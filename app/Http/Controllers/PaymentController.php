@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Address;
 use App\Dish;
 use App\Order;
+use App\OrderedDish;
 use Braintree;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -18,6 +19,7 @@ class PaymentController extends Controller
             'surname' =>  'required|string|max:100',
             'city' => 'required|string|max:60',
             'province' => 'required|string|max:2',
+            'phone' => 'required|string|max:15',
     ];
     
 
@@ -48,10 +50,18 @@ class PaymentController extends Controller
             $newOrder->address_id = $newAddress->id;
             $newOrder->name = $data['name'];
             $newOrder->surname = $data['surname'];
+            $newOrder->phone = $data['phone'];
             $newOrder->total = $data['total'];
             $newOrder->payment_status = false;
-            $newOrder->payment_provider = "prova";
+            $newOrder->payment_provider = 'in attesa di pagamento';
             $newOrder->save();
+            foreach ($data['order'] as $singleDish) {
+                $newOrderedDish = new OrderedDish();
+                $newOrderedDish->order_id = $newOrder->id;
+                $newOrderedDish->dish_id = $singleDish['id'];
+                $newOrderedDish->quantity = $singleDish['quantity'];
+                $newOrderedDish->save();
+            }
     
             return response($content=$data,$status = 200);
         }else{

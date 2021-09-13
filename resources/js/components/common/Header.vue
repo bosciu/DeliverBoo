@@ -108,52 +108,61 @@
                             />
                         </form>
                     </div>
-                    <div class="my-drop overflow-auto" v-if="queryString != ''">
-                        <table
-                            class="table-dark table"
-                            v-if="searchedRestaurants.length > 0"
+                    <transition name="fade">
+                        <div
+                            class="my-drop overflow-auto"
+                            v-if="queryString != ''"
                         >
-                            <tbody>
-                                <tr
-                                    v-for="searchRestaurant in searchedRestaurants"
-                                    :key="searchRestaurant.id"
-                                    class="py-1"
-                                >
-                                    <td scope="row">
-                                        <div class="img-container">
-                                            <img
-                                                :src="'/storage' + searchRestaurant.img_path"
-                                                :alt="searchRestaurant.name"
-                                            />
-                                        </div>
-                                    </td>
-                                    <td>{{ searchRestaurant.name }}</td>
-                                    <td>
-                                        <router-link
-                                            class="btn btn-primary"
-                                            :to="{
-                                                name: 'show',
-                                                params: {
-                                                    slug: searchRestaurant.slug
-                                                }
-                                            }"
-                                        >
-                                            Apri
-                                        </router-link>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <table v-else class="table-dark table">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        La ricerca non ha prodotto risultati.
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                            <table
+                                class="table-dark table"
+                                v-if="searchedRestaurants.length > 0"
+                            >
+                                <tbody>
+                                    <tr
+                                        v-for="searchRestaurant in searchedRestaurants"
+                                        :key="searchRestaurant.id"
+                                        class="py-1"
+                                    >
+                                        <td scope="row">
+                                            <div class="img-container">
+                                                <img
+                                                    :src="
+                                                        searchRestaurant.img_path
+                                                    "
+                                                    :alt="searchRestaurant.name"
+                                                />
+                                            </div>
+                                        </td>
+                                        <td>{{ searchRestaurant.name }}</td>
+                                        <td>
+                                            <router-link
+                                                class="btn btn-primary"
+                                                :to="{
+                                                    name: 'show',
+                                                    params: {
+                                                        slug:
+                                                            searchRestaurant.slug
+                                                    }
+                                                }"
+                                            >
+                                                Apri
+                                            </router-link>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table v-else class="table-dark table">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            La ricerca non ha prodotto
+                                            risultati.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </transition>
                 </div>
             </section>
         </div>
@@ -232,6 +241,13 @@ header {
         }
 
         #searchbar {
+            .fade-enter-active,
+            .fade-leave-active {
+                transition: opacity 0.5s;
+            }
+            .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+                opacity: 0;
+            }
             position: relative;
             justify-content: flex-end;
             div {

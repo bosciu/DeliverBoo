@@ -19,6 +19,7 @@ class CreateOrdersTable extends Migration
             $table->unsignedBigInteger('address_id')->nullable();
             $table->string('name',60);
             $table->string('surname',60);
+            $table->string('phone', 15);
             $table->float('total',5,2);
             $table->boolean('payment_status');
             $table->string('payment_provider',20);

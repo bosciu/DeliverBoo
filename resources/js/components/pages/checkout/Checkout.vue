@@ -76,7 +76,20 @@
                                 v-model="zip_code"
                             />
                         </div>
-                        <span class="btn btn-primary" @click="submit">
+                        <div class="form-group">
+                            <label for="phone">Numero di telefono</label>
+                            <input
+                                required
+                                maxlength="15"
+                                type="text"
+                                class="form-control"
+                                id="phone"
+                                placeholder="Inserisci il tuo numero di telefono"
+                                name="phone"
+                                v-model="phone"
+                            />
+                        </div>
+                        <span class="btn btn-primary mt-3" @click="submit">
                             Invia
                         </span>
                     </div>
@@ -102,7 +115,7 @@
                                 type="text"
                                 class="form-control"
                                 id="city"
-                                placeholder="Inserisci il tuo città"
+                                placeholder="Inserisci la tua città"
                                 name="city"
                                 v-model="city"
                             />

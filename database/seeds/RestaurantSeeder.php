@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Restaurant;
 use App\Address;
+use App\Calendar;
 
 class RestaurantSeeder extends Seeder
 {
@@ -15,6 +16,18 @@ class RestaurantSeeder extends Seeder
     {
         $restaurants = config('restaurant');
         $addresses = config('address');
+        $calendars = config('calendar');
+        foreach ($calendars as $calendar) {
+            $newCalendar = new Calendar();
+            $newCalendar->mon = $calendar['mon'];
+            $newCalendar->tue = $calendar['tue'];
+            $newCalendar->wed = $calendar['wed'];
+            $newCalendar->thu = $calendar['thu'];
+            $newCalendar->fri = $calendar['fri'];
+            $newCalendar->sat = $calendar['sat'];
+            $newCalendar->sun = $calendar['sun'];
+            $newCalendar->save();
+        }
         foreach ($addresses as $address) {
             $newAddress = new Address();
             $newAddress->address = $address['address'];
@@ -28,6 +41,7 @@ class RestaurantSeeder extends Seeder
             $newRestaurant = new Restaurant();
             $newRestaurant->user_id = $restaurants[$i]['user_id'];
             $newRestaurant->address_id = $restaurants[$i]['address_id'];
+            $newRestaurant->calendar_id = $restaurants[$i]['calendar_id'];
             $newRestaurant->name = $restaurants[$i]['name'];
             $newRestaurant->email = $restaurants[$i]['email'];
             $newRestaurant->phone = $restaurants[$i]['phone'];

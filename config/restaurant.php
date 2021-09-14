@@ -4,7 +4,7 @@ return [
     [
         'user_id' => '1',
         'address_id' => '27',
-        'calendar_id' => null,
+        'calendar_id' => '1',
         'name' => 'Officina del riso',
         'email' => 'officinadelriso@gmail.com',
         'phone' => '38992730210',
@@ -18,7 +18,7 @@ return [
     [
         'user_id' => '2',
         'address_id' => '28',
-        'calendar_id' => null,
+        'calendar_id' => '2',
         'name' => 'Green Day',
         'email' => 'greenday@gmail.com',
         'phone' => '0242101120',
@@ -32,7 +32,7 @@ return [
     [
         'user_id' => '3',
         'address_id' => '29',
-        'calendar_id' => null,
+        'calendar_id' => '3',
         'name' => 'The Best Food and Drink',
         'email' => 'thebestfoodanddrink@libero.it',
         'phone' => '3476847483',
@@ -60,7 +60,7 @@ return [
     [
         'user_id' => '5',
         'address_id' => '31',
-        'calendar_id' => null,
+        'calendar_id' => '1',
         'name' => 'Frankie\'s',
         'email' => 'frankies@libero.com',
         'phone' => '0291943289',
@@ -74,7 +74,7 @@ return [
     [
         'user_id' => '6',
         'address_id' => '32',
-        'calendar_id' => null,
+        'calendar_id' => '2',
         'name' => 'Delivery Valley',
         'email' => 'deliveryvalley@gmail.com',
         'phone' => '0245497543',
@@ -88,7 +88,7 @@ return [
     [
         'user_id' => '7',
         'address_id' => '33',
-        'calendar_id' => null,
+        'calendar_id' => '3',
         'name' => 'Ciapa El Taco',
         'email' => 'ciapaeltaco@gmail.com',
         'phone' => '3515351226',
@@ -116,7 +116,7 @@ return [
     [
         'user_id' => '9',
         'address_id' => '35',
-        'calendar_id' => null,
+        'calendar_id' => '1',
         'name' => 'Ribot',
         'email' => 'ribot@libero.it',
         'phone' => '0233001646',
@@ -130,7 +130,7 @@ return [
     [
         'user_id' => '10',
         'address_id' => '36',
-        'calendar_id' => null,
+        'calendar_id' => '2',
         'name' => 'Insalatona',
         'email' => 'insalatona@gmail.com',
         'phone' => '0284105336',
@@ -144,7 +144,7 @@ return [
     [
         'user_id' => '11',
         'address_id' => '37',
-        'calendar_id' => null,
+        'calendar_id' => '3',
         'name' => 'Ottolina Cafè',
         'email' => 'ottolinacafe@libero.it',
         'phone' => '0267380067',
@@ -172,7 +172,7 @@ return [
     [
         'user_id' => '13',
         'address_id' => '39',
-        'calendar_id' => null,
+        'calendar_id' => '1',
         'name' => 'Gastronomia Yamamoto',
         'email' => 'gastronomiayamamoto@gmail.com',
         'phone' => '0236741426',
@@ -186,7 +186,7 @@ return [
     [
         'user_id' => '14',
         'address_id' => '40',
-        'calendar_id' => null,
+        'calendar_id' => '2',
         'name' => 'Chihuahua Tacos',
         'email' => 'chihuahuatacos@gmail.com',
         'phone' => '0236742528',
@@ -200,7 +200,7 @@ return [
     [
         'user_id' => '15',
         'address_id' => '41',
-        'calendar_id' => null,
+        'calendar_id' => '3',
         'name' => 'Nima Sushi',
         'email' => 'nimasushi@gmail.com',
         'phone' => '0247927764',
@@ -228,7 +228,7 @@ return [
     [
         'user_id' => '17',
         'address_id' => '43',
-        'calendar_id' => null,
+        'calendar_id' => '1',
         'name' => 'Lievità Ravizza',
         'email' => 'livitaravizza@libero.it',
         'phone' => '0240701454',
@@ -242,7 +242,7 @@ return [
     [
         'user_id' => '18',
         'address_id' => '44',
-        'calendar_id' => null,
+        'calendar_id' => '2',
         'name' => 'Focacceria Manuelina',
         'email' => 'focacceriamanuelina@libero.it',
         'phone' => '0235999080',
@@ -256,7 +256,7 @@ return [
     [
         'user_id' => '19',
         'address_id' => '45',
-        'calendar_id' => null,
+        'calendar_id' => '3',
         'name' => 'La Pasta di Nonna Rosa',
         'email' => 'lapastadinonnarosa@gmail.com',
         'phone' => '0249676591',
@@ -284,7 +284,7 @@ return [
     [
         'user_id' => '21',
         'address_id' => '47',
-        'calendar_id' => null,
+        'calendar_id' => '1',
         'name' => 'Lasagneria Italiana',
         'email' => 'lasagneriaitaliana@hotmail.it',
         'phone' => '0249676591',
@@ -298,7 +298,7 @@ return [
     [
         'user_id' => '22',
         'address_id' => '48',
-        'calendar_id' => null,
+        'calendar_id' => '2',
         'name' => 'Ristorante Indiano Aangan',
         'email' => 'ristoranteindianoaangan@hotmail.it',
         'phone' => '0228510258',
@@ -312,7 +312,7 @@ return [
     [
         'user_id' => '23',
         'address_id' => '49',
-        'calendar_id' => null,
+        'calendar_id' => '3',
         'name' => 'McDonald\'s',
         'email' => 'mcdonalds@gmail.com',
         'phone' => '0286997265',
@@ -340,7 +340,7 @@ return [
     [
         'user_id' => '25',
         'address_id' => '51',
-        'calendar_id' => null,
+        'calendar_id' => '1',
         'name' => 'KFC',
         'email' => 'kfc@gmail.com',
         'phone' => '0283623002',

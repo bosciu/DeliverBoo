@@ -39,6 +39,8 @@
                                     {{ restaurant.address.city }}
                                 </h6>
 
+                                <!-- modale contatto -->
+
                                 <div
                                     id="contact"
                                     data-toggle="modal"
@@ -106,6 +108,65 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <!-- /modale contatto -->
+
+                                <!-- Button modale calendario -->
+                                <button type="button" class="btn" data-toggle="modal" data-target="#calendar">
+                                    Visualizza il calendario
+                                </button>
+
+                                <!-- Modale calendario -->
+                                <div class="modal fade" id="calendar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Calendario</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <table class="table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">Lunedì</th>
+                                                            <td>{{calendar.mon}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">Martedì</th>
+                                                            <td>{{calendar.tue}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">Mercoledì</th>
+                                                            <td>{{calendar.wed}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">Giovedì</th>
+                                                            <td>{{calendar.thu}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">Venerdì</th>
+                                                            <td>{{calendar.fri}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">Sabato</th>
+                                                            <td>{{calendar.sat}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">Domenica</th>
+                                                            <td>{{calendar.sun}}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Chiudi</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                         <!-- /Hero restaurant -->
@@ -280,7 +341,8 @@ export default {
             orderDishes: [],
             finded: false,
             sum: 0,
-            subTotal: 0
+            subTotal: 0,
+            calendar: null
         };
     },
     created: function() {
@@ -289,6 +351,7 @@ export default {
         if (!this.orderDishes) {
             this.orderDishes = [];
         }
+        this.printCalendar();
     },
     computed: {
         anotherRest() {
@@ -319,6 +382,7 @@ export default {
                         parseFloat(this.subTotal) +
                         this.restaurant.delivery_price
                     ).toFixed(2);
+                    this.calendar = this.restaurant.calendar;
                 })
                 .catch(err => {
                     console.log(err);

@@ -11083,6 +11083,27 @@ a.text-dark:focus {
      object-position: center;
 }
 
+#orders-index {
+  min-height: calc(100vh - 415px);
+}
+
+#orders-index table td {
+  vertical-align: middle;
+}
+
+#order-show {
+  min-height: calc(100vh - 415px);
+}
+
+#order-show ul {
+  padding: 0;
+  list-style: none;
+}
+
+#order-show ul li {
+  padding: 10px 0;
+}
+
 body #app {
   font-size: 17px;
   letter-spacing: 1px;
@@ -11137,34 +11158,46 @@ body #app footer .container {
 }
 
 body #app footer .container .row {
-  width: 1140px;
   display: flex;
   justify-content: center;
   height: 200px;
+  margin: 0;
+  padding: 0;
 }
 
 body #app footer .container .row .col {
-  width: 200px;
+  height: 200px;
   max-width: 100%;
   flex-basis: 0;
   flex-grow: 1;
   display: flex;
   justify-content: center;
   background-color: #2e3333;
-  padding: 0 3px;
   margin: 5px;
 }
 
 body #app footer .container .row #logo_footer {
+  width: 200px;
   height: 200px;
   border-radius: 50%;
   margin-top: 5px;
-  overflow: hidden;
+  padding: 0;
 }
 
-body #app footer .container .row #logo_footer img {
-  vertical-align: middle;
-  border-style: none;
+body #app footer .container .row #logo_footer #container_logo_footer {
+  width: 200px;
+  margin: 0;
+  padding: 0;
+}
+
+body #app footer .container .row #logo_footer #img_logo_footer {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 body #app footer ul {

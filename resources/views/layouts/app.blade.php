@@ -82,8 +82,8 @@
             <div class="container ">
                 <div class="row">
                     <div id="logo_footer" class="col">
-                        <a  class="logo-footer" href="#">
-                            <img src="/images/logos/logo-footer.png" alt="deliverboo-logo">
+                        <a id="container_logo_footer" class="logo-footer" href="#">
+                            <img id="img_logo_footer" src="/images/logos/logo-footer.png" alt="deliverboo-logo">
                         </a>
                     </div>
                     <div class="col">

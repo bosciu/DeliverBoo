@@ -72,6 +72,7 @@
                     <router-link
                         v-for="(restaurant, index) in filteredRestaurants"
                         :key="index"
+                        @click.native="scrollTop"
                         class="card restaurant mb-4 mr-4"
                         :to="{
                             name: 'show',
@@ -281,6 +282,9 @@ export default {
             ) {
                 return false;
             } */
+        },
+        scrollTop(){
+            document.getElementById("show").scrollIntoView();
         }
     }
 };

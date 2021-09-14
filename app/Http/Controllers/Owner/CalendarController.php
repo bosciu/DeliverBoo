@@ -47,16 +47,19 @@ class CalendarController extends Controller
                     $data[$key] = null;
                 }else {
                     if ($day[2] != null && $day[3] != null) {
-                        $data[$key] = '||' . $day[2]. '-' . $day[3];
+                        $data[$key] = $day[2]. '-' . $day[3];
                     }
                     if ($day[1] == null && $day[2] == null) {
-                        $data[$key] = '$$' . $day[0]. '-' . $day[3] . '$$';
+                        $data[$key] = $day[0]. '-' . $day[3];
                     }
                     if ($day[0] != null && $day[1] != null) {
                         $data[$key] = $day[0]. '-' . $day[1];
                     }
                     if ($day[0] != null && $day[1] != null && $day[2] != null && $day[3] != null) {
-                        $data[$key] = $data[$key] . '//' .  $day[2]. '-' . $day[3];
+                        $data[$key] = $data[$key] . ' - ' .  $day[2]. '-' . $day[3];
+                    }
+                    if ($day[0] == null && $day[1] == null && $day[2] == null && $day[3] == null) {
+                        $data[$key] = 'Chiuso';
                     }
                 }
             }

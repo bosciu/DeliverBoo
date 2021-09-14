@@ -11,6 +11,7 @@
                     <div class="col-8">
                         <div id="hero" class="pt-4">
                             <div class="details">
+                                <h1 class="font-weight-bold mb-4">{{ restaurant.name }}</h1>
                                 <div class="img-container rounded mb-3 bt-3">
                                     <img
                                         :src="'/storage/' + restaurant.img_path"
@@ -18,7 +19,6 @@
                                         class="w-100 h-100"
                                     />
                                 </div>
-                                <h1 class="font-weight-bold">{{ restaurant.name }}</h1>
 
                                 <h6
                                     v-for="(category,
@@ -34,31 +34,82 @@
                                     {{ restaurant.delivery_price }} &euro;
                                 </p>
 
-                                <h6>
+                                <h6 class="mb-4">
                                     {{ restaurant.address.address }}
                                     {{ restaurant.address.city }}
                                 </h6>
 
-                                <!-- modale contatto -->
+                                <div v-if="calendar" class="d-inline-block">
+                                    <!-- Button modale calendario -->
+                                    <button type="button" class="calendar-btn btn d-inline-block mr-4" data-toggle="modal" data-target="#calendarModal">
+                                       <i class="far fa-calendar-alt"></i> Visualizza il calendario
+                                    </button>
 
-                                <div
-                                    id="contact"
-                                    data-toggle="modal"
-                                    data-target="#contactModal"
-                                    class="my-3 p-3"
-                                >
-                                    <div>
-                                        <i class="fas fa-info-circle mr-3"></i>
-                                    </div>
-
-                                    <div>
-                                        <h5>Informazioni sul ristorante</h5>
-                                        <h6>
-                                            Intolleranze, allergeni o altre
-                                            richieste
-                                        </h6>
+                                    <!-- Modale calendario -->
+                                    <div class="modal fade" id="calendarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLongTitle">Orari apertura e chiusura</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <table class="table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th scope="row">Lunedì</th>
+                                                                <td>{{calendar.mon}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Martedì</th>
+                                                                <td>{{calendar.tue}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Mercoledì</th>
+                                                                <td>{{calendar.wed}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Giovedì</th>
+                                                                <td>{{calendar.thu}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Venerdì</th>
+                                                                <td>{{calendar.fri}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Sabato</th>
+                                                                <td>{{calendar.sat}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Domenica</th>
+                                                                <td>{{calendar.sun}}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn" data-dismiss="modal">Chiudi</button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+
+                                <button v-else class="calendar-btn btn" id="no-calendar" disabled>Calendario non presente</button>
+
+                                <!-- modale contatto -->
+
+                                <button
+                                    data-toggle="modal"
+                                    data-target="#contactModal"
+                                    type="button"
+                                    id="contact"
+                                    class="btn"
+                                >
+                                    <i class="fas fa-info-circle"></i> Contatta il ristorante
+                                </button>
 
                                 <div
                                     class="modal fade"
@@ -110,63 +161,6 @@
                                 </div>
 
                                 <!-- /modale contatto -->
-
-                                <!-- Button modale calendario -->
-                                <button type="button" class="btn" data-toggle="modal" data-target="#calendar">
-                                    Visualizza il calendario
-                                </button>
-
-                                <!-- Modale calendario -->
-                                <div class="modal fade" id="calendar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLongTitle">Calendario</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <table class="table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <th scope="row">Lunedì</th>
-                                                            <td>{{calendar.mon}}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">Martedì</th>
-                                                            <td>{{calendar.tue}}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">Mercoledì</th>
-                                                            <td>{{calendar.wed}}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">Giovedì</th>
-                                                            <td>{{calendar.thu}}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">Venerdì</th>
-                                                            <td>{{calendar.fri}}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">Sabato</th>
-                                                            <td>{{calendar.sat}}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">Domenica</th>
-                                                            <td>{{calendar.sun}}</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Chiudi</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
                         <!-- /Hero restaurant -->
@@ -351,7 +345,6 @@ export default {
         if (!this.orderDishes) {
             this.orderDishes = [];
         }
-        this.printCalendar();
     },
     computed: {
         anotherRest() {
@@ -527,14 +520,48 @@ export default {
             }
         }
 
+        #calendarModal {
+
+            td,th {
+                border-top: 0;
+            }
+
+            .modal-content {
+                background-color: $bgSecondary;
+            }
+
+            .modal-footer {
+                button {
+                    color: $bgSecondary;
+                    background-color: $darkGreenFont;
+                }
+            }
+        }
+
+        .calendar-btn {
+            background-color: $buttonSecondary;
+            color: white;
+
+            &:hover {
+                background-color: #a75c71;
+            }
+        }
+
+        #no-calendar {
+            cursor: not-allowed;
+
+            &:hover {
+                background-color: $buttonSecondary;
+            }
+        }
+
         #contact {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            width: 60%;
-            border: 2px solid $darkGreenFont;
-            border-radius: 3px;
-            background-color: $bgPrimary;
+           background-color: $bgPrimary;
+           color: white;
+
+           &:hover {
+              background-color: #2aa180; 
+           }
         }
 
         #contactModal {

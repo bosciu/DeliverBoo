@@ -391,36 +391,49 @@ export default {
 
 //query fede 
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 575px) {
     
     header {
-        height: 600px;
+        height: 550px;
             #jumbotron {
-                margin-top: 35px;
+                margin-top: 20px;
                 flex-flow: column;
-            }
-    }
-    header #jumbotron #carouselExampleControls, 
-    header #jumbotron .layover {
-        height: 230px;
-        width: 230px !important;
-        overflow: hidden;
-    }
-    header #jumbotron #carouselExampleControls a h2 {
-        font-size: 18px;
-        width: 75%;
-    }
-    header #jumbotron #searchbar div {
-        margin: -29% !important;
-        margin-top: 1% !important;
-        width: 230px !important;
-            .form-inline {
-                width: 200px !important;
-                
-            }
-    }
-    header #jumbotron #searchbar div label {
-        font-size: 16px;
+                    #carouselExampleControls,
+                    .layover {
+                        width: 300px !important;
+                        height: 200px;
+                        a h2 {
+                            font-size: 18px;
+                            position: absolute;
+                            // top: 50%;
+                            // left: 50%;
+                            // transform: translate(-50%,-50%);
+                            top: 35%;
+                        }
+                    }
+                    #searchbar {
+                        justify-content: center;
+                            .my-drop table tr td {
+                                font-size: 14px;
+                                padding: 8px;
+                                    .btn {
+                                        padding: 5px;
+                                    }
+                            }
+                            .img-container {
+                                width: 60px !important;
+                            }
+                            div {
+                                width: 300px !important;
+                                    .form-inline {
+                                    width: 300px !important;
+                                }
+                                label {
+                                    font-size: 16px;
+                                }
+                            }
+                    }
+            }       
     }
 };
 </style>

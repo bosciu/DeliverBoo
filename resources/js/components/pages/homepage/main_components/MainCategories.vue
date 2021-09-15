@@ -126,12 +126,21 @@ h2 {
 }
 
 //query fede
-@media screen and (max-width: 576px) {
-    div h2 {
-        font-size: 24px;
+@media screen and (max-width: 575px) {
+    div 
+    div.text-center {
+        padding-top: 2rem !important;
+        padding-bottom: 0rem !important;
+            h2 {
+                font-size: 22px;
+            }
+            #main-categories {
+                padding-top: 0 !important;
+                a .content h3 {
+                    font-size: 20px;
+                }
+            }
     }
-    #main-categories a .content h3 {
-        font-size: 20px;
-    }
+    
 }
 </style>

@@ -194,5 +194,34 @@ footer {
             }
         }
     }
+
+// query fede
+@media screen and (max-width: 575px) {
+    footer  {
+        padding: 30px 15px;
+            .col {
+                max-width: 575px !important;
+            }
+        ul {
+            width: 250px;
+                li h6 {
+                    font-size: 22px;
+            }
+                a {
+                    font-size: 14px;
+                }
+        }
+        .logo-container .icons {
+            margin: 0;
+                i {
+                    font-size: 20px;
+                    padding: 4px;
+                }
+        }
+        span {
+            font-size: 16px;
+        }
+    }
+
 }
 </style>

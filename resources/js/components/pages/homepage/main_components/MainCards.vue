@@ -120,19 +120,20 @@ export default {
 }
 
 //query fede
-@media screen and (max-width: 576px) {
-    .content h2 {
-        font-size: 24px;
-    }
-    .content .container .post-it p {
-        font-size: 20px;
-        margin: 5px 0 !important;
-    }
-    .post-it:hover,
-    a:hover {
-        transition: 0.2s;
-        transform: scale(0.5);
-        text-decoration: none;
+@media screen and (max-width: 575px) {
+    .content {
+        padding: 0 15px;
+        margin: auto;
+        padding-top: 2rem !important;
+            h2 {
+                font-size: 22px;
+            }
+            .container {
+                padding: 15px 0;
+                    .post-it p {
+                        font-size: 16px;
+                    }
+            }        
     }
 }
 </style>

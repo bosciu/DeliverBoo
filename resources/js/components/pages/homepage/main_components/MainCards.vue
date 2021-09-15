@@ -1,26 +1,33 @@
 <template>
     <div class="content pt-5 text-center">
         <h2>I nostri ristoranti!</h2>
-        <div
-            class="container d-flex flex-wrap justify-content-center text-left"
-        >
-            <router-link
-                v-for="restaurant in randomMainRestaurants"
-                :key="restaurant.id"
-                @click.native="scrollTop"
-                class="post-it col-lg-3 col-md-6 col-xs-12 d-flex"
-                :to="{ name: 'show', params: { slug: restaurant.slug } }"
+        <div class="container text-left">
+            <div class="row">
+                <div
+                    class="col-lg-3 col-md-6 col-xs-12"
+                    v-for="restaurant in randomMainRestaurants"
+                    :key="restaurant.id"
                 >
-                <div>
-                    <div class="img-container">
-                        <img
-                            :src="'/storage/' + restaurant.img_path"
-                            :alt="restaurant.name"
-                        />
-                    </div>
-                    <p class="mt-3">{{ restaurant.name }}</p>
+                    <router-link
+                        class="post-it"
+                        @click.native="scrollTop"
+                        :to="{
+                            name: 'show',
+                            params: { slug: restaurant.slug }
+                        }"
+                    >
+                        <div>
+                            <div class="img-container">
+                                <img
+                                    :src="'/storage/' + restaurant.img_path"
+                                    :alt="restaurant.name"
+                                />
+                            </div>
+                            <p class="mt-3">{{ restaurant.name }}</p>
+                        </div>
+                    </router-link>
                 </div>
-            </router-link>
+            </div>
         </div>
     </div>
 </template>
@@ -114,7 +121,6 @@ export default {
 
 //query fede
 @media screen and (max-width: 576px) {
-    
     .content h2 {
         font-size: 24px;
     }
@@ -123,11 +129,10 @@ export default {
         margin: 5px 0 !important;
     }
     .post-it:hover,
-        a:hover {
-            transition: 0.2s;
-            transform: scale(0.5);
-            text-decoration: none;
-        }
-
+    a:hover {
+        transition: 0.2s;
+        transform: scale(0.5);
+        text-decoration: none;
+    }
 }
 </style>

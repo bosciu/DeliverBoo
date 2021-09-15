@@ -361,10 +361,10 @@ main {
                     input:hover,
                     label:hover {
                         cursor: pointer;
-                        background-color: unset;
-                        color: unset;
+                        background-color: $bgPrimary;
+                        color: white;
                         i {
-                            color: unset;
+                            color: white;
                         }
                     }
                 }
@@ -425,15 +425,17 @@ main {
                     height: 150px;
                 }
             }
-            ul {
-                li {
-                    input:active,
-                    label:active {
-                        cursor: pointer;
-                        background-color: $bgPrimary;
-                        color: white;
-                        i {
-                            color: white;
+            .list-container {
+                ul {
+                    li {
+                        input:hover,
+                        label:hover {
+                            cursor: pointer;
+                            background-color: unset;
+                            color: unset;
+                            i {
+                                color: #c48d9d;
+                            }
                         }
                     }
                 }

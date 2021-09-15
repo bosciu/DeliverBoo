@@ -8,7 +8,7 @@
             <Loading v-if="!isLoaded" />
             <div v-else class="container pt-5">
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-md-8 col-12">
                         <div id="hero" class="pt-4">
                             <div class="details">
                                 <h1 class="font-weight-bold mb-4">
@@ -31,7 +31,7 @@
                                     {{ category.name }}
                                 </h6>
 
-                                <p>
+                                <p class="font-weight-bold">
                                     <i class="fas fa-shipping-fast"></i>
                                     {{ restaurant.delivery_price }} &euro;
                                 </p>
@@ -45,7 +45,7 @@
                                     <!-- Button modale calendario -->
                                     <button
                                         type="button"
-                                        class="calendar-btn btn d-inline-block mr-4"
+                                        class="calendar-btn btn d-inline-block"
                                         data-toggle="modal"
                                         data-target="#calendarModal"
                                     >
@@ -255,12 +255,12 @@
                         <!-- /Hero restaurant -->
 
                         <!-- menu -->
-                        <div class="menu container pt-2 pb-5">
+                        <div class="menu mt-3 pt-2 pb-5">
                             <div
                                 v-for="(category,
                                 index) in restaurant.dish_categories"
                                 :key="index"
-                                class="row flex-column"
+                                class="flex-column container"
                             >
                                 <h3
                                     class="text-uppercase font-weight-bolder py-2"
@@ -268,10 +268,10 @@
                                     {{ category.name }}
                                 </h3>
                                 <div
-                                    class="dish-container d-flex justify-content-start flex-wrap mb-4"
+                                    class="dish-container row mb-4"
                                 >
                                     <div
-                                        class="dish mb-3 mr-3"
+                                        class="dish mb-3 mr-3 col-12 col-md-4"
                                         :class="
                                             category.id == dish.dish_category_id
                                                 ? ''
@@ -310,7 +310,7 @@
                     </div>
 
                     <!-- CARRELLO -->
-                    <div class="col-4" id="cart">
+                    <div class="col-md-4 col-12" id="cart">
                         <div class="layover" v-if="anotherRest"></div>
                         <div id="checkout-another" v-if="anotherRest">
                             <span>Carrello in un altro ristorante</span>
@@ -350,14 +350,14 @@
                                 <div class="col-3 quantity">
                                     <span class="button-container">
                                         <i
-                                            class="fas fa-minus"
+                                            class="fas fa-minus-circle "
                                             @click="removeItem(orderDish)"
                                         ></i>
                                     </span>
                                     <span>{{ orderDish.quantity }}</span>
                                     <span class="button-container">
                                         <i
-                                            class="fas fa-plus"
+                                            class="fas fa-plus-circle"
                                             @click="addItem(orderDish)"
                                         ></i>
                                     </span>
@@ -373,7 +373,7 @@
                                     }}€
                                 </div>
                             </div>
-                            <hr />
+                            <hr v-if="orderDishes.length > 0" />
                         </div>
                         <div
                             class="subtotal"
@@ -586,221 +586,264 @@ export default {
 <style lang="scss" scoped>
 @import "./resources/sass/_variables";
 
-header {
-    background-color: $bgPrimary;
-    background-image: url(/images/sfondo-show-store.png);
-    background-size: contain;
-    background-position: right;
-    background-repeat: no-repeat;
-    padding-bottom: 10px;
-    box-shadow: 0 0 25px 25px $bgPrimary;
-}
-
-main {
-    .img-container {
-        width: 550px;
-        height: 300px;
-        box-shadow: 0 0 4px black;
-        overflow: hidden;
-
-        img {
-            object-fit: cover;
-            object-position: center;
-        }
-    }
-
-    #calendarModal {
-        td,
-        th {
-            border-top: 0;
-        }
-
-        .modal-content {
-            background-color: $bgSecondary;
-        }
-
-        .modal-footer {
-            button {
-                color: $bgSecondary;
-                background-color: $darkGreenFont;
-            }
-        }
-    }
-
-    .calendar-btn {
-        background-color: $buttonSecondary;
-        color: white;
-
-        &:hover {
-            background-color: #a75c71;
-        }
-    }
-
-    #no-calendar {
-        cursor: not-allowed;
-
-        &:hover {
-            background-color: $buttonSecondary;
-        }
-    }
-
-    #contact {
+    header {
         background-color: $bgPrimary;
-        color: white;
-
-        &:hover {
-            background-color: #2aa180;
-        }
+        background-image: url(/images/sfondo-show-store.png);
+        background-size: contain;
+        background-position: right;
+        background-repeat: no-repeat;
+        padding-bottom: 10px;
+        box-shadow: 0 0 25px 25px $bgPrimary;
     }
 
-    #contactModal {
-        .modal-content {
-            background-color: $bgSecondary;
-        }
-
-        p {
-            letter-spacing: 2px;
-            color: $darkGreenFont;
-            text-decoration: underline;
-        }
-
-        .modal-footer {
-            button {
-                color: $bgSecondary;
-                background-color: $darkGreenFont;
-            }
-        }
-    }
-
-    .dish-container {
-        .card {
-            height: 280px;
-            box-shadow: 0 0 5px grey;
-            cursor: pointer;
-
-            &:hover .layover-plus {
-                opacity: 1;
-            }
-        }
-
-        .layover-plus {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0;
-            background-color: rgba(124, 192, 173, 0.7);
-            transition: 0.3s;
-            i {
-                color: white;
-                font-size: 65px;
-                position: absolute;
-                opacity: 1;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                transition: 0.3s;
-            }
-        }
-
-        .dish {
-            width: 30%;
-
-            #dishModal {
-                .img-container {
-                    width: 100%;
-                    img {
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                        object-position: center;
-                    }
-                }
-                p {
-                    padding: 20px 20px 0;
-                    text-align: center;
-                    word-break: break-all;
-                }
-            }
-        }
-    }
-
-    #cart {
-        position: absolute;
-        right: 20%;
-        width: calc((100% / 5));
-        padding: 30px;
-        border-radius: 7px;
-        box-shadow: 0 0 2px black;
-        background-color: rgba($buttonPrimary, 0.6);
-        overflow: hidden;
-
-        #checkout {
-            padding: 15px 20px;
-            border-radius: 7px;
-            font-weight: 700;
-            background-color: $bgSecondary;
-            box-shadow: 0 4px 8px black;
-            text-align: center;
-            span {
-                color: black;
-                cursor: pointer;
-                &:hover {
-                    text-decoration: underline;
-                }
-            }
-        }
-
-        #checkout-another {
-            padding: 15px 20px;
-            border-radius: 7px;
-            font-weight: 700;
-            background-color: $bgSecondary;
-            box-shadow: 0 4px 8px black;
-            text-align: center;
-            position: relative;
-            z-index: 100;
+    main {
+        .img-container {
+            width: 550px;
+            height: 300px;
+            box-shadow: 0 0 4px black;
             overflow: hidden;
+
+            img {
+                object-fit: cover;
+                object-position: center;
+            }
         }
 
-        .layover {
-            width: 100%;
-            height: 100%;
-            top: 0;
-            right: 0;
+        #calendarModal {
+            td,
+            th {
+                border-top: 0;
+            }
+
+            .modal-content {
+                background-color: $bgSecondary;
+            }
+
+            .modal-footer {
+                button {
+                    color: $bgSecondary;
+                    background-color: $darkGreenFont;
+                }
+            }
+        }
+
+        .calendar-btn {
+            margin-right: 10px;
+            background-color: $buttonSecondary;
+            color: white;
+
+            &:hover {
+                background-color: #a75c71;
+            }
+        }
+
+        #no-calendar {
+            cursor: not-allowed;
+
+            &:hover {
+                background-color: $buttonSecondary;
+            }
+        }
+
+        #contact {
+            background-color: $bgPrimary;
+            color: white;
+
+            &:hover {
+                background-color: #2aa180;
+            }
+        }
+
+        #contactModal {
+            .modal-content {
+                background-color: $bgSecondary;
+            }
+
+            p {
+                letter-spacing: 2px;
+                color: $darkGreenFont;
+                text-decoration: underline;
+            }
+
+            .modal-footer {
+                button {
+                    color: $bgSecondary;
+                    background-color: $darkGreenFont;
+                }
+            }
+        }
+
+        .dish-container {
+            .card {
+                box-shadow: 0 0 5px grey;
+                cursor: pointer;
+
+                &:hover .layover-plus {
+                    opacity: 1;
+                }
+            }
+
+            .layover-plus {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: 0;
+                background-color: rgba(124, 192, 173, 0.7);
+                transition: 0.3s;
+                i {
+                    color: white;
+                    font-size: 65px;
+                    position: absolute;
+                    opacity: 1;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    transition: 0.3s;
+                }
+            }
+
+            .dish {
+                width: 30%;
+
+                #dishModal {
+                    .img-container {
+                        width: 100%;
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            object-position: center;
+                        }
+                    }
+                    p {
+                        padding: 20px 20px 0;
+                        text-align: center;
+                        word-break: break-all;
+                    }
+                }
+
+            }
+        }
+
+        #cart {
             position: absolute;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
+            right: 20%;
+            width: calc((100% / 5));
+            padding: 30px;
+            border-radius: 7px;
+            box-shadow: 0 0 2px black;
+            background-color: rgba($buttonPrimary, 0.6);
+            overflow: hidden;
 
-        .products {
-            .quantity {
-                display: flex;
-                justify-content: space-between;
-                padding: 5px;
-                font-size: 14px;
-                & > .button-container {
-                    display: inline-block;
-                    position: relative;
-                    width: 20px;
-                    height: 20px;
-                    border-radius: 50%;
-                    border: 2px solid coral;
-                    margin: 0 2px;
-                    font-size: 11px;
+            #checkout {
+                padding: 15px 20px;
+                border-radius: 7px;
+                font-weight: 700;
+                background-color: $bgSecondary;
+                box-shadow: 0 4px 8px black;
+                text-align: center;
+                span {
+                    color: black;
                     cursor: pointer;
-                    i {
-                        position: absolute;
-                        top: 45%;
-                        left: 50%;
-                        transform: translate(-50%, -50%);
+                    &:hover {
+                        text-decoration: underline;
                     }
                 }
             }
-            .tot {
-                font-size: 14px;
+
+            #checkout-another {
+                padding: 15px 20px;
+                border-radius: 7px;
+                font-weight: 700;
+                background-color: $bgSecondary;
+                box-shadow: 0 4px 8px black;
+                text-align: center;
+                position: relative;
+                z-index: 100;
+                overflow: hidden;
+            }
+
+            .layover {
+                width: 100%;
+                height: 100%;
+                top: 0;
+                right: 0;
+                position: absolute;
+                background-color: rgba(0, 0, 0, 0.5);
+            }
+
+            .products {
+                .quantity {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 5px;
+                    font-size: 15px;
+                    & > .button-container {
+                        display: inline-block;
+                        position: relative;
+                        
+                        i {
+                            position: absolute;
+                            font-size: 13px;
+                            top: 45%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            cursor: pointer;
+                            margin: 0 2px;
+                        }
+                    }
+                }
+                .tot {
+                    font-size: 14px;
+                }
             }
         }
     }
+
+@media screen and (max-width: 575px) {
+
+    main {
+
+        tbody {
+            text-align: left;
+
+            td {
+                font-size: 13px;
+            }
+        }
+
+        h3 {
+            text-align: center;
+        }
+
+        .img-container {
+            width: 100%;
+            height: 100%;
+        }
+
+         #cart {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            z-index: 10000;
+            width: 100%;
+            padding: 15px;
+            font-weight: bold;
+            background-color: rgba($buttonPrimary, 0.8);
+        }
+
+        .details {
+            text-align: center;
+
+            .calendar-btn {
+                margin-bottom: 10px;
+                margin-right: 0;
+            }
+        }
+    }
+    
+   
 }
 </style>

@@ -31,70 +31,73 @@
         </div>
         {{-- /button container top --}}
 
-        <section class="details d-flex justify-content-between align-items-center mb-2">
+        <section class="details row mb-2">
 
             {{-- restaurant details --}}
-            <ul class="mb-4">
-                <li>
-                    <h4>
-                        <i class="fas fa-envelope"></i>
-                        Mail: {{ $restaurant->email }}
-                    </h4>
-                </li>
-
-                <li>
-                    <h4>
-                        <i class="fas fa-phone"></i>
-                        Telefono: {{ $restaurant->phone }}
-                    </h4>
-                </li>
-
-                <li>
-                    <h4>
-                        <i class="fas fa-utensils"></i>
-                        Ritiro presso il ristorante: 
-                        @if ($restaurant->take_away == 0)
-                            <span>
-                                No
-                            </span>
-                        @else
-                            <span>
-                                S&igrave;
-                            </span>
-                        @endif
-                    </h4>
-                </li>
-
-                <li>
-                    <h4>
-                        <i class="fas fa-truck"></i>
-                        Spedizione gratuita: 
-                        @if ($restaurant->free_delivery == 0)
-                            <span>
-                                No
-                            </span>
-                        @else
-                            <span>
-                                S&igrave;
-                            </span>
-                        @endif
-                    </h4>
-                </li>
-
-                <li >
-                    <h4>
-                        <i class="fas fa-dollar-sign"></i>
-                         Spese di spedizione: {{ $restaurant->delivery_price }} &euro;
-                    </h4>
-                </li>
-            </ul>
-            {{-- /restaurant details --}}
-
-            {{-- restaurant image --}}
-            <div class="restaurant-image">
-                <img src="{{ asset('storage/' . $restaurant->img_path) }}" alt="{{ $restaurant->name }} immagine">
+            <div class="col-md-6">
+                <ul class="mb-4">
+                    <li>
+                        <h4>
+                            <i class="fas fa-envelope"></i>
+                            Mail: {{ $restaurant->email }}
+                        </h4>
+                    </li>
+    
+                    <li>
+                        <h4>
+                            <i class="fas fa-phone"></i>
+                            Telefono: {{ $restaurant->phone }}
+                        </h4>
+                    </li>
+    
+                    <li>
+                        <h4>
+                            <i class="fas fa-utensils"></i>
+                            Ritiro presso il ristorante: 
+                            @if ($restaurant->take_away == 0)
+                                <span>
+                                    No
+                                </span>
+                            @else
+                                <span>
+                                    S&igrave;
+                                </span>
+                            @endif
+                        </h4>
+                    </li>
+    
+                    <li>
+                        <h4>
+                            <i class="fas fa-truck"></i>
+                            Spedizione gratuita: 
+                            @if ($restaurant->free_delivery == 0)
+                                <span>
+                                    No
+                                </span>
+                            @else
+                                <span>
+                                    S&igrave;
+                                </span>
+                            @endif
+                        </h4>
+                    </li>
+    
+                    <li >
+                        <h4>
+                            <i class="fas fa-dollar-sign"></i>
+                             Spese di spedizione: {{ $restaurant->delivery_price }} &euro;
+                        </h4>
+                    </li>
+                </ul>
             </div>
-            {{-- /restaurant image --}}
+            {{-- /restaurant details --}}
+            <div class="col-md-6">
+                {{-- restaurant image --}}
+                <div class="restaurant-image">
+                    <img src="{{ asset('storage/' . $restaurant->img_path) }}" alt="{{ $restaurant->name }} immagine">
+                </div>
+                {{-- /restaurant image --}}
+            </div>
 
         </section>
 

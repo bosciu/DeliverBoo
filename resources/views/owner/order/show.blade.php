@@ -39,10 +39,14 @@
                         Spese di spedizione: € {{number_format((float)$order->restaurant->delivery_price,2,',','')}}
                     </li>
                     <li>
+                        Sistema di pagamento: {{$order->payment_provider}}
+                    </li>
+                    <li>
                         Totale ordine: € {{number_format((float)$order->total,2,',','')}}
                     </li>
                 </ul>
             </div>
         </div>
+        <a href="{{route('owner.order.index')}}" class="btn btn-secondary mt-4">Torna indietro</a>
     </div>
 @endsection

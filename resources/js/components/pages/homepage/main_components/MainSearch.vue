@@ -77,4 +77,14 @@ section {
         }
     }
 }
+
+//query fede
+@media screen and (max-width: 575px) {
+    section h4 {
+        font-size: 22px;
+    }
+    #main-categories a .content h3 {
+        font-size: 20px;
+    }
+}
 </style>

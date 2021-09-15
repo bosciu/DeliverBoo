@@ -48,7 +48,7 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item align-self-center mr-3">
+                            <li class="nav-item mr-3 my-self">
                                 <a href="{{route('owner.home')}}">Portale ristoratore</a>
                             </li>
                             <li class="nav-item dropdown">
@@ -148,20 +148,24 @@
                                 <h6>Porta DeliverBoo con te</h6>
                             </li>
                             <li>
-                                <a href="#">
-                                    <img
-                                        src="https://www.palestrauniverso.it/wp-content/uploads/2018/05/google-play-11.png"
-                                        alt="download-from-googleplay"
-                                    />
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img
-                                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Download_on_the_App_Store_Badge_IT_RGB_blk.svg/1280px-Download_on_the_App_Store_Badge_IT_RGB_blk.svg.png"
-                                        alt="download-from-appstore"
-                                    />
-                                </a>
+                                <div class="row">
+                                    <div class="col-6 col-md-12">
+                                        <a href="#">
+                                            <img
+                                                src="https://www.palestrauniverso.it/wp-content/uploads/2018/05/google-play-11.png"
+                                                alt="download-from-googleplay"
+                                            />
+                                        </a>
+                                    </div>
+                                    <div class="col-6 col-md-12">
+                                        <a href="#">
+                                            <img
+                                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Download_on_the_App_Store_Badge_IT_RGB_blk.svg/1280px-Download_on_the_App_Store_Badge_IT_RGB_blk.svg.png"
+                                                alt="download-from-appstore"
+                                            />
+                                        </a>
+                                    </div>
+                                </div>
                             </li>
                         </ul>
                     </div>

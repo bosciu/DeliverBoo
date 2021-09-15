@@ -3,7 +3,7 @@
 @section('content')
     <div class="container text-center py-4" id="orders-index">
         <h1>Pagina ordini</h1>
-        <table class="table">
+        <table class="table table-responsive">
             <thead>
               <tr>
                   <th scope="col">Ristorante</th>

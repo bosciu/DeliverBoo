@@ -71,20 +71,24 @@
                             <h6>Porta DeliverBoo con te</h6>
                         </li>
                         <li>
-                            <a href="#">
-                                <img
-                                    src="https://www.palestrauniverso.it/wp-content/uploads/2018/05/google-play-11.png"
-                                    alt="download-from-googleplay"
-                                />
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img
-                                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Download_on_the_App_Store_Badge_IT_RGB_blk.svg/1280px-Download_on_the_App_Store_Badge_IT_RGB_blk.svg.png"
-                                    alt="download-from-appstore"
-                                />
-                            </a>
+                            <div class="row">
+                                <div class="col-6 col-md-12">
+                                    <a href="#">
+                                        <img
+                                            src="https://www.palestrauniverso.it/wp-content/uploads/2018/05/google-play-11.png"
+                                            alt="download-from-googleplay"
+                                        />
+                                    </a>
+                                </div>
+                                <div class="col-6 col-md-12">
+                                    <a href="#">
+                                        <img
+                                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Download_on_the_App_Store_Badge_IT_RGB_blk.svg/1280px-Download_on_the_App_Store_Badge_IT_RGB_blk.svg.png"
+                                            alt="download-from-appstore"
+                                        />
+                                    </a>
+                                </div>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -194,34 +198,38 @@ footer {
             }
         }
     }
-
+}
 // query fede
 @media screen and (max-width: 575px) {
-    footer  {
+    footer {
         padding: 30px 15px;
-            .col {
-                max-width: 575px !important;
-            }
-        ul {
-            width: 250px;
-                li h6 {
-                    font-size: 22px;
-            }
-                a {
-                    font-size: 14px;
+        .container {
+            .row {
+                .col {
+                    height: 150px;
+                    max-width: 575px !important;
                 }
-        }
-        .logo-container .icons {
-            margin: 0;
-                i {
-                    font-size: 20px;
-                    padding: 4px;
+                ul {
+                    width: 250px;
+                    li h6 {
+                        font-size: 22px;
+                    }
+                    a {
+                        font-size: 14px;
+                    }
                 }
-        }
-        span {
-            font-size: 16px;
+                .logo-container .icons {
+                    margin: 0;
+                    i {
+                        font-size: 20px;
+                        padding: 4px;
+                    }
+                }
+                span {
+                    font-size: 16px;
+                }
+            }
         }
     }
-
 }
 </style>

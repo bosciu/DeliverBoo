@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="content" id="checkout">
+<div class="content px-3" id="checkout">
     @if (session('success_message'))
         <div class="alert alert-success">
           {{session('success_message')}}
@@ -20,7 +20,7 @@
       <div class="order-detail py-5">
         <h5 class="text-center">Riepilogo oridne</h5>
       </div>
-      <div class="form-container">
+      <div class="form-container pb-5">
         <form method="post" id="payment-form" action="{{url('/checkout')}}">
             @csrf
             @method('POST')

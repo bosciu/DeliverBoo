@@ -601,7 +601,7 @@ export default {
                 top: 0;
                 left: 0;
                 opacity: 0;
-                background-color: rgba(0, 0, 0, 0.7);
+                background-color: rgba(124, 192, 173,0.5);
                 transition: 0.3s;
                 i {
                     color: white;

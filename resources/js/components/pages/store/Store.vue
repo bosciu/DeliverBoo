@@ -108,9 +108,7 @@
                                         class="font-weight-bolder"
                                         ><i class="fas fa-tag"></i> Prezzo
                                         Consegna:
-                                        {{
-                                            restaurant.delivery_price
-                                        }}
+                                        {{ restaurant.delivery_price }}
                                         &euro;</span
                                     >
                                 </div>
@@ -321,23 +319,23 @@ header {
     box-shadow: 0 0 25px 25px $bgPrimary;
 }
 
-    main {
-        min-height: calc(100vh - 425px);
-        padding-bottom: 20px;
+main {
+    min-height: calc(100vh - 425px);
+    padding-bottom: 20px;
 
-        a {
-            color: unset;
-            text-decoration: unset;
-        }
+    a {
+        color: unset;
+        text-decoration: unset;
+    }
 
-        aside {
-            width: 20%;
-            .list-container {
-                .categories,
-                .delivery {
-                    margin: 0 10px;
-                    border-top: 2px solid rgb(240, 235, 235);
-                }
+    aside {
+        width: 20%;
+        .list-container {
+            .categories,
+            .delivery {
+                margin: 0 10px;
+                border-top: 2px solid rgb(240, 235, 235);
+            }
 
             h3 {
                 font-size: 16px;
@@ -381,15 +379,10 @@ header {
             }
         }
     }
-
     section {
-        width: 80%;
-
-        section {
-
-            .restaurant {
-                padding: 2px;
-                box-shadow: 0 0 5px grey;
+        .restaurant {
+            padding: 2px;
+            box-shadow: 0 0 5px grey;
 
             &:hover {
                 h4 {
@@ -403,30 +396,31 @@ header {
                     transform: rotate(90deg);
                 }
             }
+        }
 
-            #delivery-price {
-                font-size: 14px;
-            }
+        #delivery-price {
+            font-size: 14px;
+        }
 
-            .img-container {
+        .img-container {
+            width: 100%;
+            height: 150px;
+            padding: 5px;
+
+            img {
                 width: 100%;
-                height: 150px;
-                padding: 5px;
-
-                img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    object-position: center;
-                }
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
             }
         }
     }
+}
 
 @media screen and (max-width: 576px) {
-    main{
+    main {
         aside {
-            .list-container{
+            .list-container {
                 .categories ul {
                     height: 150px;
                 }
@@ -438,10 +432,9 @@ header {
                 text-align: center;
             }
             .row {
-                justify-content:center;
+                justify-content: center;
             }
         }
-
     }
 }
 </style>

@@ -23,7 +23,7 @@
     <h3 class="mb-3 mt-1 text-center">
       <span>{{$category}}</span>
     </h3>
-    <table class="table table-responsive table-striped text-left mb-4">
+    <table class="table table-striped text-left mb-4">
       <thead>
         <tr>
           <th scope="col">Nome</th>

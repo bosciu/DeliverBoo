@@ -116,7 +116,7 @@ class PaymentController extends Controller
             $transaction = $result->transaction;
             $order = Order::latest()->first();
             $order->update(['payment_status' => 1, 'payment_provider' => $transaction->creditCardDetails->cardType]);
-            return back()->with('success_message', 'Transaction successful. The ID is:'. $transaction->id);
+            return back()->with('success_message', 'Transazione eseguita con successo.');
         } else {
             $errorString = "";
     

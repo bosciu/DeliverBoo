@@ -74,5 +74,25 @@ class RestaurantSeeder extends Seeder
         $adminRestaurant->delivery_price = 3.50;
         $adminRestaurant->img_path = 'restaurant_image/da-mario.jpg';
         $adminRestaurant->save();
+
+        $adminRestaurantAddress = new Address();
+            $adminRestaurantAddress->address = 'Via Piacenza 22';
+            $adminRestaurantAddress->city = 'Piacenza';
+            $adminRestaurantAddress->zip_code = '20120';
+            $adminRestaurantAddress->province = 'PC';
+            $adminRestaurantAddress->save();
+
+        $adminRestaurant = new Restaurant();
+        $adminRestaurant->user_id = 27;
+        $adminRestaurant->address_id = $adminRestaurantAddress->id;
+        $adminRestaurant->name = 'We Belugo';
+        $adminRestaurant->email = 'belugo@belugo.com';
+        $adminRestaurant->phone = '3336575647';
+        $adminRestaurant->slug = 'we-belugo';
+        $adminRestaurant->take_away = 0;
+        $adminRestaurant->free_delivery = 1;
+        $adminRestaurant->delivery_price = 0;
+        $adminRestaurant->img_path = 'restaurant_image/da-mario.jpg';
+        $adminRestaurant->save();
     }
 }

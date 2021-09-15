@@ -56,7 +56,7 @@
         </div>
 
         <div class="form-group mb-3">
-            <table class="table table-responsive">
+            <table class="table">
                 <thead>
                   <tr>
                     <th scope="col">Vegetariano</th>

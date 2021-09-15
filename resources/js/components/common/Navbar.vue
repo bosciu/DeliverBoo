@@ -63,7 +63,7 @@
 
                     <li id="cart" class="btn mr-2 " v-else>
                         <i class="fas fa-shopping-cart ml-1"></i>
-                        <span>&euro; {{ sum }}</span>
+                        <span>&euro; 0.00</span>
                     </li>
                 </ul>
             </div>
@@ -115,9 +115,10 @@ export default {
             let sum = 0;
             if (this.orderDishes) {
                 this.orderDishes.forEach(orderDish => {
-                    sum += parseFloat(orderDish.price);
+                    sum += parseFloat(orderDish.price * orderDish.quantity);
                 });
             }
+            sum += this.orderDishes[0].delivery_price;
             return sum.toFixed(2);
         },
         haveOrders() {

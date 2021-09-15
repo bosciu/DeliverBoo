@@ -251,13 +251,11 @@ export default {
                     this.filter.pop();
                 }
             }
-            /* SI INTERROMPE QUI!! */
             this.freeDeliveryFilter = false;
             this.filteredRestaurants = [];
             if (this.takeAwayFilter) {
                 this.restaurants.forEach(restaurant => {
                     if (restaurant.take_away) {
-                        console.log("cilo per il takeaway");
                         this.filteredRestaurants.push(restaurant);
                     }
                 });
@@ -267,6 +265,11 @@ export default {
             this.firstFilterSelected = true;
         },
         freeDelivery() {
+            if (this.filter.length > 0) {
+                while (this.filter.length > 0) {
+                    this.filter.pop();
+                }
+            }
             this.takeAwayFilter = false;
             this.filteredRestaurants = [];
             if (this.freeDeliveryFilter) {

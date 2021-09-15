@@ -85,14 +85,14 @@ class RestaurantSeeder extends Seeder
         $adminRestaurant = new Restaurant();
         $adminRestaurant->user_id = 27;
         $adminRestaurant->address_id = $adminRestaurantAddress->id;
-        $adminRestaurant->name = 'We Belugo';
-        $adminRestaurant->email = 'belugo@belugo.com';
+        $adminRestaurant->name = 'Ravioleria Piacenza';
+        $adminRestaurant->email = 'ravioleria@mail.com';
         $adminRestaurant->phone = '3336575647';
-        $adminRestaurant->slug = 'we-belugo';
+        $adminRestaurant->slug = 'ravioleria-piacenza';
         $adminRestaurant->take_away = 0;
         $adminRestaurant->free_delivery = 1;
         $adminRestaurant->delivery_price = 0;
-        $adminRestaurant->img_path = 'restaurant_image/da-mario.jpg';
+        $adminRestaurant->img_path = 'restaurant_image/gastronomia_yamamoto.jpeg';
         $adminRestaurant->save();
     }
 }

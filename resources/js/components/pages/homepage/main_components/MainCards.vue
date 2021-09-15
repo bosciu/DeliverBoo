@@ -10,6 +10,7 @@
                 >
                     <router-link
                         class="post-it"
+                        @click.native="scrollTop"
                         :to="{
                             name: 'show',
                             params: { slug: restaurant.slug }
@@ -55,23 +56,12 @@ export default {
             .catch(err => {
                 console.log(err);
             });
+    },
+    methods:{
+        scrollTop(){
+            document.getElementById("show").scrollIntoView();
+        }
     }
-    // methods: {
-    //     getRestaurants: function() {
-    //         axios
-    //             .get('http://127.0.0.1:8000/api/restaurants')
-    //             .then(
-    //                 res=> {
-    //                     this.restaurants = res.data
-    //                 }
-    //             )
-    //             .catch(
-    //                 err=>{
-    //                     console.log(err);
-    //                 }
-    //             );
-    //     }
-    // }
 };
 </script>
 

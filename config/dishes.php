@@ -15,7 +15,7 @@
         [
             'dish_category_id' => 3,
             'restaurant_id' => 26,
-            'name' => 'Vitello tonatto',
+            'name' => 'Vitello tonnato',
             'desc' => 'Così tenero da spezzarsi con un grissino!',
             'price' => 10.50,
             'vegetarian' => 0,

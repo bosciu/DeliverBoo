@@ -1,13 +1,17 @@
 <template>
     <div id="show">
-        <Navbar />
+        <header>
+          <Navbar />  
+        </header>
+
         <main>
             <Loading v-if="!isLoaded" />
-            <div v-else class="container">
+            <div v-else class="container pt-5">
                 <div class="row">
                     <div class="col-8">
-                        <div id="hero" class="py-4">
-                            <div class="details container">
+                        <div id="hero" class="pt-4">
+                            <div class="details">
+                                <h1 class="font-weight-bold mb-4">{{ restaurant.name }}</h1>
                                 <div class="img-container rounded mb-3 bt-3">
                                     <img
                                         :src="'/storage/' + restaurant.img_path"
@@ -15,7 +19,6 @@
                                         class="w-100 h-100"
                                     />
                                 </div>
-                                <h1>{{ restaurant.name }}</h1>
 
                                 <h6
                                     v-for="(category,
@@ -31,29 +34,83 @@
                                     {{ restaurant.delivery_price }} &euro;
                                 </p>
 
-                                <h6>
+                                <h6 class="mb-4">
                                     {{ restaurant.address.address }}
                                     {{ restaurant.address.city }}
                                 </h6>
 
-                                <div
-                                    id="contact"
-                                    data-toggle="modal"
-                                    data-target="#contactModal"
-                                    class="my-3 p-3"
-                                >
-                                    <div>
-                                        <i class="fas fa-info-circle mr-3"></i>
-                                    </div>
+                                <div v-if="calendar" class="d-inline-block">
+                                    <!-- Button modale calendario -->
+                                    <button type="button" class="calendar-btn btn d-inline-block mr-4" data-toggle="modal" data-target="#calendarModal">
+                                       <i class="far fa-calendar-alt"></i> Visualizza il calendario
+                                    </button>
 
-                                    <div>
-                                        <h5>Informazioni sul ristorante</h5>
-                                        <h6>
-                                            Intolleranze, allergeni o altre
-                                            richieste
-                                        </h6>
+                                    <!-- Modale calendario -->
+                                    <div class="modal fade" id="calendarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLongTitle">Orari apertura e chiusura</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <table class="table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th scope="row">Lunedì</th>
+                                                                <td>{{calendar.mon}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Martedì</th>
+                                                                <td>{{calendar.tue}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Mercoledì</th>
+                                                                <td>{{calendar.wed}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Giovedì</th>
+                                                                <td>{{calendar.thu}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Venerdì</th>
+                                                                <td>{{calendar.fri}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Sabato</th>
+                                                                <td>{{calendar.sat}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Domenica</th>
+                                                                <td>{{calendar.sun}}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn" data-dismiss="modal">Chiudi</button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+
+                                <button v-else class="calendar-btn btn" id="no-calendar" disabled>Calendario non presente</button>
+
+                                <!-- modale contatto -->
+
+                                <button
+                                    data-toggle="modal"
+                                    data-target="#contactModal"
+                                    type="button"
+                                    id="contact"
+                                    class="btn"
+                                >
+                                    <i class="fas fa-info-circle"></i> Contatta il ristorante
+                                </button>
+
                                 <div
                                     class="modal fade"
                                     id="contactModal"
@@ -65,7 +122,7 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5
-                                                    class="modal-title"
+                                                    class="modal-title font-weight-bolder"
                                                     id="exampleModalLabel"
                                                 >
                                                     Contatta il ristorante
@@ -85,15 +142,15 @@
                                             <div class="modal-body">
                                                 <h6>
                                                     Hai allergie, intolleranze o
-                                                    altre richieste? Contattaci!
+                                                    altre richieste?<br>Contattaci!
                                                 </h6>
-                                                <p>{{ restaurant.phone }}</p>
+                                                <p class="font-weight-bolder">{{ restaurant.phone }}</p>
                                             </div>
 
                                             <div class="modal-footer">
                                                 <button
                                                     type="button"
-                                                    class="btn btn-secondary"
+                                                    class="btn"
                                                     data-dismiss="modal"
                                                 >
                                                     Chiudi
@@ -102,19 +159,21 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <!-- /modale contatto -->
                             </div>
                         </div>
                         <!-- /Hero restaurant -->
 
                         <!-- menu -->
-                        <div class="menu container py-5">
+                        <div class="menu container pt-2 pb-5">
                             <div
                                 v-for="(category,
                                 index) in restaurant.dish_categories"
                                 :key="index"
                                 class="row flex-column"
                             >
-                                <h3>{{ category.name }}</h3>
+                                <h3 class="text-uppercase font-weight-bolder py-2">{{ category.name }}</h3>
                                 <div
                                     class="dish-container d-flex justify-content-start flex-wrap mb-4"
                                 >
@@ -131,8 +190,6 @@
                                     >
                                         <div
                                             class="card"
-                                            data-toggle="modal"
-                                            data-target="#dishModal"
                                         >
                                             <img
                                                 class="card-img-top"
@@ -148,6 +205,11 @@
                                                 <p class="card-text">
                                                     {{ dish.price }} &euro;
                                                 </p>
+
+                                            </div>
+
+                                            <div class="layover-plus rounded">
+                                                <i class="fas fa-cart-plus"></i>
                                             </div>
                                         </div>
                                     </div>
@@ -273,7 +335,8 @@ export default {
             orderDishes: [],
             finded: false,
             sum: 0,
-            subTotal: 0
+            subTotal: 0,
+            calendar: null
         };
     },
     created: function() {
@@ -312,6 +375,7 @@ export default {
                         parseFloat(this.subTotal) +
                         this.restaurant.delivery_price
                     ).toFixed(2);
+                    this.calendar = this.restaurant.calendar;
                 })
                 .catch(err => {
                     console.log(err);
@@ -432,128 +496,221 @@ export default {
 <style lang="scss" scoped>
 @import "./resources/sass/_variables";
 
-.img-container {
-    width: 450px;
-    height: 300px;
-    box-shadow: 0 0 4px black;
-    overflow: hidden;
-
-    img {
-        object-fit: cover;
-        object-position: center;
-    }
-}
-
-#contact {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    width: 60%;
-    border: 2px solid $darkGreenFont;
-    border-radius: 3px;
-    background-color: $bgPrimary;
-}
-
-.dish-container {
-    .card {
-        height: 280px;
-        box-shadow: 0 0 5px grey;
-        cursor: pointer;
+    header {
+        background-color: $bgPrimary;
+        background-image: url(/images/sfondo-show-store.png);
+        background-size: contain;
+        background-position: right;
+        background-repeat: no-repeat;
+        padding-bottom: 10px;
+        box-shadow: 0 0 25px 25px $bgPrimary;
     }
 
-    .dish {
-        width: 30%;
+    main {
+        
+        .img-container {
+            width: 550px;
+            height: 300px;
+            box-shadow: 0 0 4px black;
+            overflow: hidden;
 
-        #dishModal {
-            .img-container {
-                width: 100%;
-                img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    object-position: center;
+            img {
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+
+        #calendarModal {
+
+            td,th {
+                border-top: 0;
+            }
+
+            .modal-content {
+                background-color: $bgSecondary;
+            }
+
+            .modal-footer {
+                button {
+                    color: $bgSecondary;
+                    background-color: $darkGreenFont;
                 }
             }
-            p {
-                padding: 20px 20px 0;
-                text-align: center;
-                word-break: break-all;
+        }
+
+        .calendar-btn {
+            background-color: $buttonSecondary;
+            color: white;
+
+            &:hover {
+                background-color: #a75c71;
             }
         }
-    }
-}
 
-#cart {
-    position: fixed;
-    right: 20%;
-    width: calc((100% / 5));
-    padding: 30px;
-    border-radius: 7px;
-    box-shadow: 0 0 2px black;
-    background-color: rgba($buttonPrimary, 0.6);
-    overflow: hidden;
+        #no-calendar {
+            cursor: not-allowed;
 
-    #checkout {
-        padding: 15px 20px;
-        border-radius: 7px;
-        font-weight: 700;
-        background-color: $bgSecondary;
-        box-shadow: 0 4px 8px black;
-        text-align: center;
-        span {
-            color: black;
-            cursor: pointer;
             &:hover {
+                background-color: $buttonSecondary;
+            }
+        }
+
+        #contact {
+           background-color: $bgPrimary;
+           color: white;
+
+           &:hover {
+              background-color: #2aa180; 
+           }
+        }
+
+        #contactModal {
+            .modal-content {
+                background-color: $bgSecondary;
+            }
+
+            p {
+                letter-spacing: 2px;
+                color: $darkGreenFont;
                 text-decoration: underline;
             }
+
+            .modal-footer {
+                button {
+                    color: $bgSecondary;
+                    background-color: $darkGreenFont;
+                }
+            }
         }
-    }
-    #checkout-another {
-        padding: 15px 20px;
-        border-radius: 7px;
-        font-weight: 700;
-        background-color: $bgSecondary;
-        box-shadow: 0 4px 8px black;
-        text-align: center;
-        position: relative;
-        z-index: 100;
-        overflow: hidden;
-    }
-    .layover {
-        width: 100%;
-        height: 100%;
-        top: 0;
-        right: 0;
-        position: absolute;
-        background-color: rgba(0, 0, 0, 0.5);
-    }
-    .products {
-        .quantity {
-            display: flex;
-            justify-content: space-between;
-            padding: 5px;
-            font-size: 14px;
-            & > .button-container {
-                display: inline-block;
-                position: relative;
-                width: 20px;
-                height: 20px;
-                border-radius: 50%;
-                border: 2px solid coral;
-                margin: 0 2px;
-                font-size: 11px;
+
+        .dish-container {
+            .card {
+                height: 280px;
+                box-shadow: 0 0 5px grey;
                 cursor: pointer;
+                
+                &:hover .layover-plus {
+                    opacity: 1;
+                }
+            }
+
+            .layover-plus {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: 0;
+                background-color: rgba(0, 0, 0, 0.7);
+                transition: 0.3s;
                 i {
+                    color: white;
+                    font-size: 65px;
                     position: absolute;
-                    top: 45%;
+                    top: 50%;
                     left: 50%;
                     transform: translate(-50%, -50%);
                 }
             }
+
+            .dish {
+                width: 30%;
+
+                #dishModal {
+                    .img-container {
+                        width: 100%;
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            object-position: center;
+                        }
+                    }
+                    p {
+                        padding: 20px 20px 0;
+                        text-align: center;
+                        word-break: break-all;
+                    }
+                }
+            }
         }
-        .tot {
-            font-size: 14px;
+
+        #cart {
+            position: fixed;
+            right: 20%;
+            width: calc((100% / 5));
+            padding: 30px;
+            border-radius: 7px;
+            box-shadow: 0 0 2px black;
+            background-color: rgba($buttonPrimary, 0.6);
+            overflow: hidden;
+
+            #checkout {
+                padding: 15px 20px;
+                border-radius: 7px;
+                font-weight: 700;
+                background-color: $bgSecondary;
+                box-shadow: 0 4px 8px black;
+                text-align: center;
+                span {
+                    color: black;
+                    cursor: pointer;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+            #checkout-another {
+                padding: 15px 20px;
+                border-radius: 7px;
+                font-weight: 700;
+                background-color: $bgSecondary;
+                box-shadow: 0 4px 8px black;
+                text-align: center;
+                position: relative;
+                z-index: 100;
+                overflow: hidden;
+            }
+
+            .layover {
+                width: 100%;
+                height: 100%;
+                top: 0;
+                right: 0;
+                position: absolute;
+                background-color: rgba(0, 0, 0, 0.5);
+            }
+
+            .products {
+                .quantity {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 5px;
+                    font-size: 14px;
+                    & > .button-container {
+                        display: inline-block;
+                        position: relative;
+                        width: 20px;
+                        height: 20px;
+                        border-radius: 50%;
+                        border: 2px solid coral;
+                        margin: 0 2px;
+                        font-size: 11px;
+                        cursor: pointer;
+                        i {
+                            position: absolute;
+                            top: 45%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                        }
+                    }
+                }
+                .tot {
+                    font-size: 14px;
+                }
+            }
         }
+
     }
-}
 </style>

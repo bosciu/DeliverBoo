@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 class RestaurantController extends Controller
 {
     public function getRestaurant($slug){
-        $restaurant = Restaurant::where('slug', $slug)->with('address')->firstOrFail();
+        $restaurant = Restaurant::where('slug', $slug)->with('address','calendar')->firstOrFail();
         $dishes = Dish::where('restaurant_id', $restaurant->id)->get();
 
         $categoriesId = [];

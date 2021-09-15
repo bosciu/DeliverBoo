@@ -127,79 +127,79 @@ export default {
 
 <style scoped lang="scss">
 @import "./resources/sass/_variables";
-#navbar-container {
-    #navbar {
-        height: 92px;
-        border-bottom: 2px solid white;
+    #navbar-container {
+        #navbar {
+            height: 92px;
+            border-bottom: 2px solid white;
 
-        #logo {
-            display: flex;
-            align-items: center;
-            img {
-                width: 19%;
-                cursor: pointer;
+            #logo {
+                display: flex;
+                align-items: center;
+                img {
+                    width: 19%;
+                    cursor: pointer;
+                }
             }
-        }
 
-        #list {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
+            #list {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
 
-            ul {
-                list-style: none;
+                ul {
+                    list-style: none;
 
-                li,
-                #cart {
-                    color: $darkGreenFont;
-                    padding: 0 10px;
-                    border: 1px solid $darkGreenFont;
-                    background-color: $bgSecondary;
-
-                    &:hover .dropdown-link {
+                    li,
+                    #cart {
                         color: $darkGreenFont;
-                    }
+                        padding: 0 10px;
+                        border: 1px solid $darkGreenFont;
+                        background-color: $bgSecondary;
 
-                    &:hover {
-                        background-color: $darkGreenFont;
-                    }
-                    &:hover a,
-                    &:hover i {
-                        color: $bgSecondary;
-                    }
-
-                    #register {
-                        border-top: 1px solid $darkGreenFont;
-                    }
-
-                    a {
-                        text-decoration: none;
-                        font-size: 10px;
-                        font-weight: bolder;
-                        color: $darkGreenFont;
-
-                        i {
-                            padding-right: 3px;
+                        &:hover .dropdown-link {
                             color: $darkGreenFont;
                         }
-                    }
-                }
 
-                #cart {
-                    &:hover span {
-                        color: $bgSecondary;
+                        &:hover {
+                            background-color: $darkGreenFont;
+                        }
+                        &:hover a,
+                        &:hover i {
+                            color: $bgSecondary;
+                        }
+
+                        #register {
+                            border-top: 1px solid $darkGreenFont;
+                        }
+
+                        a {
+                            text-decoration: none;
+                            font-size: 10px;
+                            font-weight: bolder;
+                            color: $darkGreenFont;
+
+                            i {
+                                padding-right: 3px;
+                                color: $darkGreenFont;
+                            }
+                        }
                     }
 
-                    i {
-                        font-size: 12px;
-                    }
+                    #cart {
+                        &:hover span {
+                            color: $bgSecondary;
+                        }
 
-                    span {
-                        font-size: 13px;
+                        i {
+                            font-size: 12px;
+                        }
+
+                        span {
+                            font-size: 13px;
+                        }
                     }
                 }
             }
         }
     }
-}
 </style>

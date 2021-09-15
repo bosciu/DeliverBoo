@@ -4,7 +4,7 @@
             <Navbar />
         </header>
         <main class="pt-5 d-flex">
-            <aside>
+            <aside class="pt-3">
                 <div class="list-container pl-4">
                     <div class="delivery pt-3 ml-3">
                         <ul>
@@ -62,16 +62,17 @@
                 </div>
             </aside>
             <section class="px-5 mr-5">
-                <h2 class="my-4">Ristoranti</h2>
+                <h2 class="my-4 font-weight-bolder">I nostri ristoranti</h2>
 
                 <h4 v-if="filteredRestaurants.length == 0">
-                    Non ci sono ristoranti in questa categoria
+                    Non ci sono ristoranti in questa categoria.
                 </h4>
 
                 <div class="w-100 d-flex flex-wrap" v-else>
                     <router-link
                         v-for="(restaurant, index) in filteredRestaurants"
                         :key="index"
+                        @click.native="scrollTop"
                         class="card restaurant mb-4 mr-4"
                         :to="{
                             name: 'show',
@@ -87,13 +88,13 @@
                         </div>
 
                         <div class="card-body mt-3">
-                            <span class="card-text">Milano</span>
-                            <h4 class="card-title">{{ restaurant.name }}</h4>
+                            <h6 class="card-text"><i class="fas fa-map-marker-alt"></i> Milano</h6>
+                            <h4 class="card-title font-weight-bolder">{{ restaurant.name }}</h4>
                             <span v-if="restaurant.free_delivery == 1"
-                                >Consegna gratuita</span
+                                ><i class="fas fa-tag"></i> Consegna gratuita</span
                             >
-                            <span v-else
-                                >Prezzo Consegna:
+                            <span v-else id="delivery-price" class="font-weight-bolder"
+                                ><i class="fas fa-tag"></i> Prezzo Consegna:
                                 {{ restaurant.delivery_price }} &euro;</span
                             >
                         </div>
@@ -281,6 +282,9 @@ export default {
             ) {
                 return false;
             } */
+        },
+        scrollTop(){
+            document.getElementById("show").scrollIntoView();
         }
     }
 };
@@ -289,87 +293,119 @@ export default {
 <style lang="scss" scoped>
 @import "./resources/sass/_variables";
 
-header {
-    background-color: $bgPrimary;
-    background-image: url(/images/sfondo-show-store.png);
-    background-size: contain;
-    background-position: right;
-    background-repeat: no-repeat;
-    padding-bottom: 10px;
-}
-
-main {
-    background: linear-gradient($bgPrimary, whitesmoke 3%);
-    a {
-        color: unset;
-        text-decoration: unset;
+    header {
+        background-color: $bgPrimary;
+        background-image: url(/images/sfondo-show-store.png);
+        background-size: contain;
+        background-position: right;
+        background-repeat: no-repeat;
+        padding-bottom: 10px;
+        box-shadow: 0 0 25px 25px $bgPrimary;
     }
 
-    min-height: calc(100vh - 415px);
-    padding-bottom: 20px;
+    main {
+        a {
+            color: unset;
+            text-decoration: unset;
+        }
 
-    aside {
-        width: 20%;
-        .list-container {
-            .categories,
-            .delivery {
-                margin: 0 10px;
-                border-top: 2px solid rgb(240, 235, 235);
+        min-height: calc(100vh - 415px);
+        padding-bottom: 20px;
+
+        aside {
+            width: 20%;
+            .list-container {
+                .categories,
+                .delivery {
+                    margin: 0 10px;
+                    border-top: 2px solid rgb(240, 235, 235);
+                }
+
+                h3 {
+                    font-size: 16px;
+                    font-weight: bold;
+                }
+
+                i {
+                    color: $darkGreenFont;
+                    margin-left: 5px;
+                }
+
+                ul {
+                    list-style: none;
+                    padding-left: 0;
+
+                    li {
+                        label {
+                            border-radius: 100px;
+                            padding: 1px 5px;
+                            transition: 0.1s;
+                        }
+
+                        input:hover,
+                        label:hover {
+                            cursor: pointer;
+                            background-color: $bgPrimary;
+                            color: white;
+                            i {
+                                color: white;
+                            }
+                        }
+                    }
+                }
+
+                .delivery i {
+                    color: $buttonSecondary;
+                }
+
+                .categories ul {
+                    height: 500px;
+                }
             }
+        }
 
-            h3 {
-                font-size: 16px;
-                font-weight: bold;
-            }
+        section {
+            width: 80%;
 
-            i {
-                color: $darkGreenFont;
-                margin-left: 5px;
-            }
+            .restaurant {
+                width: calc((100% / 4) - 30px);
+                padding: 2px;
+                box-shadow: 0 0 5px grey;
 
-            ul {
-                list-style: none;
-                padding-left: 0;
+                h4 {
+                    transition: 0.2s;
+                }
 
-                li {
-                    input:hover,
-                    label:hover {
-                        cursor: pointer;
+                &:hover {
+                    h4 {
+                        color: $darkGreenFont;
+                    }
+                }
+
+                span {
+                    color: $buttonPrimary;
+                    i {
+                        transform: rotate(90deg);
+                    }
+                }
+
+                #delivery-price {
+                    font-size: 14px;
+                }
+
+                .img-container {
+                    width: 100%;
+                    height: 150px;
+                    padding: 5px;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        object-position: center;
                     }
                 }
             }
-
-            .delivery i {
-                color: $buttonSecondary;
-            }
-
-            .categories ul {
-                height: 500px;
-            }
         }
     }
-
-    section {
-        width: 80%;
-
-        .restaurant {
-            width: calc((100% / 4) - 30px);
-            padding: 2px;
-            box-shadow: 0 0 5px grey;
-
-            .img-container {
-                width: 100%;
-                height: 150px;
-                padding: 5px;
-
-                img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    object-position: center;
-                }
-            }
-        }
-    }
-}
 </style>

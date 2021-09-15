@@ -160,8 +160,9 @@ export default {
 
                 li,
                 #cart {
+                    position: relative;
                     color: $darkGreenFont;
-                    padding: 0 10px;
+                    padding: 0 0;
                     border: 1px solid $darkGreenFont;
                     background-color: $bgSecondary;
 
@@ -182,6 +183,8 @@ export default {
                     }
 
                     a {
+                        padding: 5px 10px;
+                        position: relative;
                         text-decoration: none;
                         font-size: 10px;
                         font-weight: bolder;
@@ -195,6 +198,7 @@ export default {
                 }
 
                 #cart {
+                    padding: 0 10px;
                     &:hover span {
                         color: $bgSecondary;
                     }
@@ -211,7 +215,7 @@ export default {
         }
     }
 
-    @media screen and(max-width:767px) {
+    @media screen and(max-width:575px) {
         .navbar-responsive {
             display: block;
         }

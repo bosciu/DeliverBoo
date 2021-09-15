@@ -12,13 +12,14 @@
 @import "./restaurant/show.scss";
 @import "./order/index.scss";
 @import "./order/show.scss";
+@import "./calendar/create.scss";
 //COMMON
 body {
     #app {
         font-size: 17px;
         letter-spacing: 1px;
         nav {
-            height: 100px;
+            min-height: 100px;
             background-color: $bgPrimary;
             .navbar-brand {
                 img {
@@ -39,63 +40,40 @@ body {
             }
         }
         .homepage {
-            position: relative;
-            height: calc(100vh - 415px);
+            min-height: calc(100vh - 425px);
+            display: flex;
             .text-container {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
+                margin: auto auto;
+                a {
+                    margin: 10px 0;
+                }
             }
         }
         footer {
-            height: 325px;
             background-color: #434848;
+            min-height: 325px;
             padding: 30px 0;
             .container {
-                display: flex;
-                justify-content: center;
-                align-items: center;
                 .row {
                     display: flex;
-                    justify-content: center;
-                    height: 200px;
-                    margin: 0;
-                    padding: 0;
+                    align-items: center;
+                    justify-content: space-around;
                     .col {
-                        height: 200px;
-                        max-width: 100%;
-                        flex-basis: 0;
-                        flex-grow: 1;
                         display: flex;
                         justify-content: center;
-                        background-color: #2e3333;
-                        // padding: 0 3px;
-                        margin: 5px;
-                        }
-                    #logo_footer {
-                        width: 200px;
                         height: 200px;
-                        border-radius: 50%;
-                        margin-top: 5px;
-                        // overflow: hidden;
-                        padding: 0;
-
-                        #container_logo_footer {
-                            width: 200px;
-                            margin: 0;
-                            padding: 0;
-                        }
-                        #img_logo_footer {
-                            width: 200px;
-                            height: 200px;
-                            border-radius: 50%;
-                            position: absolute;
-                            top:50%;
-                            left: 50%;
-                            transform: translate(-50%, -50%);
+                        margin: 5px;
+                        background-color: #2e3333;
+                        img {
+                            display: block;
+                            width: 100px;
                         }
                     }
+                }
+                .logo {
+                    height: 200px;
+                    border-radius: 50%;
+                    margin: 0 5px;
                 }
             }
             ul {
@@ -104,8 +82,9 @@ body {
                 padding: 20px;
                 li {
                     list-style-type: none;
-                    font-size: 14px;
-                    h5 {
+                    font-size: 12px;
+                    line-height: 20px;
+                    h6 {
                         font-size: 15px;
                         margin-bottom: 10px;
                         color: white;
@@ -118,9 +97,6 @@ body {
                         cursor: pointer;
                         color: $darkGreenFont;
                     }
-                    img {
-                        width: 100px;
-                    }
                 }
             }
             .logo-container {
@@ -128,37 +104,55 @@ body {
                 justify-content: space-between;
                 align-items: center;
                 padding: 5px;
+                .icons {
+                    margin-left: 33px;
+                }
                 span {
                     color: lightgray;
                 }
-                .icons {
-                    margin-top: 10px;
-                    margin-left: 42px;
-                    i {
-                        font-size: 26px;
-                        padding: 8px;
-                        color: white;
-                        
-                        &.fa-facebook:hover {
-                            cursor: pointer;
-                            color: #1d6fe5;
-                        }
-                        &.fa-twitter-square:hover {
-                            cursor: pointer;
-                            color: #2e9bf0;
-                        }
-                        &.fa-instagram:hover {
-                            cursor: pointer;
-                            color: #ec0f26;
-                        }
+                i {
+                    font-size: 26px;
+                    padding: 8px;
+                    color: white;
+                    &.fa-facebook:hover {
+                        cursor: pointer;
+                        color: #1977f2;
                     }
-    
+                    &.fa-twitter-square:hover {
+                        cursor: pointer;
+                        color: #55acee;
+                    }
+                    &.fa-instagram:hover {
+                        cursor: pointer;
+                        color: #e94574;
+                    }
+                }
+            }
+        }
+        @media screen and(max-width: 575px) {
+            font-size: 15px;
+            h1 {
+                font-size: 28px;
+            }
+            input {
+                font-size: 15px;
+            }
+            nav {
+                .logo-container {
+                    width: 25%;
+                }
+            }
+            footer {
+                .container {
+                    .logo {
+                        height: 150px;
+                    }
                 }
             }
         }
     }
     #checkout {
-        min-height: calc(100vh - 415px);
+        min-height: calc(100vh - 425px);
         position: relative;
         .form-container {
             display: flex;
@@ -167,4 +161,3 @@ body {
         }
     }
 }
-

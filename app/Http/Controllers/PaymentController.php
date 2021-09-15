@@ -70,7 +70,6 @@ class PaymentController extends Controller
     }
 
     public function seeCheckout($data){
-        var_dump($data);
         return view('checkout');
     }
 
@@ -115,9 +114,8 @@ class PaymentController extends Controller
     
         if ($result->success) {
             $transaction = $result->transaction;
-            // header("Location: transaction.php?id=" . $transaction->id);
             $order = Order::latest()->first();
-            $order->update(['payment_status' => 1]);
+            $order->update(['payment_status' => 1, 'payment_provider' => $transaction->creditCardDetails->cardType]);
             return back()->with('success_message', 'Transaction successful. The ID is:'. $transaction->id);
         } else {
             $errorString = "";
@@ -125,10 +123,7 @@ class PaymentController extends Controller
             foreach ($result->errors->deepAll() as $error) {
                 $errorString .= 'Error: ' . $error->code . ": " . $error->message . "\n";
             }
-    
-            // $_SESSION["errors"] = $errorString;
-            // header("Location: index.php");
-            return back()->withErrors('An error occurred with the message: '.$result->message);
+            return back()->with('error', $result->message);
         }
     }
 }

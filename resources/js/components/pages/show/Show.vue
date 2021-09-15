@@ -820,10 +820,10 @@ export default {
 
         .img-container {
             width: 100%;
-            height: 100%;
+            height: 200px;
         }
 
-         #cart {
+        #cart {
             position: fixed;
             bottom: 0;
             right: 0;
@@ -842,6 +842,19 @@ export default {
                 margin-right: 0;
             }
         }
+
+            .card {
+                padding-top: 10px;
+                img {
+                    width: 90%;
+                    margin: 0 auto;
+                    height: 100px; 
+                    object-fit: cover;
+                } 
+            }
+        
+
+       
     }
     
    

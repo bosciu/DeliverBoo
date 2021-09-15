@@ -7,6 +7,7 @@
             <router-link
                 v-for="restaurant in randomMainRestaurants"
                 :key="restaurant.id"
+                @click.native="scrollTop"
                 class="post-it col-lg-3 col-md-6 col-xs-12 d-flex"
                 :to="{ name: 'show', params: { slug: restaurant.slug } }"
                 >
@@ -48,23 +49,12 @@ export default {
             .catch(err => {
                 console.log(err);
             });
+    },
+    methods:{
+        scrollTop(){
+            document.getElementById("show").scrollIntoView();
+        }
     }
-    // methods: {
-    //     getRestaurants: function() {
-    //         axios
-    //             .get('http://127.0.0.1:8000/api/restaurants')
-    //             .then(
-    //                 res=> {
-    //                     this.restaurants = res.data
-    //                 }
-    //             )
-    //             .catch(
-    //                 err=>{
-    //                     console.log(err);
-    //                 }
-    //             );
-    //     }
-    // }
 };
 </script>
 

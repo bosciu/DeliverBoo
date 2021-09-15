@@ -696,9 +696,12 @@ main {
                 color: white;
                 font-size: 65px;
                 position: absolute;
+                opacity: 0;
+                background-color: rgba(124, 192, 173, 0.5);
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
+                transition: 0.3s;
             }
         }
 

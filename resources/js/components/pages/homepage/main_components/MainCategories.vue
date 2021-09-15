@@ -1,29 +1,38 @@
 <template>
     <div class="text-center pt-5 pb-5">
         <h2>Scegli la tua categoria preferita!</h2>
-        <section
-        id="main-categories"
-        class="container d-flex flex-wrap justify-content-between py-4"
-    >
-        
-        <router-link :to="{ name: 'store', params: { filterFromHome: category.id } }" class="text-center col-sm-12 col-md-5 ml-md-auto mr-md-auto my-4"
-        v-for="(category, index) in randomMainCategories" :key="index">
+        <section id="main-categories" class="container py-4">
+            <div class="row">
+                <div
+                    class="col-12 col-md-6"
+                    v-for="(category, index) in randomMainCategories"
+                    :key="index"
+                >
+                    <router-link
+                        :to="{
+                            name: 'store',
+                            params: { filterFromHome: category.id }
+                        }"
+                        class="text-center my-4"
+                    >
+                        <div class="category-image">
+                            <img :src="category.img_path" alt="" />
+                        </div>
 
-            <div class="category-image">
-                <img :src="category.img_path" alt="">
+                        <div class="layover"></div>
+
+                        <div
+                            class="content text-uppercase d-flex align-items-center justify-content-center"
+                        >
+                            <h3>
+                                {{ category.name }}
+                            </h3>
+                        </div>
+                    </router-link>
+                </div>
             </div>
-
-            <div class="layover"></div>
-
-            <div class="content text-uppercase d-flex align-items-center justify-content-center">
-                <h3>
-                    {{ category.name }}
-                </h3>
-            </div>
-        </router-link>
-    </section>
+        </section>
     </div>
-    
 </template>
 
 <script>
@@ -62,7 +71,6 @@ h2 {
 }
 
 #main-categories {
-
     a {
         // width: calc(100% / 2 - 30px);
         display: block;
@@ -76,11 +84,11 @@ h2 {
         &:hover .content {
             transform: scale(1.2);
         }
-        
+
         .category-image {
             width: 100%;
             height: 100%;
-            
+
             img {
                 width: 100%;
                 height: 100%;
@@ -119,14 +127,11 @@ h2 {
 
 //query fede
 @media screen and (max-width: 576px) {
-    
     div h2 {
         font-size: 24px;
     }
     #main-categories a .content h3 {
         font-size: 20px;
     }
-};
-
-
+}
 </style>

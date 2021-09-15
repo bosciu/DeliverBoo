@@ -1,7 +1,7 @@
 <template>
     <div id="show">
         <header>
-          <Navbar />  
+            <Navbar />
         </header>
 
         <main>
@@ -11,7 +11,9 @@
                     <div class="col-8">
                         <div id="hero" class="pt-4">
                             <div class="details">
-                                <h1 class="font-weight-bold mb-4">{{ restaurant.name }}</h1>
+                                <h1 class="font-weight-bold mb-4">
+                                    {{ restaurant.name }}
+                                </h1>
                                 <div class="img-container rounded mb-3 bt-3">
                                     <img
                                         :src="'/storage/' + restaurant.img_path"
@@ -41,63 +43,147 @@
 
                                 <div v-if="calendar" class="d-inline-block">
                                     <!-- Button modale calendario -->
-                                    <button type="button" class="calendar-btn btn d-inline-block mr-4" data-toggle="modal" data-target="#calendarModal">
-                                       <i class="far fa-calendar-alt"></i> Visualizza il calendario
+                                    <button
+                                        type="button"
+                                        class="calendar-btn btn d-inline-block mr-4"
+                                        data-toggle="modal"
+                                        data-target="#calendarModal"
+                                    >
+                                        <i class="far fa-calendar-alt"></i>
+                                        Visualizza il calendario
                                     </button>
 
                                     <!-- Modale calendario -->
-                                    <div class="modal fade" id="calendarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div
+                                        class="modal fade"
+                                        id="calendarModal"
+                                        tabindex="-1"
+                                        role="dialog"
+                                        aria-labelledby="exampleModalCenterTitle"
+                                        aria-hidden="true"
+                                    >
+                                        <div
+                                            class="modal-dialog modal-dialog-centered"
+                                            role="document"
+                                        >
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLongTitle">Orari apertura e chiusura</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
+                                                    <h5
+                                                        class="modal-title"
+                                                        id="exampleModalLongTitle"
+                                                    >
+                                                        Orari apertura e
+                                                        chiusura
+                                                    </h5>
+                                                    <button
+                                                        type="button"
+                                                        class="close"
+                                                        data-dismiss="modal"
+                                                        aria-label="Close"
+                                                    >
+                                                        <span aria-hidden="true"
+                                                            >&times;</span
+                                                        >
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
                                                     <table class="table">
                                                         <tbody>
                                                             <tr>
-                                                                <th scope="row">Lunedì</th>
-                                                                <td>{{calendar.mon}}</td>
+                                                                <th scope="row">
+                                                                    Lunedì
+                                                                </th>
+                                                                <td>
+                                                                    {{
+                                                                        calendar.mon
+                                                                    }}
+                                                                </td>
                                                             </tr>
                                                             <tr>
-                                                                <th scope="row">Martedì</th>
-                                                                <td>{{calendar.tue}}</td>
+                                                                <th scope="row">
+                                                                    Martedì
+                                                                </th>
+                                                                <td>
+                                                                    {{
+                                                                        calendar.tue
+                                                                    }}
+                                                                </td>
                                                             </tr>
                                                             <tr>
-                                                                <th scope="row">Mercoledì</th>
-                                                                <td>{{calendar.wed}}</td>
+                                                                <th scope="row">
+                                                                    Mercoledì
+                                                                </th>
+                                                                <td>
+                                                                    {{
+                                                                        calendar.wed
+                                                                    }}
+                                                                </td>
                                                             </tr>
                                                             <tr>
-                                                                <th scope="row">Giovedì</th>
-                                                                <td>{{calendar.thu}}</td>
+                                                                <th scope="row">
+                                                                    Giovedì
+                                                                </th>
+                                                                <td>
+                                                                    {{
+                                                                        calendar.thu
+                                                                    }}
+                                                                </td>
                                                             </tr>
                                                             <tr>
-                                                                <th scope="row">Venerdì</th>
-                                                                <td>{{calendar.fri}}</td>
+                                                                <th scope="row">
+                                                                    Venerdì
+                                                                </th>
+                                                                <td>
+                                                                    {{
+                                                                        calendar.fri
+                                                                    }}
+                                                                </td>
                                                             </tr>
                                                             <tr>
-                                                                <th scope="row">Sabato</th>
-                                                                <td>{{calendar.sat}}</td>
+                                                                <th scope="row">
+                                                                    Sabato
+                                                                </th>
+                                                                <td>
+                                                                    {{
+                                                                        calendar.sat
+                                                                    }}
+                                                                </td>
                                                             </tr>
                                                             <tr>
-                                                                <th scope="row">Domenica</th>
-                                                                <td>{{calendar.sun}}</td>
+                                                                <th scope="row">
+                                                                    Domenica
+                                                                </th>
+                                                                <td>
+                                                                    {{
+                                                                        calendar.sun
+                                                                    }}
+                                                                </td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn" data-dismiss="modal">Chiudi</button>
+                                                    <button
+                                                        type="button"
+                                                        class="btn"
+                                                        data-dismiss="modal"
+                                                    >
+                                                        Chiudi
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <button v-else class="calendar-btn btn" id="no-calendar" disabled>Calendario non presente</button>
+                                <button
+                                    v-else
+                                    class="calendar-btn btn"
+                                    id="no-calendar"
+                                    disabled
+                                >
+                                    Calendario non presente
+                                </button>
 
                                 <!-- modale contatto -->
 
@@ -108,7 +194,8 @@
                                     id="contact"
                                     class="btn"
                                 >
-                                    <i class="fas fa-info-circle"></i> Contatta il ristorante
+                                    <i class="fas fa-info-circle"></i> Contatta
+                                    il ristorante
                                 </button>
 
                                 <div
@@ -142,9 +229,11 @@
                                             <div class="modal-body">
                                                 <h6>
                                                     Hai allergie, intolleranze o
-                                                    altre richieste?<br>Contattaci!
+                                                    altre richieste?<br />Contattaci!
                                                 </h6>
-                                                <p class="font-weight-bolder">{{ restaurant.phone }}</p>
+                                                <p class="font-weight-bolder">
+                                                    {{ restaurant.phone }}
+                                                </p>
                                             </div>
 
                                             <div class="modal-footer">
@@ -173,7 +262,11 @@
                                 :key="index"
                                 class="row flex-column"
                             >
-                                <h3 class="text-uppercase font-weight-bolder py-2">{{ category.name }}</h3>
+                                <h3
+                                    class="text-uppercase font-weight-bolder py-2"
+                                >
+                                    {{ category.name }}
+                                </h3>
                                 <div
                                     class="dish-container d-flex justify-content-start flex-wrap mb-4"
                                 >
@@ -188,9 +281,7 @@
                                         :key="index"
                                         @click="setDish(dish)"
                                     >
-                                        <div
-                                            class="card"
-                                        >
+                                        <div class="card">
                                             <img
                                                 class="card-img-top"
                                                 :src="
@@ -205,7 +296,6 @@
                                                 <p class="card-text">
                                                     {{ dish.price }} &euro;
                                                 </p>
-
                                             </div>
 
                                             <div class="layover-plus rounded">
@@ -496,221 +586,219 @@ export default {
 <style lang="scss" scoped>
 @import "./resources/sass/_variables";
 
-    header {
-        background-color: $bgPrimary;
-        background-image: url(/images/sfondo-show-store.png);
-        background-size: contain;
-        background-position: right;
-        background-repeat: no-repeat;
-        padding-bottom: 10px;
-        box-shadow: 0 0 25px 25px $bgPrimary;
+header {
+    background-color: $bgPrimary;
+    background-image: url(/images/sfondo-show-store.png);
+    background-size: contain;
+    background-position: right;
+    background-repeat: no-repeat;
+    padding-bottom: 10px;
+    box-shadow: 0 0 25px 25px $bgPrimary;
+}
+
+main {
+    .img-container {
+        width: 550px;
+        height: 300px;
+        box-shadow: 0 0 4px black;
+        overflow: hidden;
+
+        img {
+            object-fit: cover;
+            object-position: center;
+        }
     }
 
-    main {
-        
-        .img-container {
-            width: 550px;
-            height: 300px;
-            box-shadow: 0 0 4px black;
-            overflow: hidden;
-
-            img {
-                object-fit: cover;
-                object-position: center;
-            }
+    #calendarModal {
+        td,
+        th {
+            border-top: 0;
         }
 
-        #calendarModal {
-
-            td,th {
-                border-top: 0;
-            }
-
-            .modal-content {
-                background-color: $bgSecondary;
-            }
-
-            .modal-footer {
-                button {
-                    color: $bgSecondary;
-                    background-color: $darkGreenFont;
-                }
-            }
+        .modal-content {
+            background-color: $bgSecondary;
         }
 
-        .calendar-btn {
+        .modal-footer {
+            button {
+                color: $bgSecondary;
+                background-color: $darkGreenFont;
+            }
+        }
+    }
+
+    .calendar-btn {
+        background-color: $buttonSecondary;
+        color: white;
+
+        &:hover {
+            background-color: #a75c71;
+        }
+    }
+
+    #no-calendar {
+        cursor: not-allowed;
+
+        &:hover {
             background-color: $buttonSecondary;
-            color: white;
-
-            &:hover {
-                background-color: #a75c71;
-            }
         }
-
-        #no-calendar {
-            cursor: not-allowed;
-
-            &:hover {
-                background-color: $buttonSecondary;
-            }
-        }
-
-        #contact {
-           background-color: $bgPrimary;
-           color: white;
-
-           &:hover {
-              background-color: #2aa180; 
-           }
-        }
-
-        #contactModal {
-            .modal-content {
-                background-color: $bgSecondary;
-            }
-
-            p {
-                letter-spacing: 2px;
-                color: $darkGreenFont;
-                text-decoration: underline;
-            }
-
-            .modal-footer {
-                button {
-                    color: $bgSecondary;
-                    background-color: $darkGreenFont;
-                }
-            }
-        }
-
-        .dish-container {
-            .card {
-                height: 280px;
-                box-shadow: 0 0 5px grey;
-                cursor: pointer;
-                
-                &:hover .layover-plus {
-                    opacity: 1;
-                }
-            }
-
-            .layover-plus {
-                width: 100%;
-                height: 100%;
-                position: absolute;
-                top: 0;
-                left: 0;
-                opacity: 0;
-                background-color: rgba(0, 0, 0, 0.7);
-                transition: 0.3s;
-                i {
-                    color: white;
-                    font-size: 65px;
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                }
-            }
-
-            .dish {
-                width: 30%;
-
-                #dishModal {
-                    .img-container {
-                        width: 100%;
-                        img {
-                            width: 100%;
-                            height: 100%;
-                            object-fit: cover;
-                            object-position: center;
-                        }
-                    }
-                    p {
-                        padding: 20px 20px 0;
-                        text-align: center;
-                        word-break: break-all;
-                    }
-                }
-            }
-        }
-
-        #cart {
-            position: fixed;
-            right: 20%;
-            width: calc((100% / 5));
-            padding: 30px;
-            border-radius: 7px;
-            box-shadow: 0 0 2px black;
-            background-color: rgba($buttonPrimary, 0.6);
-            overflow: hidden;
-
-            #checkout {
-                padding: 15px 20px;
-                border-radius: 7px;
-                font-weight: 700;
-                background-color: $bgSecondary;
-                box-shadow: 0 4px 8px black;
-                text-align: center;
-                span {
-                    color: black;
-                    cursor: pointer;
-                    &:hover {
-                        text-decoration: underline;
-                    }
-                }
-            }
-
-            #checkout-another {
-                padding: 15px 20px;
-                border-radius: 7px;
-                font-weight: 700;
-                background-color: $bgSecondary;
-                box-shadow: 0 4px 8px black;
-                text-align: center;
-                position: relative;
-                z-index: 100;
-                overflow: hidden;
-            }
-
-            .layover {
-                width: 100%;
-                height: 100%;
-                top: 0;
-                right: 0;
-                position: absolute;
-                background-color: rgba(0, 0, 0, 0.5);
-            }
-
-            .products {
-                .quantity {
-                    display: flex;
-                    justify-content: space-between;
-                    padding: 5px;
-                    font-size: 14px;
-                    & > .button-container {
-                        display: inline-block;
-                        position: relative;
-                        width: 20px;
-                        height: 20px;
-                        border-radius: 50%;
-                        border: 2px solid coral;
-                        margin: 0 2px;
-                        font-size: 11px;
-                        cursor: pointer;
-                        i {
-                            position: absolute;
-                            top: 45%;
-                            left: 50%;
-                            transform: translate(-50%, -50%);
-                        }
-                    }
-                }
-                .tot {
-                    font-size: 14px;
-                }
-            }
-        }
-
     }
+
+    #contact {
+        background-color: $bgPrimary;
+        color: white;
+
+        &:hover {
+            background-color: #2aa180;
+        }
+    }
+
+    #contactModal {
+        .modal-content {
+            background-color: $bgSecondary;
+        }
+
+        p {
+            letter-spacing: 2px;
+            color: $darkGreenFont;
+            text-decoration: underline;
+        }
+
+        .modal-footer {
+            button {
+                color: $bgSecondary;
+                background-color: $darkGreenFont;
+            }
+        }
+    }
+
+    .dish-container {
+        .card {
+            height: 280px;
+            box-shadow: 0 0 5px grey;
+            cursor: pointer;
+
+            &:hover .layover-plus {
+                opacity: 1;
+            }
+        }
+
+        .layover-plus {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            transition: 0.3s;
+            i {
+                color: white;
+                font-size: 65px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        .dish {
+            width: 30%;
+
+            #dishModal {
+                .img-container {
+                    width: 100%;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        object-position: center;
+                    }
+                }
+                p {
+                    padding: 20px 20px 0;
+                    text-align: center;
+                    word-break: break-all;
+                }
+            }
+        }
+    }
+
+    #cart {
+        position: absolute;
+        right: 20%;
+        width: calc((100% / 5));
+        padding: 30px;
+        border-radius: 7px;
+        box-shadow: 0 0 2px black;
+        background-color: rgba($buttonPrimary, 0.6);
+        overflow: hidden;
+
+        #checkout {
+            padding: 15px 20px;
+            border-radius: 7px;
+            font-weight: 700;
+            background-color: $bgSecondary;
+            box-shadow: 0 4px 8px black;
+            text-align: center;
+            span {
+                color: black;
+                cursor: pointer;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        #checkout-another {
+            padding: 15px 20px;
+            border-radius: 7px;
+            font-weight: 700;
+            background-color: $bgSecondary;
+            box-shadow: 0 4px 8px black;
+            text-align: center;
+            position: relative;
+            z-index: 100;
+            overflow: hidden;
+        }
+
+        .layover {
+            width: 100%;
+            height: 100%;
+            top: 0;
+            right: 0;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .products {
+            .quantity {
+                display: flex;
+                justify-content: space-between;
+                padding: 5px;
+                font-size: 14px;
+                & > .button-container {
+                    display: inline-block;
+                    position: relative;
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 50%;
+                    border: 2px solid coral;
+                    margin: 0 2px;
+                    font-size: 11px;
+                    cursor: pointer;
+                    i {
+                        position: absolute;
+                        top: 45%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+                }
+            }
+            .tot {
+                font-size: 14px;
+            }
+        }
+    }
+}
 </style>

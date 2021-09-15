@@ -76,7 +76,10 @@ export default {
     name: "Navbar",
     data() {
         return {
-            orderDishes: []
+            orderDishes: [],
+            lastChange: null,
+            timer: null,
+            quantityChanged: false
         };
     },
     created() {
@@ -84,6 +87,23 @@ export default {
         if (!this.orderDishes) {
             this.orderDishes = [];
         }
+
+        let curVal = localStorage.getItem("orders");
+        this.lastChange = new Date();
+        this.timer = setInterval(() => {
+            const newVal = localStorage.getItem("orders");
+            if (newVal !== curVal) {
+                curVal = newVal;
+                this.orderDishes = JSON.parse(localStorage.getItem("orders"));
+                if (!this.orderDishes) {
+                    this.orderDishes = [];
+                }
+                this.lastChange = new Date();
+            }
+        }, 500);
+    },
+    beforeDestroy() {
+        cleaInterval(this.timer);
     },
     computed: {
         sum() {

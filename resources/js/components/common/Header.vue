@@ -388,4 +388,39 @@ export default {
             }
         }
     }
+
+//query fede 
+
+@media screen and (max-width: 576px) {
+    
+    header {
+        height: 600px;
+            #jumbotron {
+                margin-top: 35px;
+                flex-flow: column;
+            }
+    }
+    header #jumbotron #carouselExampleControls, 
+    header #jumbotron .layover {
+        height: 230px;
+        width: 230px !important;
+        overflow: hidden;
+    }
+    header #jumbotron #carouselExampleControls a h2 {
+        font-size: 18px;
+        width: 75%;
+    }
+    header #jumbotron #searchbar div {
+        margin: -29% !important;
+        margin-top: 1% !important;
+        width: 230px !important;
+            .form-inline {
+                width: 200px !important;
+                
+            }
+    }
+    header #jumbotron #searchbar div label {
+        font-size: 16px;
+    }
+};
 </style>

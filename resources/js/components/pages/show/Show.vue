@@ -690,14 +690,13 @@ main {
             top: 0;
             left: 0;
             opacity: 0;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(124, 192, 173, 0.7);
             transition: 0.3s;
             i {
                 color: white;
                 font-size: 65px;
                 position: absolute;
-                opacity: 0;
-                background-color: rgba(124, 192, 173, 0.5);
+                opacity: 1;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);

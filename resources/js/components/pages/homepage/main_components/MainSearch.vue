@@ -6,7 +6,7 @@
                 <span
                     v-for="(category, index) in restaurantTypes"
                     :key="index"
-                    class="
+                    class="desktop-categories
                     badge 
                     badge-pill 
                     badge-light
@@ -21,6 +21,25 @@
                         {{ category.name }}
                     </router-link>
                 </span>
+
+                <span
+                    v-for="phoneCategory in phoneTypes"
+                    :key="'r-' + phoneCategory.id"
+                    class="phone-categories
+                    badge 
+                    badge-pill 
+                    badge-light
+                    btn-secondary"
+                >
+                    <router-link
+                        :to="{
+                            name: 'store',
+                            params: { filterFromHome: phoneCategory.id }
+                        }"
+                    >
+                        {{ phoneCategory.name }}
+                    </router-link>
+                </span>
             </div>
         </div>
     </section>
@@ -31,7 +50,8 @@ export default {
     name: "MainSearch",
     data() {
         return {
-            restaurantTypes: []
+            restaurantTypes: [],
+            phoneTypes: []
         };
     },
     created() {
@@ -42,7 +62,11 @@ export default {
                 const half = Math.ceil(shuffledArray.length / 2);
                 const firstHalf = shuffledArray.slice(0, half);
 
+                const randomCategories = res.data.sort(() => 0.5 - Math.random());
+                const sixCategories = randomCategories.slice(0, 6);
+                
                 this.restaurantTypes = firstHalf;
+                this.phoneTypes = sixCategories;
             })
             .catch(err => (this.data = []));
     }
@@ -75,16 +99,23 @@ section {
                 transform: scale(1.1, 1.1);
             }
         }
+        .phone-categories {
+            display: none;
+        }
     }
+
 }
 
-//query fede
 @media screen and (max-width: 575px) {
     section h4 {
         font-size: 22px;
-    }
-    #main-categories a .content h3 {
-        font-size: 20px;
+        text-align: center;
+        .restaurant-types-container {
+            text-align: center;
+            .desktop-categories {
+                display: none;
+            }
+        }
     }
 }
 </style>

@@ -3,9 +3,10 @@
         <header>
             <Navbar />
         </header>
-        <main class="pt-5 d-flex">
-            <aside class="pt-3">
-                <div class="list-container pl-4">
+        <main class="pt-5 container">
+            <div class="row">
+                <aside class="pt-3 col-12 col-md-3">
+                <div class="list-container">
                     <div class="delivery pt-3 ml-3">
                         <ul>
                             <li>
@@ -60,47 +61,51 @@
                         </ul>
                     </div>
                 </div>
-            </aside>
-            <section class="px-5 mr-5">
-                <h2 class="my-4 font-weight-bolder">I nostri ristoranti</h2>
+                </aside>
+                <section class="col-12 col-md-9">
+                    <h2 class="my-4 font-weight-bolder">I nostri ristoranti</h2>
 
-                <h4 v-if="filteredRestaurants.length == 0">
-                    Non ci sono ristoranti in questa categoria.
-                </h4>
+                    <h4 v-if="filteredRestaurants.length == 0">
+                        Non ci sono ristoranti in questa categoria.
+                    </h4>
 
-                <div class="w-100 d-flex flex-wrap" v-else>
-                    <router-link
-                        v-for="(restaurant, index) in filteredRestaurants"
-                        :key="index"
-                        @click.native="scrollTop"
-                        class="card restaurant mb-4 mr-4"
-                        :to="{
-                            name: 'show',
-                            params: { slug: restaurant.slug }
-                        }"
-                    >
-                        <div class="img-container">
-                            <img
-                                :src="'/storage/' + restaurant.img_path"
-                                alt=""
-                                class="rounded"
-                            />
-                        </div>
+                    <div class="row" v-else>
+                        <router-link
+                            v-for="(restaurant, index) in filteredRestaurants"
+                            :key="index"
+                            @click.native="scrollTop"
+                            class=" col-10 col-md-4 mb-4"
+                            :to="{
+                                name: 'show',
+                                params: { slug: restaurant.slug }
+                            }"
+                        >
+                            <div class="card restaurant h-100">
+                                <div class="img-container">
+                                <img
+                                    :src="'/storage/' + restaurant.img_path"
+                                    alt=""
+                                    class="rounded"
+                                />
+                            </div>
 
-                        <div class="card-body mt-3">
-                            <h6 class="card-text"><i class="fas fa-map-marker-alt"></i> Milano</h6>
-                            <h4 class="card-title font-weight-bolder">{{ restaurant.name }}</h4>
-                            <span v-if="restaurant.free_delivery == 1"
-                                ><i class="fas fa-tag"></i> Consegna gratuita</span
-                            >
-                            <span v-else id="delivery-price" class="font-weight-bolder"
-                                ><i class="fas fa-tag"></i> Prezzo Consegna:
-                                {{ restaurant.delivery_price }} &euro;</span
-                            >
-                        </div>
-                    </router-link>
-                </div>
-            </section>
+                            <div class="card-body mt-3">
+                                <h6 class="card-text"><i class="fas fa-map-marker-alt"></i> Milano</h6>
+                                <h4 class="card-title font-weight-bolder">{{ restaurant.name }}</h4>
+                                <span v-if="restaurant.free_delivery == 1"
+                                    ><i class="fas fa-tag"></i> Consegna gratuita</span
+                                >
+                                <span v-else id="delivery-price" class="font-weight-bolder"
+                                    ><i class="fas fa-tag"></i> Prezzo Consegna:
+                                    {{ restaurant.delivery_price }} &euro;</span
+                                >
+                            </div>
+                            </div>
+                        </router-link>
+                    </div>
+                </section>
+            </div>
+            
         </main>
         <Footer />
     </div>
@@ -304,13 +309,13 @@ export default {
     }
 
     main {
+        min-height: calc(100vh - 415px);
+        padding-bottom: 20px;
+
         a {
             color: unset;
             text-decoration: unset;
         }
-
-        min-height: calc(100vh - 415px);
-        padding-bottom: 20px;
 
         aside {
             width: 20%;
@@ -365,10 +370,8 @@ export default {
         }
 
         section {
-            width: 80%;
 
             .restaurant {
-                width: calc((100% / 4) - 30px);
                 padding: 2px;
                 box-shadow: 0 0 5px grey;
 
@@ -408,4 +411,26 @@ export default {
             }
         }
     }
+
+@media screen and (max-width: 576px) {
+    main{
+        aside {
+            .list-container{
+                .categories ul {
+                    height: 150px;
+                }
+            }
+        }
+
+        section {
+            h2 {
+                text-align: center;
+            }
+            .row {
+                justify-content:center;
+            }
+        }
+        
+    }  
+}
 </style>

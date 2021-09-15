@@ -1,0 +1,17 @@
+#calendar-create {
+    .my-block {
+        display: none;
+    }
+    @media screen and(max-width: 567px) {
+        h1 {
+            text-align: center;
+            font-size: 28px;
+        }
+        .my-none {
+            display: none;
+        }
+        .my-block {
+            display: block;
+        }
+    }
+}

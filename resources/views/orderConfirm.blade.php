@@ -1,18 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
+
+<div class="content" id="checkout">
     @if (session('success_message'))
         <div class="alert alert-success">
           {{session('success_message')}}
         </div>
-        <div class="text-center">
-          <h4 >Pagamento completato con successo!</h4>
-          <h5>Il tuo ordine arriverà tra $$generatopre minuti$$ minuti.</h5>
-          <a href="/">Torna alla home!</a>
+        <div class="text-center py-5">
+          <h4 class="py-5">Pagamento completato con successo!</h4>
+          <h5>Il tuo ordine arriverà tra {{rand(10,45)}} minuti.</h5>
+          <a href="/" class="mt-2">Torna alla home!</a>
         </div>
+    @elseif (session('error'))
+      <div class="alert alert-error">
+        {{session('success_message')}}
+      </div>
     @else
-    <div class="content py-4" id="checkout">
-      <div class="order-detail">
+      <div class="order-detail py-5">
         <h5 class="text-center">Riepilogo oridne</h5>
       </div>
       <div class="form-container">
@@ -33,7 +38,7 @@
             </section>
 
             <input id="nonce" name="payment_method_nonce" type="hidden" />
-            <button class="btn btn-success" type="submit"><span>Paga</span></button>
+            <button class="btn btn-success w-100" type="submit"><span>Paga</span></button>
         </form>
       </div>
     </div>

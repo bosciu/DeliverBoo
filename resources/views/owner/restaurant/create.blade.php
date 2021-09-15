@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container" id="restaurant_create">
+<div class="container py-5" id="restaurant_create">
     <h2 class="mb-4">Crea un ristorante</h2>
     <form enctype="multipart/form-data" method="POST" action="{{ route('owner.restaurants.store') }}">
         @csrf
@@ -111,7 +111,7 @@
             
                     <div class="form-group mb-3">
                         <label class="d-block" for="img_path">Immagine ristorante</label>
-                        <input required type="file" class="@error('img_path') is-invalid @enderror" id="img_path" name="img_path" placeholder="Inserisci l'immagine del ristorante" value="{{ old('img_path') }}">
+                        <input required type="file" class="form-control-file @error('img_path') is-invalid @enderror" id="img_path" name="img_path" placeholder="Inserisci l'immagine del ristorante" value="{{ old('img_path') }}">
                         <div class="invalid-feedback">
                             @error('img_path') {{ $message }} @enderror
                         </div>

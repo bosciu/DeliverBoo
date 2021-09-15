@@ -3,24 +3,46 @@
         <div class="container">
             <h4>Cerchi qualcos'altro?</h4>
             <div class="restaurant-types-container">
-                <span
-                    v-for="(category, index) in restaurantTypes"
-                    :key="index"
-                    class="
+                <div class="desktop-categories">
+                    <span
+                        v-for="(category, index) in restaurantTypes"
+                        :key="index"
+                        class="
                     badge 
                     badge-pill 
                     badge-light
                     btn-secondary"
-                >
-                    <router-link
-                        :to="{
-                            name: 'store',
-                            params: { filterFromHome: category.id }
-                        }"
                     >
-                        {{ category.name }}
-                    </router-link>
-                </span>
+                        <router-link
+                            :to="{
+                                name: 'store',
+                                params: { filterFromHome: category.id }
+                            }"
+                        >
+                            {{ category.name }}
+                        </router-link>
+                    </span>
+                </div>
+                <div class="phone-categories">
+                    <span
+                        v-for="phoneCategory in phoneTypes"
+                        :key="'r-' + phoneCategory.id"
+                        class="
+                    badge 
+                    badge-pill 
+                    badge-light
+                    btn-secondary"
+                    >
+                        <router-link
+                            :to="{
+                                name: 'store',
+                                params: { filterFromHome: phoneCategory.id }
+                            }"
+                        >
+                            {{ phoneCategory.name }}
+                        </router-link>
+                    </span>
+                </div>
             </div>
         </div>
     </section>
@@ -31,7 +53,8 @@ export default {
     name: "MainSearch",
     data() {
         return {
-            restaurantTypes: []
+            restaurantTypes: [],
+            phoneTypes: []
         };
     },
     created() {
@@ -42,7 +65,13 @@ export default {
                 const half = Math.ceil(shuffledArray.length / 2);
                 const firstHalf = shuffledArray.slice(0, half);
 
+                const randomCategories = res.data.sort(
+                    () => 0.5 - Math.random()
+                );
+                const sixCategories = randomCategories.slice(0, 6);
+
                 this.restaurantTypes = firstHalf;
+                this.phoneTypes = sixCategories;
             })
             .catch(err => (this.data = []));
     }
@@ -59,6 +88,9 @@ section {
         font-weight: 800;
     }
     .restaurant-types-container {
+        .phone-categories {
+            display: none;
+        }
         span {
             margin: 7px 10px;
             padding: 8px 19px;
@@ -78,13 +110,19 @@ section {
     }
 }
 
-//query fede
 @media screen and (max-width: 575px) {
-    section h4 {
+    section {
         font-size: 22px;
-    }
-    #main-categories a .content h3 {
-        font-size: 20px;
+        text-align: center;
+        .restaurant-types-container {
+            text-align: center;
+            .desktop-categories {
+                display: none;
+            }
+            .phone-categories {
+                display: block;
+            }
+        }
     }
 }
 </style>

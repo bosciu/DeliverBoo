@@ -1,5 +1,5 @@
 <template>
-    <div id="navbar-container" class="w-100 pt-3">
+    <div id="navbar-container" class="w-100">
         <section
             id="navbar"
             class="w-100 justify-content-between align-center container pb-3"
@@ -134,7 +134,7 @@ export default {
 @import "./resources/sass/_variables";
 #navbar-container {
     .navbar-responsive {
-        display: none;
+        display: none !important;
     }
     #navbar {
         display: flex;
@@ -217,7 +217,7 @@ export default {
 
     @media screen and(max-width:575px) {
         .navbar-responsive {
-            display: block;
+            display: flex !important;
         }
         #navbar {
             display: none;

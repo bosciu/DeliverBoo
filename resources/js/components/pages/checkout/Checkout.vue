@@ -143,7 +143,6 @@
 
 <script>
 import Navbar from "../../common/Navbar";
-import Loading from "../../common/Loading";
 import Footer from "../../common/Footer";
 export default {
     name: "checkout",
@@ -203,12 +202,19 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "./resources/sass/_variables.scss";
 #checkout {
+    header {
+        background-color: $bgPrimary;
+        background-image: url(/images/sfondo-show-store.png);
+        background-size: contain;
+        background-position: right;
+        background-repeat: no-repeat;
+        padding-bottom: 10px;
+        box-shadow: 0 0 25px 25px $bgPrimary;
+    }
     main {
         min-height: calc(100vh - 420px);
-    }
-    footer {
-        height: 320px;
     }
 }
 </style>

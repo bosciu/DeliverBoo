@@ -361,10 +361,10 @@ main {
                     input:hover,
                     label:hover {
                         cursor: pointer;
-                        background-color: $bgPrimary;
-                        color: white;
+                        background-color: unset;
+                        color: unset;
                         i {
-                            color: white;
+                            color: unset;
                         }
                     }
                 }
@@ -423,6 +423,19 @@ main {
             .list-container {
                 .categories ul {
                     height: 150px;
+                }
+            }
+            ul {
+                li {
+                    input:active,
+                    label:active {
+                        cursor: pointer;
+                        background-color: $bgPrimary;
+                        color: white;
+                        i {
+                            color: white;
+                        }
+                    }
                 }
             }
         }

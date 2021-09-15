@@ -53,7 +53,7 @@ class PaymentController extends Controller
             $newOrder->phone = $data['phone'];
             $newOrder->total = $data['total'];
             $newOrder->payment_status = false;
-            $newOrder->payment_provider = 'in attesa di pagamento';
+            $newOrder->payment_provider = 'in attesa';
             $newOrder->save();
             foreach ($data['order'] as $singleDish) {
                 $newOrderedDish = new OrderedDish();

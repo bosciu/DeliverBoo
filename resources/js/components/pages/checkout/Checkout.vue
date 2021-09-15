@@ -155,7 +155,8 @@ export default {
             zip_code: "",
             surname: "",
             city: "",
-            province: ""
+            province: "",
+            phone: ""
         };
     },
     components: {
@@ -186,7 +187,8 @@ export default {
                         surname: this.surname,
                         city: this.city,
                         province: this.province,
-                        order: this.order
+                        order: this.order,
+                        phone: this.phone
                     }
                 )
                 .then(res => {

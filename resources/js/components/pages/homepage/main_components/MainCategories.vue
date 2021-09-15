@@ -6,8 +6,7 @@
         class="container d-flex flex-wrap justify-content-between py-4"
     >
         
-
-        <router-link :to="{ name: 'store', params: { filterFromHome: category.id } }" class="text-center my-4"
+        <router-link :to="{ name: 'store', params: { filterFromHome: category.id } }" class="text-center col-sm-12 col-md-5 ml-md-auto mr-md-auto my-4"
         v-for="(category, index) in randomMainCategories" :key="index">
 
             <div class="category-image">
@@ -57,15 +56,15 @@ export default {
 <style lang="scss" scoped>
 @import "././resources/sass/_variables";
 
- h2 {
-        font-size: 40px;
-        font-weight: bolder;
-    }
+h2 {
+    font-size: 40px;
+    font-weight: bolder;
+}
 
 #main-categories {
 
     a {
-        width: calc(100% / 2 - 30px);
+        // width: calc(100% / 2 - 30px);
         display: block;
         height: 200px;
         color: white;
@@ -90,7 +89,6 @@ export default {
                 filter: blur(1px);
             }
         }
-
 
         .layover {
             width: 100%;
@@ -118,4 +116,17 @@ export default {
         }
     }
 }
+
+//query fede
+@media screen and (max-width: 576px) {
+    
+    div h2 {
+        font-size: 24px;
+    }
+    #main-categories a .content h3 {
+        font-size: 20px;
+    }
+};
+
+
 </style>

@@ -7,9 +7,9 @@
             <router-link
                 v-for="restaurant in randomMainRestaurants"
                 :key="restaurant.id"
-                class="post-it d-flex"
+                class="post-it col-lg-3 col-md-6 col-xs-12 d-flex"
                 :to="{ name: 'show', params: { slug: restaurant.slug } }"
-            >
+                >
                 <div>
                     <div class="img-container">
                         <img
@@ -83,8 +83,8 @@ export default {
         padding: 30px 0;
 
         .post-it {
-            width: calc(100% / 4 - 40px);
-            margin: 20px;
+            // width: calc(100% / 4 - 40px);
+            margin-bottom: 20px;
 
             .img-container {
                 width: 100%;
@@ -120,5 +120,24 @@ export default {
             transition: 0.2s;
         }
     }
+}
+
+//query fede
+@media screen and (max-width: 576px) {
+    
+    .content h2 {
+        font-size: 24px;
+    }
+    .content .container .post-it p {
+        font-size: 20px;
+        margin: 5px 0 !important;
+    }
+    .post-it:hover,
+        a:hover {
+            transition: 0.2s;
+            transform: scale(0.5);
+            text-decoration: none;
+        }
+
 }
 </style>

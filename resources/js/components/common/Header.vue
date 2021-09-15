@@ -412,6 +412,9 @@ header {
             }
             #searchbar {
                 justify-content: center;
+                .my-drop {
+                    max-height: 90px;
+                }
                 .my-drop table tr td {
                     font-size: 14px;
                     padding: 8px;

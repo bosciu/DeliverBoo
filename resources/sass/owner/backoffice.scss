@@ -16,6 +16,11 @@
 //COMMON
 body {
     #app {
+        .badge-container {
+            .badge {
+                cursor: pointer;
+            }
+        }
         font-size: 17px;
         letter-spacing: 1px;
         nav {

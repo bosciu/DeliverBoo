@@ -104,7 +104,7 @@ export default {
         }, 500);
     },
     beforeDestroy() {
-        cleaInterval(this.timer);
+        clearInterval(this.timer);
     },
     computed: {
         sum() {

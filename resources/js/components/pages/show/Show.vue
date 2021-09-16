@@ -267,9 +267,7 @@
                                 >
                                     {{ category.name }}
                                 </h3>
-                                <div
-                                    class="dish-container row mb-4"
-                                >
+                                <div class="dish-container row mb-4">
                                     <div
                                         class="dish mb-3 mr-3 col-12 col-md-4"
                                         :class="
@@ -543,6 +541,9 @@ export default {
                         this.orderDishes[
                             this.orderDishes.length - 1
                         ].quantity = 1;
+                        this.orderDishes[
+                            this.orderDishes.length - 1
+                        ].delivery_price = this.restaurant.delivery_price;
                     } else {
                         this.orderDishes[findedIndex].quantity++;
                     }
@@ -586,226 +587,223 @@ export default {
 <style lang="scss" scoped>
 @import "./resources/sass/_variables";
 
-    header {
-        background-color: $bgPrimary;
-        background-image: url(/images/sfondo-show-store.png);
-        background-size: contain;
-        background-position: right;
-        background-repeat: no-repeat;
-        padding-bottom: 10px;
-        box-shadow: 0 0 25px 25px $bgPrimary;
+header {
+    background-color: $bgPrimary;
+    background-image: url(/images/sfondo-show-store.png);
+    background-size: contain;
+    background-position: right;
+    background-repeat: no-repeat;
+    padding-bottom: 10px;
+    box-shadow: 0 0 25px 25px $bgPrimary;
+}
+
+main {
+    .img-container {
+        width: 550px;
+        height: 300px;
+        box-shadow: 0 0 4px black;
+        overflow: hidden;
+
+        img {
+            object-fit: cover;
+            object-position: center;
+        }
     }
 
-    main {
-        .img-container {
-            width: 550px;
-            height: 300px;
-            box-shadow: 0 0 4px black;
-            overflow: hidden;
-
-            img {
-                object-fit: cover;
-                object-position: center;
-            }
+    #calendarModal {
+        td,
+        th {
+            border-top: 0;
         }
 
-        #calendarModal {
-            td,
-            th {
-                border-top: 0;
-            }
-
-            .modal-content {
-                background-color: $bgSecondary;
-            }
-
-            .modal-footer {
-                button {
-                    color: $bgSecondary;
-                    background-color: $darkGreenFont;
-                }
-            }
+        .modal-content {
+            background-color: $bgSecondary;
         }
 
-        .calendar-btn {
-            margin-right: 10px;
+        .modal-footer {
+            button {
+                color: $bgSecondary;
+                background-color: $darkGreenFont;
+            }
+        }
+    }
+
+    .calendar-btn {
+        margin-right: 10px;
+        background-color: $buttonSecondary;
+        color: white;
+
+        &:hover {
+            background-color: #a75c71;
+        }
+    }
+
+    #no-calendar {
+        cursor: not-allowed;
+
+        &:hover {
             background-color: $buttonSecondary;
-            color: white;
+        }
+    }
 
-            &:hover {
-                background-color: #a75c71;
+    #contact {
+        background-color: $bgPrimary;
+        color: white;
+
+        &:hover {
+            background-color: #2aa180;
+        }
+    }
+
+    #contactModal {
+        .modal-content {
+            background-color: $bgSecondary;
+        }
+
+        p {
+            letter-spacing: 2px;
+            color: $darkGreenFont;
+            text-decoration: underline;
+        }
+
+        .modal-footer {
+            button {
+                color: $bgSecondary;
+                background-color: $darkGreenFont;
+            }
+        }
+    }
+
+    .dish-container {
+        .card {
+            box-shadow: 0 0 5px grey;
+            cursor: pointer;
+
+            &:hover .layover-plus {
+                opacity: 1;
             }
         }
 
-        #no-calendar {
-            cursor: not-allowed;
-
-            &:hover {
-                background-color: $buttonSecondary;
-            }
-        }
-
-        #contact {
-            background-color: $bgPrimary;
-            color: white;
-
-            &:hover {
-                background-color: #2aa180;
-            }
-        }
-
-        #contactModal {
-            .modal-content {
-                background-color: $bgSecondary;
-            }
-
-            p {
-                letter-spacing: 2px;
-                color: $darkGreenFont;
-                text-decoration: underline;
-            }
-
-            .modal-footer {
-                button {
-                    color: $bgSecondary;
-                    background-color: $darkGreenFont;
-                }
-            }
-        }
-
-        .dish-container {
-            .card {
-                box-shadow: 0 0 5px grey;
-                cursor: pointer;
-
-                &:hover .layover-plus {
-                    opacity: 1;
-                }
-            }
-
-            .layover-plus {
-                width: 100%;
-                height: 100%;
-                position: absolute;
-                top: 0;
-                left: 0;
-                opacity: 0;
-                background-color: rgba(124, 192, 173, 0.7);
-                transition: 0.3s;
-                i {
-                    color: white;
-                    font-size: 65px;
-                    position: absolute;
-                    opacity: 1;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    transition: 0.3s;
-                }
-            }
-
-            .dish {
-                width: 30%;
-
-                #dishModal {
-                    .img-container {
-                        width: 100%;
-                        img {
-                            width: 100%;
-                            height: 100%;
-                            object-fit: cover;
-                            object-position: center;
-                        }
-                    }
-                    p {
-                        padding: 20px 20px 0;
-                        text-align: center;
-                        word-break: break-all;
-                    }
-                }
-
-            }
-        }
-
-        #cart {
+        .layover-plus {
+            width: 100%;
+            height: 100%;
             position: absolute;
-            right: 20%;
-            width: calc((100% / 5));
-            padding: 30px;
-            border-radius: 7px;
-            box-shadow: 0 0 2px black;
-            background-color: rgba($buttonPrimary, 0.6);
-            overflow: hidden;
-
-            #checkout {
-                padding: 15px 20px;
-                border-radius: 7px;
-                font-weight: 700;
-                background-color: $bgSecondary;
-                box-shadow: 0 4px 8px black;
-                text-align: center;
-                span {
-                    color: black;
-                    cursor: pointer;
-                    &:hover {
-                        text-decoration: underline;
-                    }
-                }
-            }
-
-            #checkout-another {
-                padding: 15px 20px;
-                border-radius: 7px;
-                font-weight: 700;
-                background-color: $bgSecondary;
-                box-shadow: 0 4px 8px black;
-                text-align: center;
-                position: relative;
-                z-index: 100;
-                overflow: hidden;
-            }
-
-            .layover {
-                width: 100%;
-                height: 100%;
-                top: 0;
-                right: 0;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            background-color: rgba(124, 192, 173, 0.7);
+            transition: 0.3s;
+            i {
+                color: white;
+                font-size: 65px;
                 position: absolute;
-                background-color: rgba(0, 0, 0, 0.5);
+                opacity: 1;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                transition: 0.3s;
             }
+        }
 
-            .products {
-                .quantity {
-                    display: flex;
-                    justify-content: space-between;
-                    padding: 5px;
-                    font-size: 15px;
-                    & > .button-container {
-                        display: inline-block;
-                        position: relative;
-                        
-                        i {
-                            position: absolute;
-                            font-size: 13px;
-                            top: 45%;
-                            left: 50%;
-                            transform: translate(-50%, -50%);
-                            cursor: pointer;
-                            margin: 0 2px;
-                        }
+        .dish {
+            width: 30%;
+
+            #dishModal {
+                .img-container {
+                    width: 100%;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        object-position: center;
                     }
                 }
-                .tot {
-                    font-size: 14px;
+                p {
+                    padding: 20px 20px 0;
+                    text-align: center;
+                    word-break: break-all;
                 }
             }
         }
     }
+
+    #cart {
+        position: absolute;
+        right: 20%;
+        width: calc((100% / 5));
+        padding: 30px;
+        border-radius: 7px;
+        box-shadow: 0 0 2px black;
+        background-color: rgba($buttonPrimary, 0.6);
+        overflow: hidden;
+
+        #checkout {
+            padding: 15px 20px;
+            border-radius: 7px;
+            font-weight: 700;
+            background-color: $bgSecondary;
+            box-shadow: 0 4px 8px black;
+            text-align: center;
+            span {
+                color: black;
+                cursor: pointer;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        #checkout-another {
+            padding: 15px 20px;
+            border-radius: 7px;
+            font-weight: 700;
+            background-color: $bgSecondary;
+            box-shadow: 0 4px 8px black;
+            text-align: center;
+            position: relative;
+            z-index: 100;
+            overflow: hidden;
+        }
+
+        .layover {
+            width: 100%;
+            height: 100%;
+            top: 0;
+            right: 0;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .products {
+            .quantity {
+                display: flex;
+                justify-content: space-between;
+                padding: 5px;
+                font-size: 15px;
+                & > .button-container {
+                    display: inline-block;
+                    position: relative;
+
+                    i {
+                        position: absolute;
+                        font-size: 13px;
+                        top: 45%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        cursor: pointer;
+                        margin: 0 2px;
+                    }
+                }
+            }
+            .tot {
+                font-size: 14px;
+            }
+        }
+    }
+}
 
 @media screen and (max-width: 575px) {
-
     main {
-
         tbody {
             text-align: left;
 
@@ -843,20 +841,15 @@ export default {
             }
         }
 
-            .card {
-                padding-top: 10px;
-                img {
-                    width: 90%;
-                    margin: 0 auto;
-                    height: 100px; 
-                    object-fit: cover;
-                } 
+        .card {
+            padding-top: 10px;
+            img {
+                width: 90%;
+                margin: 0 auto;
+                height: 100px;
+                object-fit: cover;
             }
-        
-
-       
+        }
     }
-    
-   
 }
 </style>
